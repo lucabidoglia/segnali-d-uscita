@@ -13,6 +13,7 @@ App statica (HTML + CSS + JS, nessun framework, nessun build) della suite **G1G1
 | Valutazione | Motore di rischio a 9 driver (0–100), priorità, costo a rischio vs costo dell'intervento |
 | Funzioni & rischio | Rischio e scostamento dal mercato per funzione (4 bande) |
 | Equità | Divario retributivo donne/uomini a parità di funzione, soglia 5% |
+| Documenti | Generazione automatica di documenti in Word (.doc) e PDF (stampa): **scheda individuale di formazione finanziata** (costo orario = costo annuo ÷ 1.720 h × FTE), **relazione sul divario retributivo** (Dir. UE 2023/970: divario medio e mediano, quartili, categorie ≥ 5%) e **dossier parità di genere** (UNI/PdR 125:2022, 6 aree). Fascicolo di tutte le schede per area. Dati azienda e fondo modificabili |
 | Registro | Casi salvati, stato, export CSV (salvati nel browser) |
 
 Tema **chiaro o scuro** dal pulsante in alto a destra (segue il sistema al primo avvio, poi ricorda la scelta).

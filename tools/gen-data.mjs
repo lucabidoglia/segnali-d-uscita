@@ -29,6 +29,8 @@ const FN = [
   { fn: 'MANUTENZIONE', band: 'B', ral: 33000, mans: ['MANUTENTORE MECCANICO', 'ELETTRICISTA INDUSTRIALE'], w: 5, st: [2], qf: 0.05 },
   { fn: 'LOGISTICA', band: 'A', ral: 26000, mans: ['MAGAZZINIERE', 'CARRELLISTA', 'ADDETTO PICKING', 'AUTISTA', 'CAPO MAGAZZINO'], w: 22, st: [3, 4], qf: 0.22 }
 ];
+const FORM_UFF = ['Excel avanzato', 'Lingua inglese livello B1', 'GDPR e cybersecurity', 'Leadership e gestione dei team', 'Project management base'];
+const livelloOf = (f, mans) => /CAPO/.test(mans) ? '5' : f.band === 'D' ? 'Dirigente' : f.band === 'C' ? pick(['7', 'Quadro']) : f.band === 'B' ? pick(['5', '6', '6', '7']) : pick(['3', '3', '4']);
 const N = 180, people = [], used = new Set();
 for (let i = 0; i < N; i++) {
   const f = wpick(FN, FN.map(x => x.w));
@@ -41,11 +43,16 @@ for (let i = 0; i < N; i++) {
   const dev = (rnd() - 0.5) * 0.36 + (female ? -0.015 : 0.015) + Math.min(anz, 12) * 0.006 - 0.036;
   const co = Math.round(mk * (1 + dev) * 100) / 100;
   const sat = wpick([1, 2, 3, 4, 5], [7, 16, 30, 32, 15]);
+  const mans = pick(f.mans), ostr = rnd() < (['PRODUZIONE', 'LOGISTICA'].includes(f.fn) ? 0.6 : 0.3) ? Math.round(rnd() * 70 * fte) : 0;
+  const ore = Math.round((865 * fte * (0.97 + rnd() * 0.05) + ostr) * 10) / 10;
+  const formed = rnd() < 0.7;
+  const titolo = /CARRELLISTA/.test(mans) ? 'Abilitazione alla conduzione di carrelli elevatori' : ['PRODUZIONE', 'MANUTENZIONE'].includes(f.fn) ? pick(['Sicurezza sul lavoro — aggiornamento', 'Lean manufacturing', 'Gestione qualità ISO 9001']) : f.fn === 'LOGISTICA' ? pick(['Sicurezza sul lavoro — aggiornamento', 'Gestione del magazzino WMS']) : pick(FORM_UFF);
   people.push({
     mat: String(1000 + i * 7 + Math.floor(rnd() * 6)).padStart(7, '0'), nome: nome.toUpperCase(), g: female ? 'F' : 'M',
-    fn: f.fn, mans: pick(f.mans), st: st.nome, area: st.area, band: f.band,
+    fn: f.fn, mans, st: st.nome, area: st.area, band: f.band, livello: livelloOf(f, mans),
     tip: wpick(['Dipendente', 'Somministrato'], [92, 8]), anz, fte,
-    ral: Math.round(f.ral * (0.9 + rnd() * 0.25) * fte / 100) * 100, co,
+    ral: Math.round(co * 1730 * fte / 1.38 / 100) * 100, co, ore, ostr, costo: Math.round(co * ore * 100) / 100,
+    form: formed ? { titolo, ore: pick([8, 12, 16, 24, 32, 40]), da: '2026-0' + (2 + Math.floor(rnd() * 4)) + '-' + String(3 + Math.floor(rnd() * 20)).padStart(2, '0') } : null,
     f: {
       sat, load: wpick([1, 2, 3, 4, 5], [5, 15, 35, 30, 15]),
       promo: wpick([0, 8, 16], anz > 5 ? [35, 30, 35] : [65, 25, 10]),

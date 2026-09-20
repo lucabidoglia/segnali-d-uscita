@@ -1,11 +1,11 @@
 (function () {
   'use strict';
-  const VERSION = '1.1.0';
+  const VERSION = '1.2.0';
   const D = window.SDU_DATA;
   const $ = (s, r = document) => r.querySelector(s);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const eur0 = n => Math.round(n).toLocaleString('it-IT');
-  const eur2 = n => n.toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const eur0 = n => Math.round(n).toLocaleString('it-IT', { useGrouping: 'always' });
+  const eur2 = n => n.toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: 'always' });
   const store = {
     get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
@@ -16,6 +16,7 @@
     folder: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
     door: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="10" height="18" rx="1"/><path d="M11 12h10M18 8l4 4-4 4"/></svg>',
     auto: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-15-6.7L3 8M3 3v5h5M3 12a9 9 0 0 0 15 6.7L21 16M21 21v-5h-5"/></svg>',
+    doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5M9 13h6M9 17h6"/></svg>',
     snooze: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0M3 3l18 18"/></svg>'
   };
 
@@ -55,6 +56,8 @@
     fSt: null, fArea: null, fLevel: null, fStato: null, sel: new Set(),
     pstate: store.get('sdu_pstate_v1', {}),   // id -> 'auto' | 'snooze'
     cases: store.get('sdu_cases_v1', null) || D.casi.slice(),
+    doc: { key: 'scheda', pid: 0, scope: 'all' },
+    set: Object.assign({ ragione: 'Orizzonte Industrie S.p.A.', piva: '01234567890', sede: 'Via dell\'Industria 10, 20100 Milano (MI)', fondo: 'Fondimpresa', avviso: 'Avviso 1/2026', ccnl: 'CCNL Metalmeccanica Industria', firma: 'Il Legale Rappresentante', ore: 1720, inps: 30, inailU: 0.8, inailP: 3.5, tfr: 7.41 }, store.get('sdu_settings_v1', {})),
     ev: { ident: '', pid: '', ral: 30000, interv: 2500, f: { sat: 3, load: 3, promo: 0, extra: 0, recog: 0, comp: 0, behav: 0, market: 0, mobil: 0, perf: 1, crit: 1 } }
   };
   const saveP = () => store.set('sdu_pstate_v1', ST.pstate);
@@ -63,7 +66,7 @@
   function toast(m) { const t = $('#toast'); t.textContent = m; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 2400); }
 
   /* ---------- shell ---------- */
-  const VIEWS = [['quadro', 'Quadro'], ['segnali', 'Segnali'], ['valutazione', 'Valutazione'], ['funzioni', 'Funzioni & rischio'], ['equita', 'Equità'], ['registro', 'Registro']];
+  const VIEWS = [['quadro', 'Quadro'], ['segnali', 'Segnali'], ['valutazione', 'Valutazione'], ['funzioni', 'Funzioni & rischio'], ['equita', 'Equità'], ['documenti', 'Documenti'], ['registro', 'Registro']];
   function drawMenu() {
     $('#menu').innerHTML = VIEWS.map(([k, l]) => `<button data-v="${k}" ${ST.view === k ? 'aria-current="page"' : ''}>${l}</button>`).join('');
   }
@@ -107,22 +110,23 @@
       ${sideBtn('In monitoraggio', cnt(p => statoOf(p) === 'auto'), ST.fStato === 'auto', 'data-f="stato" data-v="auto"', 1)}
       ${sideBtn('Rinviati', cnt(p => statoOf(p) === 'snooze'), ST.fStato === 'snooze', 'data-f="stato" data-v="snooze"', 1)}
       </ul>`;
-    const th = (k, l, n) => `<th class="${n ? 'n' : ''}" data-s="${k}">${l}${ST.sortK === k ? (ST.sortD > 0 ? ' ▲' : ' ▼') : ''}</th>`;
+    const th = (k, l, n, c = '') => `<th class="${n ? 'n' : ''} ${c}" data-s="${k}">${l}${ST.sortK === k ? (ST.sortD > 0 ? ' ▲' : ' ▼') : ''}</th>`;
     const allOn = vis.length && vis.every(p => ST.sel.has(p.id));
     const body = vis.map(p => {
       const s = statoOf(p);
+      const tag = s === 'auto' ? ' <span class="tag auto">Monitorato</span>' : s === 'snooze' ? ' <span class="tag">Rinviato</span>' : '';
       return `<tr class="${ST.sel.has(p.id) ? 'sel' : ''}" data-id="${p.id}">
         <td><input type="checkbox" data-c="${p.id}" ${ST.sel.has(p.id) ? 'checked' : ''} aria-label="Seleziona ${esc(p.nome)}"></td>
-        <td><b>[${p.mat}]</b> ${esc(p.nome)}</td><td>${esc(p.st)}</td><td class="mut">${esc(p.fn)}</td>
+        <td><b>[${p.mat}]</b> ${esc(p.nome)}${tag}</td><td class="wrap2">${esc(p.st)}</td><td class="mut wrap2">${esc(p.fn)}</td>
         <td class="n">${p.anz.toLocaleString('it-IT')} a</td>
         <td class="n"><span class="score s-${p.level}">${p.score}</span></td>
-        <td class="drv" title="${esc(p.drivers.slice(0, 3).map(d => d.lab).join(', '))}">${esc(p.drivers.slice(0, 2).map(d => d.lab).join(' · '))}</td>
+        <td class="drv c-drv" title="${esc(p.drivers.slice(0, 3).map(d => d.lab).join(', '))}">${esc(p.drivers.slice(0, 2).map(d => d.lab).join(' · '))}</td>
         <td class="pri pri-${p.priority}">${p.priority}</td><td class="n">€ ${eur0(p.atRisk)}</td>
-        <td>${s === 'auto' ? '<span class="tag auto">Monitorato</span>' : s === 'snooze' ? '<span class="tag">Rinviato</span>' : ''}</td>
         <td class="act">
-          <button data-a="case" data-id="${p.id}">${ICON.door} Apri caso</button>
-          <button data-a="auto" data-id="${p.id}">${ICON.auto} ${s === 'auto' ? 'Ferma' : 'Monitora'}</button>
-          <button data-a="snooze" data-id="${p.id}">${ICON.snooze} ${s === 'snooze' ? 'Riattiva' : 'Rinvia'}</button></td></tr>`;
+          <button data-a="case" data-id="${p.id}" title="Apri caso" aria-label="Apri caso">${ICON.door}<span class="lbl">Apri caso</span></button>
+          <button data-a="auto" data-id="${p.id}" title="${s === 'auto' ? 'Ferma monitoraggio' : 'Monitora'}" aria-label="Monitora">${ICON.auto}<span class="lbl">${s === 'auto' ? 'Ferma' : 'Monitora'}</span></button>
+          <button data-a="snooze" data-id="${p.id}" title="${s === 'snooze' ? 'Riattiva' : 'Rinvia'}" aria-label="Rinvia">${ICON.snooze}<span class="lbl">${s === 'snooze' ? 'Riattiva' : 'Rinvia'}</span></button>
+          <button data-a="doc" data-id="${p.id}" title="Scheda formazione finanziata" aria-label="Scheda formazione">${ICON.doc}<span class="lbl">Scheda</span></button></td></tr>`;
     }).join('');
     const from = rows.length ? ST.page * ST.PS + 1 : 0, to = Math.min(rows.length, (ST.page + 1) * ST.PS);
     return `
@@ -134,14 +138,14 @@
         <h1>Segnali</h1>
         ${ST.sel.size ? `<span class="chip"><b>${ST.sel.size}</b> selezionati <button id="bClr" aria-label="Deseleziona">×</button></span>
           <div class="dd" id="dd"><button class="btn sec" id="ddB">⚙ Azioni</button><div class="dd-m">
-            <button data-a="csv">Esporta CSV</button><button data-a="autoSel">Monitora selezionati</button><button data-a="unsnz">Riattiva selezionati</button></div></div>` : ''}
+            <button data-a="csv">Esporta CSV</button><button data-a="schede">Schede formazione (Word)</button><button data-a="autoSel">Monitora selezionati</button><button data-a="unsnz">Riattiva selezionati</button></div></div>` : ''}
         <span class="grow"></span>
         <input class="search" id="q" placeholder="Cerca persona, matricola, funzione…" value="${esc(ST.q)}" aria-label="Cerca">
         <span class="pager">${from}-${to} / ${rows.length}<button id="pp" aria-label="Precedente">‹</button><button id="pn" aria-label="Successiva">›</button></span>
       </div>
       <div class="wrap"><aside class="side" id="side">${side}</aside>
       <div class="content">${rows.length ? `<table><thead><tr><th><input type="checkbox" id="all" ${allOn ? 'checked' : ''} aria-label="Seleziona tutto"></th>
-        ${th('nome', 'Persona')}${th('st', 'Struttura')}${th('fn', 'Funzione')}${th('anz', 'Anzianità', 1)}${th('score', 'Rischio', 1)}<th>Driver principali</th>${th('priority', 'Priorità')}${th('atRisk', 'A rischio', 1)}<th>Stato</th><th></th></tr></thead>
+        ${th('nome', 'Persona')}${th('st', 'Struttura')}${th('fn', 'Funzione')}${th('anz', 'Anz.', 1)}${th('score', 'Rischio', 1)}<th class="c-drv">Driver principali</th>${th('priority', 'Priorità')}${th('atRisk', 'A rischio', 1)}<th></th></tr></thead>
         <tbody>${body}</tbody></table>` : '<div class="empty">Nessun segnale con questi filtri.</div>'}</div></div>`;
   }
   function bindSegnali() {
@@ -180,6 +184,7 @@
     const p = D.people.find(x => x.id === id);
     if (a === 'case') { openCase(p); toast('Caso aperto per ' + p.nome); }
     if (a === 'auto') { statoOf(p) === 'auto' ? delete ST.pstate[id] : ST.pstate[id] = 'auto'; saveP(); }
+    if (a === 'doc') { ST.doc.key = 'scheda'; ST.doc.pid = id; go('documenti'); return; }
     if (a === 'snooze') { statoOf(p) === 'snooze' ? delete ST.pstate[id] : ST.pstate[id] = 'snooze'; saveP(); }
     render();
   }
@@ -189,9 +194,10 @@
     if (a === 'snooze') { ps.forEach(p => ST.pstate[p.id] = 'snooze'); saveP(); toast(ps.length + ' rinviati'); }
     if (a === 'autoSel') { ps.forEach(p => ST.pstate[p.id] = 'auto'); saveP(); toast(ps.length + ' in monitoraggio'); }
     if (a === 'unsnz') { ps.forEach(p => delete ST.pstate[p.id]); saveP(); toast(ps.length + ' riattivati'); }
+    if (a === 'schede') { downloadDoc('Schede_formazione_finanziata', ps.map(p => schedaHtml(p)).join('<div style="page-break-after:always"></div>')); toast(ps.length + ' schede generate'); }
     if (a === 'csv') csv(['Matricola', 'Persona', 'Struttura', 'Funzione', 'Anzianità (anni)', 'Rischio', 'Livello', 'Priorità', 'Costo a rischio (€)'],
       ps.map(p => [p.mat, p.nome, p.st, p.fn, p.anz, p.score, p.level, p.priority, Math.round(p.atRisk)]), 'segnali');
-    if (a !== 'csv') ST.sel.clear();
+    if (a !== 'csv' && a !== 'schede') ST.sel.clear();
     render();
   }
   function csv(head, rows, name) {
@@ -207,14 +213,14 @@
       const ps = D.people.filter(p => p.fn === fn), F = ps.filter(p => p.g === 'F'), M = ps.filter(p => p.g === 'M');
       const coF = F.length >= 3 ? avg(F, p => p.co) : null, coM = M.length >= 3 ? avg(M, p => p.co) : null;
       return { fn, band, n: ps.length, nF: F.length, nM: M.length, co: avg(ps, p => p.co), mk: mktHour(band), coF, coM,
-        gap: coF && coM ? (coF - coM) / coM * 100 : null, score: avg(ps, p => p.score), hi: ps.filter(p => p.level === 'Alto').length, atRisk: ps.reduce((s, p) => s + p.atRisk, 0) };
+        gap: coF && coM ? (coM - coF) / coM * 100 : null, score: avg(ps, p => p.score), hi: ps.filter(p => p.level === 'Alto').length, atRisk: ps.reduce((s, p) => s + p.atRisk, 0) };
     });
   }
   function viewQuadro() {
     const P = D.people, n = P.length, hi = P.filter(p => p.level === 'Alto'), F = P.filter(p => p.g === 'F');
     const fs = funcStats(), gaps = fs.filter(f => f.gap !== null);
     const adj = gaps.length ? gaps.reduce((s, f) => s + f.gap * f.n, 0) / gaps.reduce((s, f) => s + f.n, 0) : 0;
-    const raw = (avg(F, p => p.co) - avg(P.filter(p => p.g === 'M'), p => p.co)) / avg(P.filter(p => p.g === 'M'), p => p.co) * 100;
+    const mM = avg(P.filter(p => p.g === 'M'), p => p.co), raw = (mM - avg(F, p => p.co)) / mM * 100;
     const kp = (k, v, c = '') => `<div class="kpi ${c}"><div class="k">${k}</div><div class="v">${v}</div></div>`;
     const buckets = Array.from({ length: 10 }, (_, i) => P.filter(p => p.score >= i * 10 && (i === 9 ? p.score <= 100 : p.score < i * 10 + 10)).length);
     const mx = Math.max(...buckets);
@@ -303,7 +309,7 @@
   function viewEquita() {
     const fs = funcStats(), flagged = fs.filter(f => f.gap !== null && Math.abs(f.gap) >= 5).length;
     return `<div class="cp"><h1>Equità retributiva</h1></div><div class="page">
-      <div class="note">Divario del costo orario medio donne/uomini a parità di funzione. Soglia di attenzione <b>5%</b> (Direttiva UE 2023/970). Sotto 3 persone per genere il dato non viene pubblicato. Funzioni sopra soglia: <b>${flagged}</b>.</div>
+      <div class="note">Divario del costo orario medio (uomini − donne) ÷ uomini a parità di funzione: positivo = donne pagate meno. Soglia di attenzione <b>5%</b> (Direttiva UE 2023/970). Sotto 3 persone per genere il dato non viene pubblicato. Funzioni sopra soglia: <b>${flagged}</b>.</div>
       <div class="card"><table><thead><tr><th>Funzione</th><th class="n">Donne</th><th class="n">Uomini</th><th class="n">€/h donne</th><th class="n">€/h uomini</th><th class="n">Divario</th><th>Esito</th></tr></thead><tbody>
       ${fs.map(f => { const has = f.gap !== null, over = has && Math.abs(f.gap) >= 5; return `<tr><td><b>${f.fn}</b></td><td class="n">${f.nF}</td><td class="n">${f.nM}</td><td class="n">${f.coF ? eur2(f.coF) : '—'}</td><td class="n">${f.coM ? eur2(f.coM) : '—'}</td><td class="n" style="color:var(--${over ? 'hi' : 'mut'})">${has ? (f.gap > 0 ? '+' : '') + f.gap.toFixed(1) + '%' : 'n.d.'}</td><td>${!has ? '<span class="tag">Campione ridotto</span>' : over ? '<span class="tag" style="border-color:var(--hi);color:var(--hi)">Da verificare</span>' : '<span class="tag" style="border-color:var(--lo);color:var(--lo)">In soglia</span>'}</td></tr>`; }).join('')}
       </tbody></table></div></div>`;
@@ -323,14 +329,139 @@
     document.querySelectorAll('[data-del]').forEach(b => b.onclick = () => { ST.cases = ST.cases.filter(c => c.id !== +b.dataset.del); saveC(); render(); });
   }
 
+  /* ---------- Documenti (individuali e aziendali) ---------- */
+  const mean = a => a.length ? a.reduce((s, x) => s + x, 0) / a.length : 0;
+  const median = a => { if (!a.length) return 0; const b = a.slice().sort((x, y) => x - y), m = b.length >> 1; return b.length % 2 ? b[m] : (b[m - 1] + b[m]) / 2; };
+  const n1 = v => v.toLocaleString('it-IT', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  const pc = v => (v > 0 ? '+' : '') + n1(v) + '%';
+  const E2 = v => '€ ' + eur2(v), E0 = v => '€ ' + eur0(v);
+  const todayIt = () => new Date().toLocaleDateString('it-IT', { day: '2-digit', month: 'long', year: 'numeric' });
+  const gapOf = (f, m) => m ? (m - f) / m * 100 : 0;   // convenzione Direttiva 2023/970: (M − F) ÷ M
+  const tbl = (head, rows, right = []) => `<table><tr>${head.map((h, i) => `<th class="${right.includes(i) ? 'n' : ''}">${h}</th>`).join('')}</tr>${rows.map(r => `<tr>${r.map((c, i) => `<td class="${right.includes(i) ? 'n' : ''}">${c}</td>`).join('')}</tr>`).join('')}</table>`;
+  const kv = rows => `<table>${rows.map(r => `<tr><td style="width:42%">${r[0]}</td><td>${r[1]}</td></tr>`).join('')}</table>`;
+  const docFoot = () => `<div class="foot">Documento generato con Segnali d'uscita · Powered by G1G10 v${VERSION}. I dati dell'organizzazione sono dimostrativi (inventati): prima dell'uso ufficiale sostituirli con i dati reali dell'azienda e verificare il testo normativo vigente.</div>`;
+  const sign = extra => `<div class="sig"><div>Luogo e data: ${esc(ST.set.sede.split(',').pop().replace(/\d{5}/, '').trim())}, ${todayIt()}${extra ? '<br>' + extra : ''}</div><div>${esc(ST.set.firma)}</div></div>`;
+  const head = (t, sub) => `<div class="sub">${esc(ST.set.ragione)} — P.IVA ${esc(ST.set.piva)} — ${esc(ST.set.sede)}</div><h1>${t}</h1><div class="sub">${sub}</div>`;
+
+  function schedaHtml(p) {
+    const S = ST.set, mesi = 6, oreRif = Math.round(S.ore * p.fte), annuo = p.costo * (12 / mesi);
+    const coEff = p.costo / p.ore, coRend = annuo / oreRif, of = p.form ? p.form.ore : 0, imp = coRend * of;
+    const inail = p.area === 'Uffici' ? S.inailU : S.inailP, k = 1 + (S.inps + inail + S.tfr) / 100;
+    const lordo = p.costo / k, inps = lordo * S.inps / 100, ina = lordo * inail / 100, tfr = p.costo - lordo - inps - ina;
+    return `<div class="doc">${head('Scheda di rendicontazione del costo orario', `Personale in formazione finanziata — ${esc(S.fondo)} · ${esc(S.avviso)} — periodo dati ${D.meta.periodo}`)}
+      <h2>1. Anagrafica e rapporto di lavoro</h2>${kv([['Nominativo', `<b>${esc(p.nome)}</b>`], ['Matricola', p.mat], ['Funzione / mansione', `${esc(p.fn)} — ${esc(p.mans)}`], ['Struttura', esc(p.st)], ['Tipologia rapporto', esc(p.tip)], ['Livello di inquadramento', `${esc(S.ccnl)} — livello ${esc(p.livello)}`], ['Impegno contrattuale (FTE)', p.fte.toFixed(2).replace('.', ',') + ` (${Math.round(p.fte * 100)}%)`]])}
+      <h2>2. Costo del lavoro nel periodo</h2>${kv([['Periodo di riferimento', `${D.meta.periodo} (${mesi} mesi)`], ['Ore retribuite nel periodo', eur2(p.ore).replace(/,00$/, '') + ' h'], ['di cui straordinario', p.ostr ? p.ostr + ' h' : 'nessuno'], ['Costo del lavoro nel periodo', E2(p.costo)], ['Costo orario effettivo (costo ÷ ore)', `<b>${E2(coEff)} / h</b>`]])}
+      <h2>3. Composizione del costo (stima)</h2>${tbl(['Voce', 'Aliquota', 'Importo'], [['Retribuzione lorda (incl. ratei ferie, 13ª e 14ª)', '—', E2(lordo)], ['Contributi previdenziali INPS a carico azienda', n1(S.inps) + '%', E2(inps)], ['Premio INAIL', n1(inail) + '%', E2(ina)], ['Accantonamento TFR', S.tfr.toLocaleString('it-IT') + '%', E2(tfr)], ['<b>Costo del lavoro nel periodo</b>', '', `<b>${E2(p.costo)}</b>`]], [1, 2])}
+      <h2>4. Costo orario per la rendicontazione</h2>${kv([['Costo del lavoro annuo lordo (periodo × 12/' + mesi + ')', E2(annuo)], ['Ore annue di riferimento (' + eur0(S.ore) + ' h × FTE ' + p.fte.toFixed(2).replace('.', ',') + ')', eur0(oreRif) + ' h'], ['Costo orario rendicontabile', `<b>${E2(coRend)} / h</b>`], ['Confronto: costo orario effettivo', E2(coEff) + ' / h']])}
+      <p style="font-size:12px">Formula (opzione semplificata): costo orario = costo annuo lordo del lavoro ÷ ore annue di riferimento (${eur0(S.ore)} h per il tempo pieno, proporzionali al part-time). Il costo comprende retribuzione lorda, oneri contributivi e assistenziali a carico del datore e ratei.</p>
+      <h2>5. Attività formativa e importo rendicontabile</h2>${p.form ? kv([['Attività formativa', esc(p.form.titolo)], ['Data di avvio', new Date(p.form.da).toLocaleDateString('it-IT')], ['Ore di formazione svolte', p.form.ore + ' h'], ['Costo orario rendicontabile', E2(coRend)], ['<b>Costo del personale in formazione</b>', `<b>${E2(imp)}</b>`]]) : '<p>Nessuna attività formativa finanziata registrata per questa persona nel periodo: nessun importo rendicontabile.</p>'}
+      <h2>6. Documenti a supporto</h2><p style="font-size:12.5px">Cedolini e Libro Unico del Lavoro del periodo, contratto individuale, registro presenze della formazione firmato, attestato di frequenza. Metodo conforme all'opzione semplificata delle 1.720 ore; per i fondi interprofessionali prevale quanto previsto dall'avviso (${esc(S.avviso)}).</p>
+      ${docFoot()}${sign('Matricola ' + p.mat)}</div>`;
+  }
+
+  function payStats(list) {
+    const F = list.filter(p => p.g === 'F').map(p => p.co), M = list.filter(p => p.g === 'M').map(p => p.co);
+    return { nF: F.length, nM: M.length, mF: mean(F), mM: mean(M), dF: median(F), dM: median(M), gMean: gapOf(mean(F), mean(M)), gMed: gapOf(median(F), median(M)) };
+  }
+  function deltaHtml() {
+    const P = D.people, n = P.length, all = payStats(P);
+    const sorted = P.slice().sort((a, b) => a.co - b.co), qs = Math.ceil(n / 4);
+    const quart = [0, 1, 2, 3].map(i => { const g = sorted.slice(i * qs, (i + 1) * qs), f = g.filter(p => p.g === 'F').length; return [['Q1 — retribuzioni più basse', 'Q2', 'Q3', 'Q4 — retribuzioni più alte'][i], g.length, n1(f / g.length * 100) + '%', n1((g.length - f) / g.length * 100) + '%']; });
+    const cats = D.funzioni.map(({ fn }) => { const ps = P.filter(p => p.fn === fn), s = payStats(ps), ok = s.nF >= 3 && s.nM >= 3; return { fn, s, ok, over: ok && Math.abs(s.gMean) >= 5, ps }; });
+    const over = cats.filter(c => c.over);
+    const cadence = n >= 250 ? 'annuale, con primo rapporto entro il 7 giugno 2027' : n >= 150 ? 'triennale, con primo rapporto entro il 7 giugno 2027' : n >= 100 ? 'triennale, con primo rapporto entro il 7 giugno 2031' : 'nessun obbligo di rapporto (sotto i 100 lavoratori); la pubblicazione è volontaria';
+    const fmtc = c => c.ok ? [esc(c.fn), c.s.nF + ' / ' + c.s.nM, E2(c.s.mF), E2(c.s.mM), (Math.abs(c.s.gMean) >= 5 ? '<span class="flag">' + pc(c.s.gMean) + '</span>' : pc(c.s.gMean)), pc(c.s.gMed)] : [esc(c.fn), c.s.nF + ' / ' + c.s.nM, '—', '—', 'n.d.', 'n.d.'];
+    const expl = over.map(c => { const F = c.ps.filter(p => p.g === 'F'), M = c.ps.filter(p => p.g === 'M'); return [esc(c.fn), n1(mean(F.map(p => p.anz))) + ' / ' + n1(mean(M.map(p => p.anz))), Math.round(F.filter(p => p.fte < 1).length / F.length * 100) + '% / ' + Math.round(M.filter(p => p.fte < 1).length / M.length * 100) + '%', pc(c.s.gMean) + (c.s.gMean > 0 ? ' (donne pagate meno)' : ' (uomini pagati meno)')]; });
+    return `<div class="doc">${head('Relazione sul divario retributivo di genere', `Direttiva (UE) 2023/970 sulla trasparenza retributiva — periodo ${D.meta.periodo}`)}
+      <h2>1. Oggetto, metodo e perimetro</h2><p>La relazione riporta il divario retributivo di genere, calcolato come differenza tra il livello retributivo medio (e mediano) degli uomini e delle donne, in percentuale di quello degli uomini: un valore positivo indica che le donne sono pagate meno. Il livello retributivo è approssimato con il <b>costo orario del lavoro</b> (costo del periodo ÷ ore retribuite). Popolazione: ${n} lavoratori (${all.nF} donne, ${all.nM} uomini).</p>
+      <p>Frequenza di rendicontazione applicabile (${n} lavoratori): ${cadence}.</p>
+      <h2>2. Divario complessivo</h2>${tbl(['Indicatore', 'Donne', 'Uomini', 'Divario'], [['Costo orario medio', E2(all.mF), E2(all.mM), `<b>${pc(all.gMean)}</b>`], ['Costo orario mediano', E2(all.dF), E2(all.dM), `<b>${pc(all.gMed)}</b>`]], [1, 2, 3])}
+      <h2>3. Distribuzione per quartili retributivi</h2>${tbl(['Quartile', 'Persone', '% donne', '% uomini'], quart, [1, 2, 3])}
+      <h2>4. Divario per categoria di lavoratori (stesso lavoro o lavoro di pari valore)</h2>${tbl(['Categoria', 'Donne / Uomini', '€/h donne', '€/h uomini', 'Divario medio', 'Divario mediano'], cats.map(fmtc), [1, 2, 3, 4, 5])}
+      <p style="font-size:12px">In rosso i divari pari o superiori al 5%. Le categorie con meno di 3 persone per genere non sono valutate (n.d.) per tutela dell'anonimato e affidabilità statistica.</p>
+      <h2>5. Categorie oltre la soglia del 5%</h2>${over.length ? `<p>${over.length} categoria/e con divario medio ≥ 5%. Fattori oggettivi disponibili nel database:</p>${tbl(['Categoria', 'Anzianità media D / U (anni)', 'Part-time D / U', 'Divario'], expl)}<p>Se il divario non è giustificato da criteri oggettivi e neutri rispetto al genere e non è corretto entro sei mesi dalla comunicazione, la Direttiva (art. 10) prevede una <b>valutazione congiunta delle retribuzioni</b> con le rappresentanze dei lavoratori.</p>` : '<p>Nessuna categoria valutabile supera la soglia del 5%: non è necessaria la valutazione congiunta.</p>'}
+      <h2>6. Limiti e dati da integrare</h2><p style="font-size:12.5px">Non sono presenti nel database: componenti retributive complementari o variabili per genere (premi, indennità), retribuzione lorda contrattuale per livello, e criteri di progressione. Prima della trasmissione integrare questi dati e verificare il decreto di recepimento vigente.</p>
+      ${docFoot()}${sign('')}</div>`;
+  }
+
+  const RESP = p => p.band === 'D' || /DIRETTORE|RESP\.|CAPO|MANAGER/.test(p.mans);
+  function paritaHtml() {
+    const P = D.people, n = P.length, F = P.filter(p => p.g === 'F'), M = P.filter(p => p.g === 'M'), s = payStats(P);
+    const qf = F.length / n * 100, resp = P.filter(RESP), respF = resp.filter(p => p.g === 'F').length;
+    const share = list => list.length ? n1(list.filter(p => p.g === 'F').length / list.length * 100) + '%' : '—';
+    const byArea = [...new Set(D.strutture.map(x => x.area))].map(a => { const l = P.filter(p => p.area === a); return [a, l.length, share(l)]; });
+    const byBand = D.bands.map(b => { const l = P.filter(p => p.band === b.id); return [esc(b.nome), l.length, share(l)]; });
+    const fF = F.filter(p => p.form), fM = M.filter(p => p.form);
+    const over = D.funzioni.map(({ fn }) => { const ps = P.filter(p => p.fn === fn), st = payStats(ps); return st.nF >= 3 && st.nM >= 3 && Math.abs(st.gMean) >= 5 ? fn : null; }).filter(Boolean);
+    const area = (n_, t, w, body, ev) => `<h2>${n_}. ${t} <span style="font-weight:normal;color:#666">— peso ${w}%</span></h2>${body}<p style="font-size:12px"><b>Evidenze da allegare:</b> ${ev}</p>`;
+    return `<div class="doc">${head('Dossier per la certificazione della parità di genere', `Prassi di riferimento UNI/PdR 125:2022 — dati di base, periodo ${D.meta.periodo}`)}
+      <h2>Anagrafica e perimetro</h2>${kv([['Lavoratori in organico', n], ['Donne / uomini', `${F.length} / ${M.length}`], ['Quota femminile', n1(qf) + '%'], ['Strutture / funzioni / mansioni', `${D.strutture.length} / ${D.funzioni.length} / ${new Set(P.map(p => p.mans)).size}`], ['Fascia dimensionale', n >= 250 ? 'Grande impresa' : n >= 50 ? 'Media impresa' : 'Piccola impresa']])}
+      ${area('1', 'Cultura e strategia', 15, '<p>Area qualitativa: non calcolabile dal database.</p>', 'politica per la parità approvata dalla direzione, obiettivi e indicatori nel piano strategico, piano di comunicazione interna ed esterna.')}
+      ${area('2', 'Governance', 15, kv([['Ruoli di responsabilità (direzione, responsabili, capi)', resp.length], ['Donne nei ruoli di responsabilità', `${respF} (${n1(respF / Math.max(1, resp.length) * 100)}%)`], ['Confronto con la quota femminile totale', n1(qf) + '%']]), 'comitato guida per la parità, ruoli e responsabilità formalizzati, budget dedicato.')}
+      ${area('3', 'Processi HR', 10, tbl(['Area', 'Persone', '% donne'], byArea, [1, 2]) + '<p style="font-size:12px">La distribuzione per area evidenzia la segregazione orizzontale.</p>', 'procedure di selezione e valutazione neutre rispetto al genere, criteri di progressione documentati.')}
+      ${area('4', 'Opportunità di crescita e inclusione delle donne', 20, tbl(['Fascia di inquadramento', 'Persone', '% donne'], byBand, [1, 2]) + kv([['Anzianità media donne / uomini', `${n1(mean(F.map(p => p.anz)))} / ${n1(mean(M.map(p => p.anz)))} anni`], ['Persone coinvolte in formazione finanziata', `donne ${Math.round(fF.length / F.length * 100)}% · uomini ${Math.round(fM.length / M.length * 100)}%`], ['Ore medie di formazione per persona formata', `donne ${n1(mean(fF.map(p => p.form.ore)))} h · uomini ${n1(mean(fM.map(p => p.form.ore)))} h`]]), 'piani di sviluppo e formazione per genere, dati sulle promozioni per genere.')}
+      ${area('5', 'Equità remunerativa per genere', 20, kv([['Divario retributivo medio (M−F)/M', pc(s.gMean)], ['Divario retributivo mediano', pc(s.gMed)], ['Categorie con divario ≥ 5%', over.length ? esc(over.join(', ')) : 'nessuna']]), 'politica retributiva e premi per genere, RAL contrattuale per livello.')}
+      ${area('6', 'Tutela della genitorialità e conciliazione vita-lavoro', 20, '<p>Dati non presenti nel database (rientri dopo maternità/paternità, congedi per genere, flessibilità): da raccogliere.</p>', 'rientri post-maternità e paternità, congedi fruiti per genere, strumenti di flessibilità e welfare.')}
+      <h2>Soglia di certificazione</h2><p style="font-size:12.5px">La certificazione UNI/PdR 125:2022, rilasciata da organismo accreditato, richiede almeno il 60% del punteggio complessivo e, ove ricorrano i requisiti, dà accesso allo sgravio contributivo (fino all'1%, massimo € 50.000 annui) e a premialità nei bandi pubblici. Le aree 1 e 6 e le evidenze documentali vanno integrate dall'azienda.</p>
+      ${docFoot()}${sign('Referente parità: ______________')}</div>`;
+  }
+
+  const DOC_STYLE = `@page{size:A4;margin:2cm}body{font:11pt/1.5 Georgia,'Times New Roman',serif;color:#1a1a1a}h1{font:bold 18pt Arial,sans-serif;margin:.2em 0}h2{font:bold 11.5pt Arial,sans-serif;border-bottom:1px solid #999;padding-bottom:2px;margin:1.2em 0 .4em}.sub{color:#555;font-size:10pt}table{border-collapse:collapse;width:100%;margin:4px 0 8px;font-size:10pt}th,td{border:1px solid #999;padding:4px 7px;text-align:left;vertical-align:top}th{background:#eee}td.n,th.n{text-align:right}.flag{color:#b03a2e;font-weight:bold}.foot{font-size:9pt;color:#555;border-top:1px solid #999;margin-top:14px;padding-top:6px}.sig{width:100%;margin-top:30px;font-size:10pt}.sig div{display:inline-block;width:48%;vertical-align:top}.sig div:last-child{border-top:1px solid #333;text-align:center;padding-top:3px}.doc{page-break-after:always}.doc:last-child{page-break-after:auto}`;
+  const wrapDoc = (name, inner) => `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>${esc(name)}</title><style>${DOC_STYLE}</style></head><body>${inner}</body></html>`;
+  function downloadDoc(name, inner) {
+    const blob = new Blob(['﻿', wrapDoc(name, inner)], { type: 'application/msword' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name + '.doc'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+  function printDoc(name, inner) {
+    const f = document.createElement('iframe'); f.style.cssText = 'position:fixed;width:0;height:0;border:0;right:0;bottom:0';
+    f.srcdoc = wrapDoc(name, inner); document.body.appendChild(f);
+    f.onload = () => { f.contentWindow.focus(); f.contentWindow.print(); setTimeout(() => f.remove(), 60000); };
+  }
+  const slug = t => t.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^A-Za-z0-9]+/g, '_').replace(/^_|_$/g, '');
+  function scopeList() { const sc = ST.doc.scope; return sc === 'all' ? D.people : D.people.filter(p => p.area === sc.slice(2)); }
+  function currentDoc() {
+    const d = ST.doc;
+    if (d.key === 'scheda') { const p = D.people.find(x => x.id === +d.pid) || D.people[0]; return { name: 'Scheda_formazione_' + slug(p.nome), html: schedaHtml(p) }; }
+    if (d.key === 'delta') return { name: 'Relazione_divario_retributivo_' + new Date().toISOString().slice(0, 10), html: deltaHtml() };
+    return { name: 'Dossier_parita_di_genere_' + new Date().toISOString().slice(0, 10), html: paritaHtml() };
+  }
+  const DOCS = [['Individuali', [['scheda', 'Scheda formazione finanziata']]], ['Aziendali', [['delta', 'Divario retributivo (Dir. 2023/970)'], ['parita', 'Parità di genere (UNI/PdR 125)']]], ['Impostazioni', [['dati', 'Dati azienda e fondo']]]];
+  const SETF = [['ragione', 'Ragione sociale', 'text'], ['piva', 'Partita IVA', 'text'], ['sede', 'Sede legale', 'text'], ['firma', 'Firmatario', 'text'], ['fondo', 'Fondo / programma di finanziamento', 'text'], ['avviso', 'Avviso', 'text'], ['ccnl', 'CCNL applicato', 'text'], ['ore', 'Ore annue di riferimento (FSE)', 'number'], ['inps', 'INPS a carico azienda (%)', 'number'], ['inailU', 'INAIL uffici (%)', 'number'], ['inailP', 'INAIL produzione e logistica (%)', 'number'], ['tfr', 'TFR (%)', 'number']];
+  function viewDocumenti() {
+    const d = ST.doc, side = DOCS.map(([g, items]) => `<h4>${ICON.folder} ${g}</h4><ul>${items.map(([k, l]) => `<li><button class="${d.key === k ? 'on' : ''}" data-d="${k}"><span>${l}</span></button></li>`).join('')}</ul>`).join('');
+    let main;
+    if (d.key === 'dati') {
+      main = `<div class="page"><div class="note">Questi dati compaiono nell'intestazione e nei calcoli di tutti i documenti. Sono fittizi: sostituiscili con quelli reali. Le aliquote servono a scomporre il costo del lavoro nella scheda.</div><div class="card"><h2>Dati azienda e fondo</h2><div class="b form" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">${SETF.map(([k, l, t]) => `<div><label>${l}</label><input type="${t}" ${t === 'number' ? 'step="any"' : ''} data-set="${k}" value="${esc(ST.set[k])}"></div>`).join('')}</div></div></div>`;
+    } else {
+      const cd = currentDoc(), aree = [...new Set(D.strutture.map(x => x.area))];
+      const ctrl = d.key === 'scheda' ? `<div class="docbar"><div class="f"><label>Persona</label><select id="dP">${D.people.map(p => `<option value="${p.id}" ${+d.pid === p.id ? 'selected' : ''}>${esc(p.nome)} · ${esc(p.fn)}${p.form ? '' : ' (senza formazione)'}</option>`).join('')}</select></div>
+        <div class="f"><label>Fascicolo per</label><select id="dS"><option value="all" ${d.scope === 'all' ? 'selected' : ''}>Tutte le persone</option>${aree.map(a => `<option value="a:${a}" ${d.scope === 'a:' + a ? 'selected' : ''}>Area ${a}</option>`).join('')}</select></div>
+        <button class="btn sec" id="dBulk">Genera fascicolo (${scopeList().length} schede)</button></div>` : '';
+      main = `<div class="page">${ctrl}<div class="paper">${cd.html}</div></div>`;
+    }
+    const title = { scheda: 'Scheda formazione finanziata', delta: 'Relazione sul divario retributivo', parita: 'Dossier parità di genere', dati: 'Dati azienda e fondo' }[d.key];
+    return `<div class="cp"><h1>${title}</h1><span class="grow"></span>${d.key !== 'dati' ? '<button class="btn sec" id="dPrint">Stampa / PDF</button><button class="btn" id="dWord">Scarica Word</button>' : ''}</div><div class="wrap"><aside class="side">${side}</aside><div class="content">${main}</div></div>`;
+  }
+  function bindDocumenti() {
+    const app = $('#app');
+    app.querySelectorAll('.side [data-d]').forEach(b => b.onclick = () => { ST.doc.key = b.dataset.d; render(); });
+    app.querySelectorAll('[data-set]').forEach(i => i.onchange = () => { const k = i.dataset.set; ST.set[k] = i.type === 'number' ? (parseFloat(i.value) || 0) : i.value; store.set('sdu_settings_v1', ST.set); toast('Impostazioni salvate'); });
+    if ($('#dP')) $('#dP').onchange = e => { ST.doc.pid = +e.target.value; render(); };
+    if ($('#dS')) $('#dS').onchange = e => { ST.doc.scope = e.target.value; render(); };
+    if ($('#dWord')) $('#dWord').onclick = () => { const c = currentDoc(); downloadDoc(c.name, c.html); };
+    if ($('#dPrint')) $('#dPrint').onclick = () => { const c = currentDoc(); printDoc(c.name, c.html); };
+    if ($('#dBulk')) $('#dBulk').onclick = () => { const l = scopeList(); downloadDoc('Fascicolo_schede_formazione_' + (ST.doc.scope === 'all' ? 'tutte' : slug(ST.doc.scope.slice(2))), l.map(schedaHtml).join('')); toast(l.length + ' schede generate'); };
+  }
+
   /* ---------- render ---------- */
   function render() {
     drawMenu();
-    const V = { quadro: viewQuadro, segnali: viewSegnali, valutazione: viewValutazione, funzioni: viewFunzioni, equita: viewEquita, registro: viewRegistro }[ST.view];
+    const V = { quadro: viewQuadro, segnali: viewSegnali, valutazione: viewValutazione, funzioni: viewFunzioni, equita: viewEquita, documenti: viewDocumenti, registro: viewRegistro }[ST.view];
     $('#app').innerHTML = V();
     if (ST.view === 'segnali') bindSegnali();
     if (ST.view === 'valutazione') bindValutazione();
     if (ST.view === 'registro') bindRegistro();
+    if (ST.view === 'documenti') bindDocumenti();
     document.title = (VIEWS.find(v => v[0] === ST.view)[1]) + " · Segnali d'uscita · G1G10";
   }
   const h = location.hash.slice(1); if (VIEWS.some(v => v[0] === h)) ST.view = h;
