@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  const VERSION = '1.2.0';
+  const VERSION = '1.3.0';
   const D = window.SDU_DATA;
   const $ = (s, r = document) => r.querySelector(s);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -56,6 +56,7 @@
     fSt: null, fArea: null, fLevel: null, fStato: null, sel: new Set(),
     pstate: store.get('sdu_pstate_v1', {}),   // id -> 'auto' | 'snooze'
     cases: store.get('sdu_cases_v1', null) || D.casi.slice(),
+    dd: { funzioni: { area: null, fn: null }, equita: { area: null, fn: null } },
     doc: { key: 'scheda', pid: 0, scope: 'all' },
     set: Object.assign({ ragione: 'Orizzonte Industrie S.p.A.', piva: '01234567890', sede: 'Via dell\'Industria 10, 20100 Milano (MI)', fondo: 'Fondimpresa', avviso: 'Avviso 1/2026', ccnl: 'CCNL Metalmeccanica Industria', firma: 'Il Legale Rappresentante', ore: 1720, inps: 30, inailU: 0.8, inailP: 3.5, tfr: 7.41 }, store.get('sdu_settings_v1', {})),
     ev: { ident: '', pid: '', ral: 30000, interv: 2500, f: { sat: 3, load: 3, promo: 0, extra: 0, recog: 0, comp: 0, behav: 0, market: 0, mobil: 0, perf: 1, crit: 1 } }
@@ -297,22 +298,55 @@
     };
   }
 
-  /* ---------- Funzioni & rischio ---------- */
-  function viewFunzioni() {
-    const fs = funcStats().sort((a, b) => b.score - a.score);
-    return `<div class="cp"><h1>Funzioni &amp; rischio</h1></div><div class="page"><div class="card"><table><thead><tr><th>Funzione</th><th>Banda</th><th class="n">Persone</th><th class="n">Rischio medio</th><th class="n">Rischio alto</th><th class="n">€/h coorte</th><th class="n">€/h mercato</th><th class="n">Scostamento</th><th class="n">Costo a rischio</th></tr></thead><tbody>
-      ${fs.map(f => { const d = (f.co - f.mk) / f.mk * 100; const lv = f.score >= 70 ? 'Alto' : f.score >= 40 ? 'Medio' : 'Basso'; return `<tr><td><b>${f.fn}</b></td><td>${f.band} · ${esc(bandBy[f.band].nome)}</td><td class="n">${f.n}</td><td class="n"><span class="score s-${lv}">${Math.round(f.score)}</span></td><td class="n">${f.hi}</td><td class="n">${eur2(f.co)}</td><td class="n">${eur2(f.mk)}</td><td class="n" style="color:var(--${d < -7 ? 'hi' : d > 7 ? 'lo' : 'mut'})">${d > 0 ? '+' : ''}${d.toFixed(1)}%</td><td class="n">€ ${eur0(f.atRisk)}</td></tr>`; }).join('')}
-      </tbody></table></div></div>`;
+  /* ---------- Drill-down: Funzioni & rischio ed Equità (area → funzione → persona) ---------- */
+  function gstats(list) {
+    const F = list.filter(p => p.g === 'F'), M = list.filter(p => p.g === 'M'), ok = F.length >= 3 && M.length >= 3;
+    const coF = ok ? avg(F, p => p.co) : null, coM = ok ? avg(M, p => p.co) : null;
+    return { n: list.length, nF: F.length, nM: M.length, coF, coM, gap: ok ? (coM - coF) / coM * 100 : null,
+      co: avg(list, p => p.co), mk: avg(list, p => mktHour(p.band)), score: avg(list, p => p.score), hi: list.filter(p => p.level === 'Alto').length, atRisk: list.reduce((s, p) => s + p.atRisk, 0) };
   }
-
-  /* ---------- Equità ---------- */
-  function viewEquita() {
-    const fs = funcStats(), flagged = fs.filter(f => f.gap !== null && Math.abs(f.gap) >= 5).length;
-    return `<div class="cp"><h1>Equità retributiva</h1></div><div class="page">
-      <div class="note">Divario del costo orario medio (uomini − donne) ÷ uomini a parità di funzione: positivo = donne pagate meno. Soglia di attenzione <b>5%</b> (Direttiva UE 2023/970). Sotto 3 persone per genere il dato non viene pubblicato. Funzioni sopra soglia: <b>${flagged}</b>.</div>
-      <div class="card"><table><thead><tr><th>Funzione</th><th class="n">Donne</th><th class="n">Uomini</th><th class="n">€/h donne</th><th class="n">€/h uomini</th><th class="n">Divario</th><th>Esito</th></tr></thead><tbody>
-      ${fs.map(f => { const has = f.gap !== null, over = has && Math.abs(f.gap) >= 5; return `<tr><td><b>${f.fn}</b></td><td class="n">${f.nF}</td><td class="n">${f.nM}</td><td class="n">${f.coF ? eur2(f.coF) : '—'}</td><td class="n">${f.coM ? eur2(f.coM) : '—'}</td><td class="n" style="color:var(--${over ? 'hi' : 'mut'})">${has ? (f.gap > 0 ? '+' : '') + f.gap.toFixed(1) + '%' : 'n.d.'}</td><td>${!has ? '<span class="tag">Campione ridotto</span>' : over ? '<span class="tag" style="border-color:var(--hi);color:var(--hi)">Da verificare</span>' : '<span class="tag" style="border-color:var(--lo);color:var(--lo)">In soglia</span>'}</td></tr>`; }).join('')}
-      </tbody></table></div></div>`;
+  function openEval(p) {
+    Object.assign(ST.ev, { pid: String(p.id), ident: p.nome, ral: p.ral }); ST.ev.f = Object.assign({}, p.f); go('valutazione');
+  }
+  const colDev = d => `style="color:var(--${d < -7 ? 'hi' : d > 7 ? 'lo' : 'mut'})"`;
+  function viewDrill(kind) {
+    const dd = ST.dd[kind], eq = kind === 'equita';
+    let list = D.people.filter(p => (!dd.area || p.area === dd.area) && (!dd.fn || p.fn === dd.fn));
+    const level = dd.fn ? 3 : dd.area ? 2 : 1, key = level === 1 ? 'area' : 'fn';
+    const crumb = `<nav class="crumb" aria-label="Percorso"><button data-l="0" ${level === 1 ? 'disabled' : ''}>Tutte le aree</button>${dd.area ? ` › <button data-l="1" ${level === 2 ? 'disabled' : ''}>${esc(dd.area)}</button>` : ''}${dd.fn ? ` › <b>${esc(dd.fn)}</b>` : ''}</nav>`;
+    const title = eq ? 'Equità retributiva' : 'Funzioni & rischio';
+    let body;
+    if (level < 3) {
+      const groups = [...new Set(list.map(p => p[key]))].map(g => ({ g, s: gstats(list.filter(p => p[key] === g)) })).sort((a, b) => eq ? a.g.localeCompare(b.g) : b.s.score - a.s.score);
+      const rows = groups.map(({ g, s }) => {
+        if (eq) { const has = s.gap !== null, over = has && Math.abs(s.gap) >= 5;
+          return `<tr class="click" data-g="${esc(g)}"><td><b>${esc(g)}</b> <span class="chev">›</span></td><td class="n">${s.nF}</td><td class="n">${s.nM}</td><td class="n">${s.coF ? eur2(s.coF) : '—'}</td><td class="n">${s.coM ? eur2(s.coM) : '—'}</td><td class="n" style="color:var(--${over ? 'hi' : 'mut'})">${has ? pc(s.gap) : 'n.d.'}</td><td>${!has ? '<span class="tag">Campione ridotto</span>' : over ? '<span class="tag" style="border-color:var(--hi);color:var(--hi)">Da verificare</span>' : '<span class="tag" style="border-color:var(--lo);color:var(--lo)">In soglia</span>'}</td></tr>`; }
+        const d = (s.co - s.mk) / s.mk * 100, lv = s.score >= 70 ? 'Alto' : s.score >= 40 ? 'Medio' : 'Basso';
+        return `<tr class="click" data-g="${esc(g)}"><td><b>${esc(g)}</b> <span class="chev">›</span></td><td class="n">${s.n}</td><td class="n"><span class="score s-${lv}">${Math.round(s.score)}</span></td><td class="n">${s.hi}</td><td class="n">${eur2(s.co)}</td><td class="n">${eur2(s.mk)}</td><td class="n" ${colDev(d)}>${pc(d)}</td><td class="n">€ ${eur0(s.atRisk)}</td></tr>`; }).join('');
+      const th = eq ? ['Gruppo', 'Donne', 'Uomini', '€/h donne', '€/h uomini', 'Divario', 'Esito'] : ['Gruppo', 'Persone', 'Rischio medio', 'Rischio alto', '€/h coorte', '€/h mercato', 'Scostamento', 'Costo a rischio'];
+      body = `<table><thead><tr>${th.map((h, i) => `<th class="${i > 0 && !(eq && i === 6) ? 'n' : ''}">${level === 1 && i === 0 ? 'Area' : h === 'Gruppo' ? 'Funzione' : h}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>`;
+    } else {
+      const g = gstats(list), sorted = list.slice().sort((a, b) => eq ? a.co - b.co : b.score - a.score);
+      const rows = sorted.map(p => {
+        const dm = (p.co - mktHour(p.band)) / mktHour(p.band) * 100, dg = (p.co - g.co) / g.co * 100;
+        return eq
+          ? `<tr class="click" data-p="${p.id}"><td><b>[${p.mat}]</b> ${esc(p.nome)}</td><td>${p.g === 'F' ? 'Donna' : 'Uomo'}</td><td class="wrap2">${esc(p.st)}</td><td class="wrap2 mut">${esc(p.mans)}</td><td>${esc(p.livello)}</td><td class="n">${p.anz.toLocaleString('it-IT')} a</td><td class="n">${p.fte.toFixed(2).replace('.', ',')}</td><td class="n"><b>${eur2(p.co)}</b></td><td class="n" ${colDev(dg)}>${pc(dg)}</td><td class="n" ${colDev(dm)}>${pc(dm)}</td></tr>`
+          : `<tr class="click" data-p="${p.id}"><td><b>[${p.mat}]</b> ${esc(p.nome)}</td><td class="wrap2">${esc(p.st)}</td><td class="wrap2 mut">${esc(p.mans)}</td><td class="n">${p.anz.toLocaleString('it-IT')} a</td><td class="n"><span class="score s-${p.level}">${p.score}</span></td><td class="wrap2" style="min-width:200px;max-width:280px">${p.drivers.slice(0, 3).map(d => `<span class="tag">${esc(d.lab)} ${d.pts > 0 ? '+' : ''}${d.pts}</span>`).join(' ') || '<span class="mut">—</span>'}</td><td class="pri pri-${p.priority}">${p.priority}</td><td class="n">€ ${eur0(p.atRisk)}</td></tr>`;
+      }).join('');
+      const th = eq ? ['Persona', 'Genere', 'Struttura', 'Mansione', 'Livello', 'Anz.', 'FTE', '€/h', 'vs media gruppo', 'vs mercato'] : ['Persona', 'Struttura', 'Mansione', 'Anz.', 'Rischio', 'Fattori a rischio', 'Priorità', 'A rischio'];
+      const numCols = eq ? [5, 6, 7, 8, 9] : [3, 4, 7];
+      const sum = eq ? `Donne ${g.nF} · uomini ${g.nM} · divario ${g.gap !== null ? pc(g.gap) : 'n.d. (campione ridotto)'}` : `Rischio medio ${Math.round(g.score)} · ${g.hi} a rischio alto · € ${eur0(g.atRisk)} a rischio`;
+      body = `<div class="note" style="margin:12px 16px 0">${esc(dd.fn)} — ${esc(dd.area)} · ${g.n} persone · ${sum}. Clicca una persona per aprire la valutazione individuale.</div>
+        <table><thead><tr>${th.map((h, i) => `<th class="${numCols.includes(i) ? 'n' : ''}">${h}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>`;
+    }
+    const intro = eq ? `<div class="note" style="margin:16px 16px 0">Divario del costo orario medio (uomini − donne) ÷ uomini: positivo = donne pagate meno. Soglia di attenzione <b>5%</b> (Direttiva UE 2023/970). Sotto 3 persone per genere il dato non viene pubblicato. Clicca una riga per scendere di livello fino alla singola persona.</div>` : '';
+    return `<div class="cp"><h1>${title}</h1>${crumb}</div>${intro}<div class="page"><div class="card" style="overflow-x:auto">${body}</div></div>`;
+  }
+  function bindDrill(kind) {
+    const dd = ST.dd[kind], app = $('#app');
+    app.querySelectorAll('.crumb button').forEach(b => b.onclick = () => { if (b.dataset.l === '0') { dd.area = null; dd.fn = null; } else dd.fn = null; render(); });
+    app.querySelectorAll('tr[data-g]').forEach(r => r.onclick = () => { if (!dd.area) dd.area = r.dataset.g; else dd.fn = r.dataset.g; render(); window.scrollTo(0, 0); });
+    app.querySelectorAll('tr[data-p]').forEach(r => r.onclick = () => openEval(D.people.find(p => p.id === +r.dataset.p)));
   }
 
   /* ---------- Registro ---------- */
@@ -456,10 +490,11 @@
   /* ---------- render ---------- */
   function render() {
     drawMenu();
-    const V = { quadro: viewQuadro, segnali: viewSegnali, valutazione: viewValutazione, funzioni: viewFunzioni, equita: viewEquita, documenti: viewDocumenti, registro: viewRegistro }[ST.view];
+    const V = { quadro: viewQuadro, segnali: viewSegnali, valutazione: viewValutazione, funzioni: () => viewDrill('funzioni'), equita: () => viewDrill('equita'), documenti: viewDocumenti, registro: viewRegistro }[ST.view];
     $('#app').innerHTML = V();
     if (ST.view === 'segnali') bindSegnali();
     if (ST.view === 'valutazione') bindValutazione();
+    if (ST.view === 'funzioni' || ST.view === 'equita') bindDrill(ST.view);
     if (ST.view === 'registro') bindRegistro();
     if (ST.view === 'documenti') bindDocumenti();
     document.title = (VIEWS.find(v => v[0] === ST.view)[1]) + " · Segnali d'uscita · G1G10";

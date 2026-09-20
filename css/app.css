@@ -150,3 +150,11 @@ footer b{color:var(--primary);font-weight:600}
 .paper .sig{display:flex;justify-content:space-between;margin-top:34px;font-size:12.5px}
 .paper .sig div:last-child{border-top:1px solid #333;padding-top:4px;min-width:220px;text-align:center}
 .paper .flag{color:#b03a2e;font-weight:bold}
+
+/* drill-down */
+tr.click{cursor:pointer}
+.chev{color:var(--mut);margin-left:4px}
+.crumb{display:flex;gap:6px;align-items:center;color:var(--mut)}
+.crumb button{background:none;border:0;padding:0;color:var(--link);font-weight:600}
+.crumb button:disabled{color:var(--txt);cursor:default}
+.crumb b{color:var(--txt)}
