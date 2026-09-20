@@ -8,25 +8,31 @@ const F = ['Giulia','Martina','Sara','Chiara','Elena','Francesca','Alice','Feder
 const M = ['Marco','Luca','Andrea','Matteo','Davide','Simone','Paolo','Stefano','Lorenzo','Riccardo','Fabio','Giorgio','Tommaso','Nicola','Daniele'];
 const L = ['Rossi','Bianchi','Ferrari','Esposito','Romano','Colombo','Ricci','Marino','Greco','Bruno','Gallo','Conti','De Luca','Mancini','Costa','Giordano','Rizzo','Lombardi','Moretti','Barbieri','Fontana','Santoro','Mariani','Rinaldi','Caruso','Ferrara','Galli','Martini','Leone','Longo','Gentile','Martinelli','Vitale','Serra','Coppola','De Santis','Marchetti','Parisi','Villa','Conte','Ferri','Fabbri','Bianco','Marini','Grasso','Valentini','Messina','Sala','De Angelis','Gatti'];
 const ST = [
-  { nome: 'Sede Centrale', area: 'Area Nord' }, { nome: 'Residenza Aurora', area: 'Area Nord' },
-  { nome: 'Centro Diurno Iride', area: 'Area Nord' }, { nome: 'Comunità Ponte', area: 'Area Sud' },
-  { nome: 'Servizi Manutenzione', area: 'Area Sud' }
+  { nome: 'Sede Uffici', area: 'Uffici' },
+  { nome: 'Stabilimento Produzione', area: 'Produzione' },
+  { nome: 'Reparto Manutenzione', area: 'Produzione' },
+  { nome: 'Centro Logistico', area: 'Logistica' },
+  { nome: 'Magazzino Est', area: 'Logistica' }
 ];
-// funzione, banda, RAL media, mansioni, peso, strutture ammesse (indici)
+// funzione, banda, RAL media, mansioni, peso, strutture ammesse (indici), quota femminile
 const FN = [
-  { fn: 'ASSISTENZA', band: 'A', ral: 25000, mans: ['O.S.S.', 'A.S.A.'], w: 40, st: [1, 2, 3] },
-  { fn: 'SANITARIO', band: 'B', ral: 35000, mans: ['INFERMIERE', 'FISIOTERAPISTA'], w: 14, st: [1, 2] },
-  { fn: 'EDUCATIVO', band: 'B', ral: 32000, mans: ['EDUCATORE', 'ANIMATORE'], w: 16, st: [2, 3] },
-  { fn: 'COORDINAMENTO', band: 'C', ral: 46000, mans: ['COORDINATORE'], w: 6, st: [1, 2, 3] },
-  { fn: 'AMMINISTRAZIONE', band: 'B', ral: 30000, mans: ['IMPIEGATO AMM.', 'RISORSE UMANE'], w: 10, st: [0] },
-  { fn: 'SERVIZI GENERALI', band: 'A', ral: 23000, mans: ['MANUTENTORE', 'ADDETTO PULIZIE', 'PORTIERATO'], w: 10, st: [4, 0] },
-  { fn: 'FUNDRAISING', band: 'C', ral: 40000, mans: ['ADDETTO FUNDRAISING'], w: 3, st: [0] },
-  { fn: 'DIREZIONE', band: 'D', ral: 72000, mans: ['RESPONSABILE'], w: 2, st: [0] }
+  { fn: 'DIREZIONE', band: 'D', ral: 85000, mans: ['DIRETTORE GENERALE', 'DIRETTORE OPERATIONS', 'DIRETTORE FINANZIARIO'], w: 3, st: [0], qf: 0.33 },
+  { fn: 'AMMINISTRAZIONE E FINANZA', band: 'B', ral: 34000, mans: ['CONTROLLER', 'CONTABILE', 'ADDETTO PAGHE', 'ADDETTO TESORERIA'], w: 9, st: [0], qf: 0.72 },
+  { fn: 'RISORSE UMANE', band: 'B', ral: 33000, mans: ['HR BUSINESS PARTNER', 'RECRUITER', 'ADDETTO AMM. PERSONALE'], w: 4, st: [0], qf: 0.8 },
+  { fn: 'COMMERCIALE', band: 'B', ral: 38000, mans: ['ACCOUNT MANAGER', 'AGENTE COMMERCIALE', 'RESP. VENDITE'], w: 8, st: [0], qf: 0.42 },
+  { fn: 'CUSTOMER SERVICE', band: 'A', ral: 27000, mans: ['ADDETTO CUSTOMER CARE', 'ADDETTO ORDINI'], w: 6, st: [0], qf: 0.78 },
+  { fn: 'MARKETING', band: 'B', ral: 34000, mans: ['MARKETING SPECIALIST', 'BRAND MANAGER', 'GRAFICO'], w: 3, st: [0], qf: 0.65 },
+  { fn: 'IT', band: 'C', ral: 42000, mans: ['SYSTEM ADMINISTRATOR', 'SVILUPPATORE', 'HELP DESK'], w: 4, st: [0], qf: 0.2 },
+  { fn: 'ACQUISTI', band: 'B', ral: 35000, mans: ['BUYER', 'ADDETTO ACQUISTI'], w: 3, st: [0], qf: 0.5 },
+  { fn: 'QUALITA', band: 'C', ral: 40000, mans: ['RESP. QUALITÀ', 'ADDETTO CONTROLLO QUALITÀ', 'RSPP'], w: 4, st: [0, 1], qf: 0.5 },
+  { fn: 'PRODUZIONE', band: 'A', ral: 28000, mans: ['OPERAIO DI LINEA', 'OPERATORE MACCHINE CNC', 'ADDETTO ASSEMBLAGGIO', 'CAPO TURNO'], w: 26, st: [1], qf: 0.3 },
+  { fn: 'MANUTENZIONE', band: 'B', ral: 33000, mans: ['MANUTENTORE MECCANICO', 'ELETTRICISTA INDUSTRIALE'], w: 5, st: [2], qf: 0.05 },
+  { fn: 'LOGISTICA', band: 'A', ral: 26000, mans: ['MAGAZZINIERE', 'CARRELLISTA', 'ADDETTO PICKING', 'AUTISTA', 'CAPO MAGAZZINO'], w: 22, st: [3, 4], qf: 0.22 }
 ];
-const N = 140, people = [], used = new Set();
+const N = 180, people = [], used = new Set();
 for (let i = 0; i < N; i++) {
-  const f = FN[FN.findIndex((_, k) => { return false; })] || wpick(FN, FN.map(x => x.w));
-  const female = rnd() < (['COORDINAMENTO', 'DIREZIONE'].includes(f.fn) ? 0.55 : ['SERVIZI GENERALI'].includes(f.fn) ? 0.3 : 0.78);
+  const f = wpick(FN, FN.map(x => x.w));
+  const female = rnd() < f.qf;
   let nome; do { nome = (female ? pick(F) : pick(M)) + ' ' + pick(L); } while (used.has(nome)); used.add(nome);
   const st = ST[pick(f.st)];
   const anz = Math.round((rnd() ** 1.4 * 16 + 0.3) * 10) / 10;
@@ -38,7 +44,7 @@ for (let i = 0; i < N; i++) {
   people.push({
     mat: String(1000 + i * 7 + Math.floor(rnd() * 6)).padStart(7, '0'), nome: nome.toUpperCase(), g: female ? 'F' : 'M',
     fn: f.fn, mans: pick(f.mans), st: st.nome, area: st.area, band: f.band,
-    tip: wpick(['Dipendente', 'Libero prof.'], [88, 12]), anz, fte,
+    tip: wpick(['Dipendente', 'Somministrato'], [92, 8]), anz, fte,
     ral: Math.round(f.ral * (0.9 + rnd() * 0.25) * fte / 100) * 100, co,
     f: {
       sat, load: wpick([1, 2, 3, 4, 5], [5, 15, 35, 30, 15]),
@@ -53,10 +59,10 @@ for (let i = 0; i < N; i++) {
 people.sort((a, b) => a.nome.localeCompare(b.nome));
 people.forEach((p, i) => (p.id = i + 1));
 const data = {
-  meta: { azienda: 'Cooperativa Orizzonte (demo)', periodo: 'gennaio–giugno 2026', generato: '2026-09-20', dimostrativo: true },
+  meta: { azienda: 'Orizzonte Industrie S.p.A. (demo)', periodo: 'gennaio–giugno 2026', generato: '2026-09-20', dimostrativo: true },
   bands: [
-    { id: 'A', nome: 'Care & Support', min: 21500, media: 25000, max: 31000 }, { id: 'B', nome: 'Clinical & Specialist', min: 28000, media: 35000, max: 44000 },
-    { id: 'C', nome: 'Coordination & Tech', min: 36000, media: 46000, max: 60000 }, { id: 'D', nome: 'Strategy & Mgmt', min: 55000, media: 72000, max: 95000 }
+    { id: 'A', nome: 'Operativo', min: 22000, media: 27000, max: 33000 }, { id: 'B', nome: 'Impiegati & Specialisti', min: 29000, media: 35000, max: 45000 },
+    { id: 'C', nome: 'Tecnici & Coordinamento', min: 36000, media: 46000, max: 60000 }, { id: 'D', nome: 'Management', min: 55000, media: 72000, max: 95000 }
   ],
   strutture: ST, funzioni: FN.map(({ fn, band }) => ({ fn, band })), people,
   casi: [

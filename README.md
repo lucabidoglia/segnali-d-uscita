@@ -2,7 +2,7 @@
 
 App statica (HTML + CSS + JS, nessun framework, nessun build) della suite **G1G10** per leggere il rischio di uscita delle persone, l'equità retributiva e le priorità di intervento.
 
-> **Dati dimostrativi.** Organizzazione, nomi, matricole e retribuzioni sono inventati e generati in modo deterministico da [tools/gen-data.mjs](tools/gen-data.mjs). Nessun dato reale è incluso.
+> **Dati dimostrativi.** Azienda industriale fittizia (uffici staff, produzione, logistica), nomi, matricole e retribuzioni sono inventati e generati in modo deterministico da [tools/gen-data.mjs](tools/gen-data.mjs). Nessun dato reale è incluso.
 
 ## Sezioni
 
