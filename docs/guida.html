@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Segnali d'uscita — Guida all'uso</title>
+<!-- Sorgente del PDF docs/Guida_Segnali_d_uscita.pdf. Rigenerare con: docs/make-guida.sh -->
+<style>
+  @page { size: A4; margin: 14mm 15mm 16mm; @bottom-center { content: "Segnali d'uscita · Guida all'uso · pagina " counter(page) " di " counter(pages); font: 8.5pt system-ui, sans-serif; color: #888; } }
+  @page :first { @bottom-center { content: none; } }
+  :root { --brand: #714b67; --ink: #1c1f26; --mut: #5f6370; --line: #e2e0e6; --soft: #f5f2f5; --hi: #b03a2e; --mid: #b9770e; --lo: #1e8449; }
+  * { box-sizing: border-box; }
+  body { font: 10pt/1.42 -apple-system, "Segoe UI", system-ui, sans-serif; color: var(--ink); margin: 0; }
+  h1 { font-size: 22pt; margin: 0 0 4mm; color: var(--brand); }
+  h2 { font-size: 15pt; margin: 0 0 3mm; color: var(--brand); border-bottom: 2px solid var(--brand); padding-bottom: 1.5mm; }
+  h3 { font-size: 11pt; margin: 3.5mm 0 1.2mm; }
+  p { margin: 0 0 2.5mm; }
+  ul, ol { margin: 0 0 3mm; padding-left: 6mm; }
+  li { margin-bottom: 1mm; }
+  table { width: 100%; border-collapse: collapse; margin: 1.5mm 0 3mm; font-size: 8.8pt; page-break-inside: auto; }
+  tr { page-break-inside: avoid; }
+  th, td { border: 1px solid var(--line); padding: 1.1mm 2mm; text-align: left; vertical-align: top; }
+  th { background: var(--soft); font-weight: 600; }
+  code { font: 9pt ui-monospace, Menlo, monospace; background: var(--soft); padding: 0 1mm; border-radius: 1mm; }
+  .chapter { page-break-before: always; }
+  .box { border: 1px solid var(--line); border-left: 4px solid var(--brand); background: var(--soft); padding: 2.5mm 3.5mm; margin: 2.5mm 0 3mm; border-radius: 1.5mm; page-break-inside: avoid; }
+  .warn { border-left-color: var(--mid); background: #fdf6ea; }
+  .red { border-left-color: var(--hi); background: #fbeeec; }
+  .steps { counter-reset: s; list-style: none; padding: 0; }
+  .steps > li { counter-increment: s; position: relative; padding-left: 11mm; margin-bottom: 3mm; page-break-inside: avoid; }
+  .steps > li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 7.5mm; height: 7.5mm; border-radius: 50%; background: var(--brand); color: #fff; font-weight: 700; text-align: center; line-height: 7.5mm; }
+  .btn { display: inline-block; border: 1px solid var(--brand); color: var(--brand); border-radius: 1.2mm; padding: 0 1.5mm; font-weight: 600; font-size: 9.5pt; white-space: nowrap; }
+  .shot { width: 100%; border: 1px solid var(--line); border-radius: 2mm; margin: 2mm 0 1mm; }
+  .cap { font-size: 8.5pt; color: var(--mut); text-align: center; margin-bottom: 4mm; }
+  .pri { font-weight: 700; }
+  .c { color: var(--hi); } .a { color: var(--mid); } .ok { color: var(--lo); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+  /* copertina */
+  .cover { height: 250mm; display: flex; flex-direction: column; justify-content: space-between; }
+  .cover .logo { display: flex; align-items: center; gap: 4mm; font-size: 14pt; font-weight: 600; }
+  .cover h1 { font-size: 34pt; line-height: 1.1; margin-top: 30mm; }
+  .cover .sub { font-size: 14pt; color: var(--mut); max-width: 150mm; }
+  .cover .meta { font-size: 10pt; color: var(--mut); border-top: 1px solid var(--line); padding-top: 4mm; }
+  .toc { columns: 2; font-size: 10pt; }
+  .toc li { break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ COPERTINA -->
+<section class="cover">
+  <div class="logo">
+    <svg width="46" height="46" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#714b67"/><rect x="17" y="12" width="22" height="40" rx="2" fill="none" stroke="#fff" stroke-width="4"/><path d="M28 32h24M45 24l8 8-8 8" fill="none" stroke="#f2c94c" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Segnali d'uscita · G1G10
+  </div>
+  <div>
+    <h1>Guida all'uso<br>dello strumento</h1>
+    <p class="sub">Equità retributiva tra donne e uomini secondo il D.Lgs. 96/2026 e rischio di uscita delle persone: accesso, primi passi, schermate e lettura dei risultati.</p>
+    <div class="box warn" style="max-width:150mm;margin-top:10mm"><b>Ambiente di prova dimostrativo.</b> Usare solo dati inventati: mai stipendi, nomi o dati di persone reali.</div>
+  </div>
+  <div class="meta">Versione dell'app: settembre 2026 · Indirizzo: <b>segnali-uscita-app.netlify.app</b> · Guida rapida online: <b>segnali-uscita-app.netlify.app/guida</b></div>
+</section>
+
+<!-- ============================================================ INDICE -->
+<section class="chapter">
+  <h2>Indice</h2>
+  <ol class="toc">
+    <li>Che cos'è Segnali d'uscita</li>
+    <li>Parametri di accesso</li>
+    <li>Primo avvio in 6 passi</li>
+    <li>I ruoli: chi vede cosa</li>
+    <li>Il file Excel dei dati</li>
+    <li>Le schermate, una per una</li>
+    <li>Come leggere i numeri</li>
+    <li>Il Piano d'azione</li>
+    <li>La normativa in breve</li>
+    <li>Privacy e sicurezza</li>
+    <li>Domande frequenti e problemi</li>
+    <li>Glossario</li>
+  </ol>
+
+  <h2 style="margin-top:8mm">1. Che cos'è Segnali d'uscita</h2>
+  <p>Segnali d'uscita è uno strumento online per le aziende e per chi le assiste in ambito HR. Fa due cose:</p>
+  <ul>
+    <li><b>Equità retributiva</b>: calcola il divario di retribuzione tra donne e uomini con il metodo del <b>D.Lgs. 7 maggio 2026, n. 96</b> (la legge italiana che recepisce la Direttiva UE 2023/970), segnala le categorie oltre la soglia del 5%, prepara la relazione, i documenti e un piano d'azione con le scadenze di legge.</li>
+    <li><b>Segnali d'uscita</b>: stima il rischio che una persona lasci l'azienda a partire da alcuni fattori (soddisfazione, carico, crescita, retribuzione rispetto al mercato…), indica le priorità e il costo a rischio, e aiuta a organizzare i colloqui.</li>
+  </ul>
+  <p>Ogni azienda ha i propri dati, separati da quelli delle altre. Il rischio di una singola persona si vede solo con un ruolo dedicato e scrivendo il motivo, e ogni accesso resta registrato.</p>
+  <div class="box">In prova si usa un <b>file di esempio con 180 persone inventate</b> di un'azienda industriale fittizia (uffici, produzione, logistica): si scarica direttamente dall'app.</div>
+</section>
+
+<!-- ============================================================ ACCESSO -->
+<section class="chapter">
+  <h2>2. Parametri di accesso</h2>
+  <table>
+    <tr><th style="width:38%">Voce</th><th>Valore</th></tr>
+    <tr><td>Indirizzo dell'app</td><td><b>https://segnali-uscita-app.netlify.app</b></td></tr>
+    <tr><td>Guida rapida (senza login)</td><td>https://segnali-uscita-app.netlify.app/guida</td></tr>
+    <tr><td>Utente</td><td>la propria <b>email</b>: ognuno crea il proprio account con <span class="btn">Crea account</span></td></tr>
+    <tr><td>Password</td><td>scelta da chi si registra, <b>almeno 10 caratteri</b></td></tr>
+    <tr><td>Azienda</td><td>creata al primo accesso: chi la crea ne è amministratore e la vede solo lui/lei</td></tr>
+    <tr><td>Dati</td><td>solo inventati; file di esempio scaricabile dall'app</td></tr>
+    <tr><td>Browser consigliati</td><td>Chrome, Safari, Edge o Firefox aggiornati, da computer</td></tr>
+    <tr><td>Dove girano i dati</td><td>database e elaborazione a Francoforte (Unione Europea)</td></tr>
+  </table>
+  <img class="shot" src="img/login.png" alt="Pagina di accesso">
+  <p class="cap">La pagina di accesso: <b>Accedi</b> per chi ha già un account, <b>Crea account</b> al primo utilizzo.</p>
+</section>
+
+<!-- ============================================================ PRIMO AVVIO -->
+<section class="chapter">
+  <h2>3. Primo avvio in 6 passi</h2>
+  <ol class="steps">
+    <li><b>Crea l'account.</b> Apri l'indirizzo, scrivi email e password (almeno 10 caratteri) e clicca <span class="btn">Crea account</span>. Se arriva un'email di conferma (controlla anche lo spam) aprila <b>dallo stesso browser</b>; altrimenti entri subito.</li>
+    <li><b>Crea l'azienda di prova.</b> Scrivi un nome inventato, ad esempio «Azienda Demo», e clicca <span class="btn">Crea azienda</span>. La partita IVA è facoltativa.</li>
+    <li><b>Attiva il ruolo «HR rischio».</b> In alto <span class="btn">Impostazioni</span> → «I tuoi ruoli» → <span class="btn">Attiva</span> accanto a HR rischio. Senza questo ruolo non si vedono Segnali, Valutazione e Registro.</li>
+    <li><b>Crea un periodo.</b> Nella pagina principale, riquadro «Nuovo periodo», lascia i valori proposti e clicca <span class="btn">Crea periodo</span>.</li>
+    <li><b>Carica i dati di esempio.</b> Nel periodo, scheda <b>Dati &amp; report Direttiva</b>: clicca <b>esempio con dati inventati</b> e salva il file; poi <span class="btn">Scegli file</span> → il file scaricato → <span class="btn">Carica e controlla</span>. Deve comparire «File importato · 180 persone».</li>
+    <li><b>Esplora.</b> Consigliato quest'ordine: Quadro → Piano d'azione → Equità → Segnali → Valutazione (su una persona) → Documenti.</li>
+  </ol>
+  <div class="box"><b>In alto nell'app trovi sempre:</b> <span class="btn">Normativa</span> (la legge in breve), <span class="btn">Medie di mercato</span> (dati ufficiali), <span class="btn">Registri</span> (per amministratore e revisore), <span class="btn">Impostazioni</span>, il pulsante del tema chiaro/scuro e <span class="btn">Esci</span>.</div>
+
+  <h2 style="margin-top:8mm">4. I ruoli: chi vede cosa</h2>
+  <p>Una persona può avere più ruoli. Chi crea l'azienda è amministratore e può attivarsi gli altri ruoli da Impostazioni.</p>
+  <table>
+    <tr><th style="width:20%">Ruolo</th><th>Cosa può fare</th></tr>
+    <tr><td><b>Amministratore</b></td><td>Gestisce l'azienda e i ruoli; vede retribuzioni e documenti; legge i registri di controllo.</td></tr>
+    <tr><td><b>HR</b></td><td>Carica i dati, vede le retribuzioni individuali, produce report sul divario, documenti e piano d'azione.</td></tr>
+    <tr><td><b>HR rischio</b></td><td>Come HR, in più: Segnali, Valutazione, Registro casi. Il punteggio di una persona si apre solo scrivendo il motivo.</td></tr>
+    <tr><td><b>Revisore (DPO)</b></td><td>Legge i registri: chi ha aperto il rischio di chi e perché, e le modifiche ai dati. Non vede gli stipendi.</td></tr>
+    <tr><td><b>Lettore</b></td><td>Vede solo dati aggregati (Quadro, Funzioni &amp; rischio, report salvati). Mai nomi né stipendi.</td></tr>
+  </table>
+</section>
+
+<!-- ============================================================ EXCEL -->
+<section class="chapter">
+  <h2>5. Il file Excel dei dati</h2>
+  <p>Il modello si scarica da <b>Dati &amp; report Direttiva → modello vuoto</b>. Ha quattro fogli: <b>Dati</b> (obbligatorio), <b>Fattori rischio</b> e <b>Mercato</b> (facoltativi), <b>Istruzioni</b>. Tutti gli importi e le ore riguardano lo stesso periodo.</p>
+  <h3>Foglio «Dati» — una riga per persona</h3>
+  <table>
+    <tr><th style="width:27%">Colonna</th><th style="width:11%">Obbligatoria</th><th>Cosa inserire</th></tr>
+    <tr><td>Matricola</td><td>sì</td><td>codice univoco del dipendente</td></tr>
+    <tr><td>Nominativo</td><td>no</td><td>facoltativo: non serve al calcolo del divario</td></tr>
+    <tr><td>Genere</td><td>sì</td><td>F, M oppure ND (non dichiarato: conta nell'organico, esclusa dal divario)</td></tr>
+    <tr><td>Categoria pari valore</td><td>sì</td><td>stesso lavoro o lavoro di pari valore: di norma il <b>livello del CCNL</b>, es. «C3 impiegati»</td></tr>
+    <tr><td>Funzione</td><td>sì</td><td>es. PRODUZIONE, AMMINISTRAZIONE</td></tr>
+    <tr><td>Mansione, Sede, Area, Livello CCNL</td><td>no</td><td>servono ai filtri, alle discese per area e ai documenti</td></tr>
+    <tr><td>FTE</td><td>sì</td><td>1 = tempo pieno, 0,5 = metà tempo</td></tr>
+    <tr><td>Ore retribuite</td><td>sì</td><td>ore pagate nel periodo, straordinari inclusi</td></tr>
+    <tr><td>Retribuzione base lorda €</td><td>sì</td><td>solo elementi <b>fissi e continuativi</b> (minimo, contingenza, scatti, superminimi, indennità fisse): è il «livello retributivo» della legge</td></tr>
+    <tr><td>Componenti variabili €</td><td>no</td><td>premi, bonus, una tantum, fringe benefit, trattamenti individuali non strutturali (0 se nessuno)</td></tr>
+    <tr><td>Costo aziendale €</td><td>no</td><td>retribuzione + oneri: serve alla scheda di formazione finanziata</td></tr>
+    <tr><td>Anzianità anni</td><td>no</td><td>anni di servizio</td></tr>
+    <tr><td>Formazione titolo / ore / avvio</td><td>no</td><td>corso di formazione finanziata svolto nel periodo (data gg/mm/aaaa)</td></tr>
+  </table>
+  <h3>Foglio «Fattori rischio» (solo ruolo HR rischio)</h3>
+  <p>Una riga per matricola; i valori si scelgono dal menu a tendina: Soddisfazione (1–5), Carico di lavoro (1–5), Crescita (No / Ferma / Bloccata), Straordinari (Normali / Elevati / Molto elevati), Riconoscimento (Adeguato / Scarso / Assente), Comportamento (Nessuno / Disimpegno / Ritiro), Mobilità interna (Non richiesta / Richiesta / Bloccata), Mercato esterno (Debole / Normale / Molto attivo), Prestazione (Standard / Alta / Eccellente), Competenze critiche (Sostituibile / Importante / Critica).</p>
+  <h3>Foglio «Mercato»</h3>
+  <p>Per ogni funzione la <b>RAL media di mercato</b>. In alternativa si imposta dopo, nella scheda Mercato del periodo, scegliendo tra le medie ufficiali.</p>
+  <div class="box"><b>Regole utili.</b> Si possono scrivere i numeri all'italiana (35.000 o 1.234,56). Se il file contiene anche un solo errore <b>non viene importato nulla</b> e l'app elenca riga per riga cosa correggere. Ricaricare un file per lo stesso periodo <b>aggiorna</b> le persone (casi e valutazioni restano) e toglie chi non c'è più.</div>
+</section>
+
+<!-- ============================================================ SCHERMATE -->
+<section class="chapter">
+  <h2>6. Le schermate, una per una</h2>
+  <p>Dentro ogni periodo, le schede in alto. Alcune compaiono solo con il ruolo giusto.</p>
+  <table>
+    <tr><th style="width:22%">Scheda</th><th style="width:14%">Chi la vede</th><th>A cosa serve e cosa fare</th></tr>
+    <tr><td><b>Quadro</b></td><td>tutti</td><td>Organico, persone a rischio alto, priorità critiche, costo a rischio, divario retributivo e a parità di categoria, distribuzione del rischio e rischio per sede. Con HR rischio: l'elenco «Da guardare per prime».</td></tr>
+    <tr><td><b>Piano d'azione</b></td><td>tutti (modifica: HR)</td><td>Le azioni da fare con priorità, scadenza e responsabile, ordinate nel tempo. Per ogni azione si salvano stato, responsabile, scadenza e note. Scaricabile in Word/PDF. Vedi capitolo 8.</td></tr>
+    <tr><td><b>Segnali</b></td><td>HR rischio</td><td>Lista delle persone con <b>priorità</b> (mai il punteggio). Filtri per sede, priorità e stato; ricerca; selezione multipla per <span class="btn">Apri casi</span>, <span class="btn">Monitora</span>, <span class="btn">Rinvia</span>, <span class="btn">Esporta CSV</span>, <span class="btn">Schede formazione</span>. Su ogni riga <span class="btn">Valuta</span>.</td></tr>
+    <tr><td><b>Valutazione</b></td><td>HR rischio</td><td>Scegli una persona e scrivi il <b>motivo</b>: si apre il punteggio. Modifica i fattori e il punteggio si aggiorna subito; sotto, «Economia della ritenzione» (costo di sostituzione, costo a rischio, rapporto con il costo di un intervento). <span class="btn">Salva valutazione</span> o <span class="btn">Salva e apri caso</span>. Senza persona: simulazione libera.</td></tr>
+    <tr><td><b>Funzioni &amp; rischio</b></td><td>tutti (persone: HR rischio)</td><td>Rischio medio e retribuzione rispetto al mercato per area → funzione → persona. I gruppi sotto 5 persone mostrano solo il numero di persone.</td></tr>
+    <tr><td><b>Equità</b></td><td>HR</td><td>Divario donne/uomini per area → funzione → singola persona (€/h, scostamento dalla media del gruppo e dal mercato). In rosso i gruppi oltre il 5%.</td></tr>
+    <tr><td><b>Mercato</b></td><td>HR</td><td>Assegna a ogni funzione un riferimento di mercato: una media ufficiale (professione × dimensione azienda) o una RAL scritta a mano, con rivalutazione %.</td></tr>
+    <tr><td><b>Dati &amp; report Direttiva</b></td><td>HR (lettore: report salvati)</td><td>Caricamento Excel ed esito dei controlli; report con i 7 indicatori di legge; <span class="btn">Salva una copia del report</span> e <span class="btn">Rendi definitivo</span> (poi non è più modificabile).</td></tr>
+    <tr><td><b>Documenti</b></td><td>HR</td><td>Scheda formazione finanziata (singola o fascicolo per area), Relazione sul divario, Dossier parità di genere (UNI/PdR 125), Piano d'azione. Anteprima, <span class="btn">Stampa / PDF</span>, <span class="btn">Scarica Word</span>.</td></tr>
+    <tr><td><b>Registro</b></td><td>HR rischio</td><td>I casi aperti: stato (Aperto, In corso, Chiuso), note, esportazione CSV.</td></tr>
+  </table>
+  <h3>Pagine generali (in alto)</h3>
+  <table>
+    <tr><td style="width:22%"><b>Normativa</b></td><td>Il D.Lgs. 96/2026 spiegato in breve, articolo per articolo, con i parametri da rispettare. Si aggiorna solo se cambia la norma: un controllo settimanale confronta i testi ufficiali e, in caso di modifiche, mostra l'avviso «Norma in verifica».</td></tr>
+    <tr><td><b>Medie di mercato</b></td><td>Medie ufficiali per area geografica, sesso, età, professione, qualifica, dimensione azienda, settore, anzianità, titolo di studio, tipo di contratto e minimi CCNL (Metalmeccanici, Terziario). Fonti: Eurostat e ISTAT 2022, INPS 2024, testi dei CCNL.</td></tr>
+    <tr><td><b>Impostazioni</b></td><td>I tuoi ruoli (per l'amministratore) e i dati dell'azienda usati nei documenti: ragione sociale, sede, firmatario, fondo, CCNL, ore annue e aliquote.</td></tr>
+    <tr><td><b>Registri</b></td><td>Per amministratore e revisore: accessi al rischio individuale con motivazione e registro delle attività. Non si possono modificare né cancellare.</td></tr>
+  </table>
+</section>
+
+<!-- ============================================================ NUMERI -->
+<section class="chapter">
+  <h2>7. Come leggere i numeri</h2>
+  <h3>Divario retributivo</h3>
+  <ul>
+    <li><b>Formula</b>: (livello medio uomini − livello medio donne) ÷ livello medio uomini. <b>Positivo</b> = le donne sono pagate meno; <b>negativo</b> = gli uomini sono pagati meno.</li>
+    <li><b>Livello retributivo</b>: retribuzione lorda <b>oraria</b> dei soli elementi fissi e continuativi (colonna «Retribuzione base» ÷ ore retribuite). Il calcolo orario rende confrontabili tempo pieno e part-time.</li>
+    <li>Le <b>componenti variabili</b> hanno indicatori propri: divario medio e mediano tra chi le riceve e quota di donne e uomini che le ricevono.</li>
+    <li><b>Soglia del 5%</b>: una categoria con divario pari o superiore (in un senso o nell'altro) va motivata con criteri oggettivi o corretta; se non è motivata né corretta entro 6 mesi dalla comunicazione, scatta la <b>valutazione congiunta</b> con i rappresentanti dei lavoratori.</li>
+    <li><b>Quartili</b>: le persone ordinate per livello retributivo e divise in quattro gruppi uguali; si guarda la quota di donne in ognuno.</li>
+    <li>Le categorie con <b>meno di 3 persone per genere</b> non vengono calcolate («campione ridotto»), per affidabilità e riservatezza.</li>
+  </ul>
+  <h3>Rischio di uscita</h3>
+  <table>
+    <tr><th style="width:26%">Voce</th><th>Significato</th></tr>
+    <tr><td>Punteggio 0–100</td><td>Somma dei fattori con pesi fissi. <span class="c pri">Alto</span> da 70, <span class="a pri">Medio</span> da 40, <span class="ok pri">Basso</span> sotto 40.</td></tr>
+    <tr><td>Driver</td><td>I fattori che spingono il punteggio in su (rosso) o in giù (verde), in ordine di peso.</td></tr>
+    <tr><td>Retribuzione vs mercato</td><td>Retribuzione di base oraria confrontata con la RAL di mercato della funzione ÷ 1.730 ore: sotto il mercato aumenta il rischio.</td></tr>
+    <tr><td>Priorità</td><td>Livello di rischio + prestazione + competenze critiche: <b>Critica, Alta, Media, Bassa</b>.</td></tr>
+    <tr><td>Costo a rischio</td><td>RAL annua stimata × 1,75 (costo di sostituzione) × punteggio ÷ 100.</td></tr>
+  </table>
+  <div class="box">Il modello di rischio usa <b>regole fisse definite da persone</b>, non un sistema che apprende dai dati: ogni punteggio riporta la versione del modello usata ed è sempre spiegabile.</div>
+</section>
+
+<!-- ============================================================ PIANO -->
+<section class="chapter">
+  <h2>8. Il Piano d'azione</h2>
+  <p>Il piano si costruisce <b>da solo</b> dai dati del periodo e dagli obblighi di legge, e si aggiorna quando cambiano i dati. Quello che scrivono le persone (stato, responsabile, scadenza, note) resta salvato.</p>
+  <table>
+    <tr><th style="width:18%">Priorità</th><th>Quando</th><th style="width:45%">Esempi</th></tr>
+    <tr><td class="c pri">Critica</td><td>obbligo di legge a rischio o danno imminente</td><td>divari ≥ 5% da motivare o correggere; colloqui con le persone a priorità critica; DPIA e informativa privacy</td></tr>
+    <tr><td class="a pri">Alta</td><td>da avviare entro 3 mesi</td><td>fascia retributiva negli annunci; informativa annuale sul diritto di informazione; criteri dei premi; comunicazione obbligatoria</td></tr>
+    <tr><td class="pri">Media</td><td>entro 6–12 mesi</td><td>criteri di progressione; clausole di riservatezza; rapporto biennale; completare le valutazioni</td></tr>
+    <tr><td class="pri" style="color:#5f6370">Bassa</td><td>miglioramento</td><td>categorie troppo piccole da valutare; certificazione della parità di genere</td></tr>
+  </table>
+  <ol class="steps">
+    <li>Apri la scheda <b>Piano d'azione</b>: in alto il conteggio per priorità e le azioni <b>in ritardo</b>.</li>
+    <li>Le azioni sono raggruppate per scadenza: subito (30 giorni), entro 3, 6, 12 mesi. Si possono filtrare per area.</li>
+    <li>Apri «Cosa fare» per leggere i passi e l'articolo di legge; aggiorna <b>stato</b>, <b>responsabile</b>, <b>scadenza</b> e <b>note</b> e clicca <span class="btn">Salva</span>.</li>
+    <li>Per condividerlo: <span class="btn">Stampa / PDF</span> o <span class="btn">Scarica Word</span>.</li>
+  </ol>
+
+  <h2 style="margin-top:8mm">9. La normativa in breve</h2>
+  <table>
+    <tr><th style="width:52%">Parametro</th><th>Valore (D.Lgs. 96/2026)</th></tr>
+    <tr><td>Soglia che fa scattare la valutazione congiunta</td><td>divario ≥ 5% in una categoria (art. 10)</td></tr>
+    <tr><td>Tempo per correggere un divario non motivato</td><td>6 mesi dalla comunicazione</td></tr>
+    <tr><td>Obbligo di comunicare il divario</td><td>da 100 dipendenti (art. 9)</td></tr>
+    <tr><td>250 dipendenti e oltre</td><td>entro il 7/6/2027, poi ogni anno</td></tr>
+    <tr><td>150–249 dipendenti</td><td>entro il 7/6/2027, poi ogni 3 anni</td></tr>
+    <tr><td>100–149 dipendenti</td><td>entro il 7/6/2031, poi ogni 3 anni</td></tr>
+    <tr><td>Risposta alla richiesta di informazioni del lavoratore</td><td>per iscritto entro 2 mesi, una volta l'anno (art. 7)</td></tr>
+    <tr><td>Annunci di lavoro</td><td>retribuzione o fascia obbligatoria; vietato chiedere lo stipendio passato (art. 5)</td></tr>
+    <tr><td>Sanzioni per discriminazione</td><td>ammenda da 250 a 1.500 €; revoca di benefici ed esclusione fino a 2 anni da agevolazioni e appalti</td></tr>
+  </table>
+  <p style="font-size:9pt;color:#5f6370">Sintesi informativa, non consulenza legale: fanno fede i testi ufficiali, raggiungibili dalla pagina Normativa dell'app.</p>
+</section>
+
+<!-- ============================================================ PRIVACY + FAQ -->
+<section class="chapter">
+  <h2>10. Privacy e sicurezza</h2>
+  <ul>
+    <li><b>Aziende separate</b>: la separazione è imposta dal database; un'azienda non può vedere i dati di un'altra.</li>
+    <li><b>Rischio individuale protetto</b>: la lista mostra solo le priorità; il punteggio di una persona si apre solo con il ruolo HR rischio e scrivendo il motivo, che resta registrato con nome, data e ora.</li>
+    <li><b>Registri non modificabili</b>: registro attività, registro accessi e report resi definitivi non si possono cambiare né cancellare.</li>
+    <li><b>Gruppi piccoli oscurati</b>: nei dati aggregati i gruppi sotto 5 persone non mostrano valori.</li>
+    <li><b>Dati in Europa</b>: database ed elaborazione a Francoforte.</li>
+  </ul>
+  <div class="box red"><b>In questo ambiente di prova</b> non inserire mai dati reali di persone: né nomi, né stipendi, né valutazioni.</div>
+
+    <h2 style="margin-top:6mm">11. Domande frequenti e problemi</h2>
+  <table>
+    <tr><th style="width:38%">Problema</th><th>Soluzione</th></tr>
+    <tr><td>Il link dell'email di conferma non funziona</td><td>Aprilo nello stesso browser in cui ti sei registrato, oppure torna al sito e fai <span class="btn">Accedi</span>.</td></tr>
+    <tr><td>«Troppe registrazioni in poco tempo»</td><td>Riprova tra qualche minuto.</td></tr>
+    <tr><td>Non vedo Segnali, Valutazione o Registro</td><td>Attiva il ruolo HR rischio da Impostazioni.</td></tr>
+    <tr><td>Il file viene scartato</td><td>Leggi l'elenco degli errori sotto il pulsante di caricamento; usa il modello scaricato dall'app senza cambiare i nomi delle colonne.</td></tr>
+    <tr><td>Il divario è «n.d.»</td><td>Nella categoria ci sono meno di 3 donne o meno di 3 uomini.</td></tr>
+    <tr><td>Il punteggio di una persona non si apre</td><td>Scrivi un motivo di almeno 10 caratteri; la visualizzazione resta aperta 15 minuti.</td></tr>
+    <tr><td>Il Quadro non mostra il rischio</td><td>Mancano le valutazioni: carica il foglio «Fattori rischio» o valuta le persone da Valutazione.</td></tr>
+    <tr><td>Password dimenticata</td><td>Per ora crea un nuovo account con un'altra email.</td></tr>
+  </table>
+
+</section>
+<section class="chapter">
+  <h2>12. Glossario</h2>
+  <table>
+    <tr><td style="width:28%"><b>Categoria di lavoratori</b></td><td>Chi svolge lo stesso lavoro o un lavoro di pari valore (di norma lo stesso livello CCNL).</td></tr>
+    <tr><td><b>Livello retributivo</b></td><td>Retribuzione lorda annua e oraria dei soli elementi fissi e continuativi.</td></tr>
+    <tr><td><b>Componenti variabili</b></td><td>Premi, bonus, una tantum, fringe benefit e trattamenti individuali non strutturali.</td></tr>
+    <tr><td><b>Valutazione congiunta</b></td><td>Analisi dei divari fatta insieme ai rappresentanti dei lavoratori quando un divario ≥ 5% non è motivato né corretto.</td></tr>
+    <tr><td><b>FTE</b></td><td>Quota di tempo pieno: 1 = tempo pieno, 0,5 = metà tempo.</td></tr>
+    <tr><td><b>RAL</b></td><td>Retribuzione annua lorda.</td></tr>
+    <tr><td><b>DPIA</b></td><td>Valutazione d'impatto sulla protezione dei dati, da fare con il DPO prima di usare dati reali.</td></tr>
+    <tr><td><b>DPO</b></td><td>Responsabile della protezione dei dati dell'azienda.</td></tr>
+  </table>
+</section>
+
+</body>
+</html>
