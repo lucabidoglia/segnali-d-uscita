@@ -62,4 +62,4 @@ node tools/gen-data.mjs       # rigenera js/data.js (facoltativo)
 
 ## Deploy
 
-Sito statico, `netlify.toml` pubblica la radice del repository.
+Il `netlify.toml` della radice pubblica l'**app** (`apps/web`) sul sito collegato a GitHub. Il prototipo statico si ripubblica a mano, senza build: `npx netlify deploy --prod --no-build --dir . --site <id-sito>`.

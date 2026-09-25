@@ -26,7 +26,7 @@ Ramo di lavoro: **`main`** (il ramo `industrializzazione/motore` è stato unito 
 - Build: `apps/web/netlify.toml` (base `apps/web`, `npm run build`, publish `.next`, `@netlify/plugin-nextjs`). Il motore
   `packages/engine` è una dipendenza `file:` fuori dalla base: serve il repository intero (collegamento Git) o un pacchetto con
   `apps/web` + `packages/engine`.
-- Ogni push su `main` va online da solo (sito collegato al repository GitHub). I due siti Netlify del prototipo pubblicano la radice.
+- Ogni push su `main` va online da solo (sito collegato al repository GitHub). La configurazione è nel `netlify.toml` della **radice** (base `apps/web`): non dipende dalle impostazioni della UI. I due siti del prototipo non sono collegati a Git: si ripubblicano con `--no-build --dir .`.
 - Supabase Auth → URL Configuration: Site URL = indirizzo Netlify; Redirect URLs = `https://segnali-uscita-app.netlify.app/**`, `http://localhost:3000/**`.
 
 ## Comandi

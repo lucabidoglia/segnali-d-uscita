@@ -1,5 +1,18 @@
+# Configurazione Netlify del repository: pubblica l'APP (sito «segnali-uscita-app», collegato a GitHub, ramo main).
+# L'app sta in apps/web e usa il motore in packages/engine: la base resta apps/web ma il repository viene clonato per intero.
+#
+# Prototipo statico v1.3.0 (siti «segnali-d-uscita» e «segnali-d-uscita-g1g10», NON collegati a GitHub):
+# per ripubblicarlo senza usare questa configurazione:  npx netlify deploy --prod --no-build --dir . --site <id-sito>
 [build]
-  publish = "."
+  base = "apps/web"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [[headers]]
   for = "/*"
