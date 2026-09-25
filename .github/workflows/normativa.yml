@@ -1,0 +1,33 @@
+name: Controllo normativa
+# Ogni lunedì confronta le fonti ufficiali (Normattiva, EUR-Lex) con la versione verificata della pagina /normativa.
+# Se qualcosa cambia: segna la pagina «in verifica» e apre una segnalazione per il team. Altrimenti non fa nulla.
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: write
+  issues: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - id: check
+        working-directory: apps/web
+        run: |
+          node scripts/check-normativa.mjs | tee out.txt
+          if grep -q CHANGED out.txt; then echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+      - if: steps.check.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "normativa-bot"
+          git config user.email "normativa-bot@users.noreply.github.com"
+          git add apps/web/src/lib/normativa-watch.json
+          git commit -m "Normativa: fonte ufficiale cambiata, pagina in verifica"
+          git push
+          gh issue create --title "Normativa equità retributiva: una fonte ufficiale è cambiata" --body "$(printf 'Il controllo settimanale ha trovato una modifica:\n\n```\n%s\n```\n\nCosa fare:\n1. Leggere le novità sul testo ufficiale (link nella pagina /normativa).\n2. Aggiornare apps/web/src/lib/normativa.ts (e, se servono, motore e test).\n3. Lanciare `node scripts/check-normativa.mjs --accept` in apps/web e fare commit.\n' "$(cat apps/web/out.txt)")"

@@ -1,5 +1,36 @@
 # Segnali d'uscita · G1G10
 
+Equità retributiva (Direttiva UE 2023/970) e rischio di uscita delle persone, per più aziende clienti.
+
+## Struttura del repository
+
+| Cartella | Cosa contiene |
+|---|---|
+| `apps/web` | **App in sviluppo** — Next.js 16 + Supabase (login, aziende separate, import Excel, tutte le schermate) |
+| `packages/engine` | Motore di calcolo in TypeScript: divario retributivo art. 9, rischio di uscita versionato, controlli dati (201 test) |
+| `packages/db` | Test di sicurezza del database (RLS) su PostgreSQL in memoria |
+| `supabase/migrations` | Schema del database: tabelle, ruoli, regole di accesso |
+| `apps/web/scripts/make-benchmarks.mjs` | Medie di mercato ufficiali (Eurostat SES 2022, ISTAT, INPS 2024, minimi CCNL) |
+| radice (`index.html`, `js/`, `css/`) | Prototipo statico v1.3.0 con dati inventati (resta online come demo) |
+
+## Avvio dell'app
+
+```bash
+cd apps/web
+cp .env.example .env.local   # URL e chiave PUBBLICA (publishable) del progetto Supabase
+npm install
+npm run dev                  # http://localhost:3000
+npm test
+```
+
+Schema del database: eseguire in ordine i file di `supabase/migrations` (SQL Editor di Supabase o `npx supabase db push`).
+Regole: mai usare nell'app la chiave `secret`/`service_role`; ogni accesso ai dati passa dalle regole RLS; il punteggio di rischio individuale
+si legge solo con `open_risk()` (ruolo HR rischio + motivazione registrata).
+
+---
+
+## Prototipo statico v1.3.0
+
 App statica (HTML + CSS + JS, nessun framework, nessun build) della suite **G1G10** per leggere il rischio di uscita delle persone, l'equità retributiva e le priorità di intervento.
 
 > **Dati dimostrativi.** Azienda industriale fittizia (uffici staff, produzione, logistica), nomi, matricole e retribuzioni sono inventati e generati in modo deterministico da [tools/gen-data.mjs](tools/gen-data.mjs). Nessun dato reale è incluso.

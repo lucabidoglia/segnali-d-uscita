@@ -1,0 +1,30 @@
+{
+  "checkedOn": "2026-09-25",
+  "pending": null,
+  "sources": [
+    {
+      "id": "dlgs96",
+      "name": "D.Lgs. 96/2026 — testo vigente (Normattiva)",
+      "kind": "normattiva",
+      "params": {
+        "dataGU": "20260601",
+        "codiceRedaz": "26G00112",
+        "urn": "urn:nir:stato:decreto.legislativo:2026-05-07;96"
+      },
+      "fingerprint": "bb081264b2ccbc4648b7da6e90ec2c7e01e677319643b5a684b8b163571ac9e4",
+      "detail": "17 articoli",
+      "verifiedOn": "2026-09-25"
+    },
+    {
+      "id": "dir2023_970",
+      "name": "Direttiva (UE) 2023/970 — modifiche, rettifiche, abrogazioni (EUR-Lex)",
+      "kind": "eurlex",
+      "params": {
+        "celex": "32023L0970"
+      },
+      "fingerprint": "987b645fe2ea1f680632de1901727a4fc9ddfc6fb57fa607f753cb4b0b17a792",
+      "detail": "rettifica 32023L0970R(01)",
+      "verifiedOn": "2026-09-25"
+    }
+  ]
+}
