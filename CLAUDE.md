@@ -18,7 +18,16 @@ password del database e chiave `secret`/`service_role` non passano mai dalla cha
 | `apps/web/scripts/` | `make-demo.mjs` (dati INVENTATI dal prototipo → `src/lib/demo.json`), `make-benchmarks.mjs` (medie di mercato ufficiali → `src/lib/benchmarks.json`) |
 | radice (`index.html`, `js/`, `css/`, `tools/`) | Prototipo statico v1.3.0 pubblicato su Netlify: non toccarlo senza motivo |
 
-Ramo di lavoro: `industrializzazione/motore` (il `main` contiene solo il prototipo).
+Ramo di lavoro: **`main`** (il ramo `industrializzazione/motore` è stato unito con la PR #1).
+
+## Messa online
+- App: **https://segnali-uscita-app.netlify.app** — Netlify, team `luca-bidoglia` (piano Pro), sito `segnali-uscita-app`
+  (id `140d75a3-5bbe-4c83-b694-e807f6afe3d4`). Funzioni e blob a **Francoforte** (`fra`).
+- Build: `apps/web/netlify.toml` (base `apps/web`, `npm run build`, publish `.next`, `@netlify/plugin-nextjs`). Il motore
+  `packages/engine` è una dipendenza `file:` fuori dalla base: serve il repository intero (collegamento Git) o un pacchetto con
+  `apps/web` + `packages/engine`.
+- Ogni push su `main` va online da solo (sito collegato al repository GitHub). I due siti Netlify del prototipo pubblicano la radice.
+- Supabase Auth → URL Configuration: Site URL = indirizzo Netlify; Redirect URLs = `https://segnali-uscita-app.netlify.app/**`, `http://localhost:3000/**`.
 
 ## Comandi
 ```bash
