@@ -22,4 +22,7 @@ create policy actions_write on public.action_items for all to authenticated
   using (public.has_role(org_id, '{admin,hr,hr_rischio}')) with check (public.has_role(org_id, '{admin,hr,hr_rischio}'));
 
 create trigger audit after insert or update or delete on public.action_items for each row execute function public.audit();
+-- (ridefinita qui così la migrazione non dipende dall'ordine di esecuzione)
+create or replace function public.touch_updated_at() returns trigger language plpgsql set search_path = '' as $$
+begin new.updated_at = now(); return new; end $$;
 create trigger touch before update on public.action_items for each row execute function public.touch_updated_at();
