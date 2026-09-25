@@ -1,0 +1,12 @@
+{
+  "name": "@g1g10/db",
+  "version": "0.1.0",
+  "description": "Test di sicurezza dello schema Supabase (RLS) su PostgreSQL in memoria",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "vitest run" },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.3.0",
+    "vitest": "^3.2.0"
+  }
+}
