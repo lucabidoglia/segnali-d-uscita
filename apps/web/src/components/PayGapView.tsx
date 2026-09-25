@@ -21,8 +21,9 @@ export function PayGapView({ r, obligation }: { r: PayGapReport; obligation: Rep
       </div>
 
       <p className="note">
-        Divario = (retribuzione oraria media uomini − donne) ÷ uomini, su retribuzione lorda di base + componenti variabili.
-        Positivo = donne pagate meno. Considerati {r.counted.F} donne e {r.counted.M} uomini
+        Divario = (livello retributivo orario medio uomini − donne) ÷ uomini. Il livello retributivo comprende solo gli
+        elementi <b>fissi e continuativi</b> (D.Lgs. 96/2026, art. 3 lett. b); premi e componenti variabili hanno indicatori propri.
+        Positivo = donne pagate meno. Retribuzione complessiva con variabile, solo informativa: {pc(r.gapTotalMean ?? null)}. Considerati {r.counted.F} donne e {r.counted.M} uomini
         {r.excluded.notDeclared + r.excluded.noHours > 0 && ` (esclusi: ${r.excluded.notDeclared} genere non dichiarato, ${r.excluded.noHours} senza ore)`}.
         {" "}<b>Obbligo di comunicazione:</b> {obligation.required ? `${obligation.frequency}, prima scadenza ${new Date(obligation.firstDeadline!).toLocaleDateString("it-IT")}` : "non obbligatoria"} — {obligation.note}
       </p>
@@ -51,21 +52,21 @@ export function PayGapView({ r, obligation }: { r: PayGapReport; obligation: Rep
         <h2 className="px-5 pt-4 font-semibold">g) Divario per categoria di lavoratori</h2>
         <table className="tbl mt-2"><thead><tr>
           <th>Categoria</th><th className="num">Donne / Uomini</th><th className="num">€/h donne</th><th className="num">€/h uomini</th>
-          <th className="num">Divario medio</th><th className="num">mediano</th><th className="num">solo base</th><th className="num">solo variabile</th><th>Esito</th>
+          <th className="num">Divario medio</th><th className="num">mediano</th><th className="num">variabile</th><th className="num">complessiva</th><th>Esito</th>
         </tr></thead>
           <tbody>{r.categories.map(c => (
             <tr key={c.category}>
               <td className="font-medium">{c.category}</td><td className="num">{c.n.F} / {c.n.M}</td>
               <td className="num">{c.meanHourly ? eur(c.meanHourly.F) : "—"}</td><td className="num">{c.meanHourly ? eur(c.meanHourly.M) : "—"}</td>
               <td className={`num ${c.overThreshold ? "font-semibold text-hi" : ""}`}>{pc(c.gapMean)}</td><td className="num">{pc(c.gapMedian)}</td>
-              <td className="num">{pc(c.gapBaseMean)}</td><td className="num">{pc(c.gapVariableMean)}</td>
+              <td className="num">{pc(c.gapVariableMean)}</td><td className="num text-mut">{pc(c.gapTotalMean ?? null)}</td>
               <td className="text-xs">{!c.published ? <span className="text-mut">Campione ridotto</span> : c.overThreshold ? <span className="text-hi">Da giustificare o correggere</span> : <span className="text-lo">In soglia</span>}</td>
             </tr>
           ))}</tbody></table>
         {r.jointAssessmentCandidates.length > 0 && (
           <p className="note m-4">
             {r.jointAssessmentCandidates.length} categorie hanno un divario ≥ 5%. Se non è giustificato da criteri oggettivi e neutri rispetto al genere
-            e non viene corretto entro 6 mesi, la Direttiva (art. 10) richiede una <b>valutazione congiunta</b> con le rappresentanze dei lavoratori.
+            e non viene corretto entro 6 mesi dalla comunicazione, il D.Lgs. 96/2026 (art. 10) richiede una <b>valutazione congiunta</b> con le rappresentanze dei lavoratori.
           </p>
         )}
       </div>

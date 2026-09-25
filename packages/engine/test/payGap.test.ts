@@ -11,12 +11,18 @@ describe('indicatori art. 9 — casi calcolati a mano', () => {
   const ws = [w('f1', 'F', 18), w('f2', 'F', 20, 'A', 2000), w('f3', 'F', 22), w('m1', 'M', 20, 'A', 5000), w('m2', 'M', 25, 'A', 5000), w('m3', 'M', 30)];
   const r = payGapReport(ws);
 
-  it('divario medio sulla retribuzione oraria totale (base + variabile)', () => {
-    // F: (18 + 22 + 22) / 3 = 20,667 · M: (25 + 30 + 30) / 3 = 28,333
-    expect(r.gapMean).toBeCloseTo(((85 / 3 - 62 / 3) / (85 / 3)) * 100, 6);
+  it('divario medio sul livello retributivo: solo elementi fissi e continuativi (D.Lgs. 96/2026, art. 3 lett. b)', () => {
+    // base oraria F: 18, 20, 22 → 20 · M: 20, 25, 30 → 25
+    expect(r.gapMean).toBeCloseTo(20, 6);
+    expect(r.method).toMatch(/96\/2026/);
   });
-  it('divario mediano', () => {
-    expect(r.gapMedian).toBeCloseTo(((30 - 22) / 30) * 100, 6);
+  it('divario mediano sul livello retributivo', () => {
+    expect(r.gapMedian).toBeCloseTo(((25 - 20) / 25) * 100, 6);
+  });
+  it('la retribuzione complessiva (base + variabile) resta solo informativa', () => {
+    // F: (18 + 22 + 22) / 3 · M: (25 + 30 + 30) / 3
+    expect(r.gapTotalMean).toBeCloseTo(((85 / 3 - 62 / 3) / (85 / 3)) * 100, 6);
+    expect(r.categories[0]!.gapTotalMean).toBeCloseTo(r.gapTotalMean!, 6);
   });
   it('componenti variabili: quota di percettori e divario tra percettori', () => {
     expect(r.variableRecipients.F).toBeCloseTo(100 / 3);
@@ -27,7 +33,7 @@ describe('indicatori art. 9 — casi calcolati a mano', () => {
     expect(r.categories[0]!.overThreshold).toBe(true);
     expect(r.jointAssessmentCandidates).toEqual(['A']);
   });
-  it('quartili: 4 gruppi, dal più basso al più alto', () => {
+  it('quartili sul livello retributivo: 4 gruppi, dal più basso al più alto', () => {
     expect(r.quartiles.map(q => q.n)).toEqual([2, 1, 2, 1]);
     expect(r.quartiles[0]!.shareF).toBe(100);
     expect(r.quartiles[3]!.shareM).toBe(100);
@@ -42,6 +48,7 @@ describe('tutele', () => {
   });
   it('esclude genere non dichiarato e ore zero, ma li conteggia', () => {
     const r = payGapReport([w('f1', 'F', 10), w('m1', 'M', 10), w('x', 'ND', 99), { ...w('z', 'M', 10), hoursPaid: 0 }]);
+    expect(r.gapTotalMean).toBe(0);
     expect(r.headcount).toBe(4);
     expect(r.excluded).toEqual({ notDeclared: 1, noHours: 1 });
     expect(r.gapMean).toBe(0);

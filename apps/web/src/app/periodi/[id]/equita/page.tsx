@@ -4,7 +4,10 @@ import { gapPct, mean } from "@g1g10/engine";
 import { Crumb } from "@/components/Crumb";
 import { eur2, pc, sp } from "@/lib/format";
 import { canSeePay, session } from "@/lib/supabase/server";
-import { baseHourly, hourly, loadDbWorkers, loadMarket, type DbWorker } from "../data";
+import { baseHourly, loadDbWorkers, loadMarket, type DbWorker } from "../data";
+
+// livello retributivo = elementi fissi e continuativi (D.Lgs. 96/2026, art. 3 lett. b)
+const hourly = baseHourly;
 
 const MIN = 3;
 function stats(list: DbWorker[]) {
@@ -23,7 +26,7 @@ export default async function Equita({ params, searchParams }: PageProps<"/perio
   const base = `/periodi/${id}/equita`;
   const all = await loadDbWorkers(sb, id);
   const list = all.filter(p => (!area || (p.area ?? "—") === area) && (!fn || p.funzione === fn));
-  const intro = <p className="note">Divario della retribuzione oraria media (base + variabile): (uomini − donne) ÷ uomini. Positivo = donne pagate meno. Soglia di attenzione <b>5%</b> (Dir. UE 2023/970). Sotto {MIN} persone per genere il dato non viene mostrato. Clicca una riga per scendere fino alla singola persona.</p>;
+  const intro = <p className="note">Divario del livello retributivo orario medio (solo elementi fissi e continuativi, D.Lgs. 96/2026 art. 3): (uomini − donne) ÷ uomini. Positivo = donne pagate meno. Soglia di attenzione <b>5%</b> (art. 10). Sotto {MIN} persone per genere il dato non viene mostrato. Clicca una riga per scendere fino alla singola persona.</p>;
 
   if (area && fn) {
     const g = stats(list), mk = await loadMarket(sb, id);

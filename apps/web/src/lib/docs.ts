@@ -1,7 +1,7 @@
 import "server-only";
 import { gapPct, mean, median, payGapReport, reportingObligation } from "@g1g10/engine";
 import type { DbWorker, Period } from "@/app/periodi/[id]/data";
-import { hourly, periodMonths, toEngine } from "@/app/periodi/[id]/data";
+import { baseHourly as hourly, periodMonths, toEngine } from "@/app/periodi/[id]/data";
 import { eur0, eur2, n1, pc } from "./format";
 import type { Settings } from "./settings";
 
@@ -47,7 +47,7 @@ export function divarioHtml(c: DocCtx, ws: DbWorker[]) {
   const cadence = ob.required ? `${ob.frequency}, con primo rapporto entro il ${new Date(ob.firstDeadline!).toLocaleDateString("it-IT")}` : ob.note;
   const flag = (v: number | null) => (v !== null && Math.abs(v) >= 5 ? `<span class="flag">${pc(v)}</span>` : pc(v));
   const cats = r.categories.map(k => k.published
-    ? [esc(k.category), `${k.n.F} / ${k.n.M}`, E2(k.meanHourly!.F), E2(k.meanHourly!.M), flag(k.gapMean), pc(k.gapMedian), pc(k.gapBaseMean), pc(k.gapVariableMean)]
+    ? [esc(k.category), `${k.n.F} / ${k.n.M}`, E2(k.meanHourly!.F), E2(k.meanHourly!.M), flag(k.gapMean), pc(k.gapMedian), pc(k.gapVariableMean), pc(k.gapTotalMean)]
     : [esc(k.category), `${k.n.F} / ${k.n.M}`, "—", "—", "n.d.", "n.d.", "n.d.", "n.d."]);
   const over = r.categories.filter(k => k.overThreshold);
   const expl = over.map(k => {
@@ -56,15 +56,15 @@ export function divarioHtml(c: DocCtx, ws: DbWorker[]) {
     const pt = (l: DbWorker[]) => `${Math.round((l.filter(w => w.fte < 1).length / Math.max(1, l.length)) * 100)}%`;
     return [esc(k.category), `${an(F)} / ${an(M)}`, `${pt(F)} / ${pt(M)}`, pc(k.gapMean) + (k.gapMean! > 0 ? " (donne pagate meno)" : " (uomini pagati meno)")];
   });
-  return `<div class="doc">${head(c, "Relazione sul divario retributivo di genere", `Direttiva (UE) 2023/970 sulla trasparenza retributiva — periodo ${periodoIt(c.period)}`)}
-    <h2>1. Oggetto, metodo e perimetro</h2><p>La relazione riporta il divario retributivo di genere, calcolato come differenza tra il livello retributivo medio (e mediano) degli uomini e delle donne, in percentuale di quello degli uomini: un valore positivo indica che le donne sono pagate meno. Il livello retributivo è la <b>retribuzione lorda oraria</b> (retribuzione di base + componenti complementari o variabili, ÷ ore retribuite). Popolazione: ${r.headcount} lavoratori (${r.counted.F} donne, ${r.counted.M} uomini${r.excluded.notDeclared ? `, ${r.excluded.notDeclared} con genere non dichiarato esclusi dal calcolo` : ""}).</p>
+  return `<div class="doc">${head(c, "Relazione sul divario retributivo di genere", `D.Lgs. 7 maggio 2026, n. 96 (attuazione della Direttiva UE 2023/970) — periodo ${periodoIt(c.period)}`)}
+    <h2>1. Oggetto, metodo e perimetro</h2><p>La relazione riporta il divario retributivo di genere, calcolato come differenza tra il livello retributivo medio (e mediano) degli uomini e delle donne, in percentuale di quello degli uomini: un valore positivo indica che le donne sono pagate meno. Il livello retributivo è la <b>retribuzione lorda oraria dei soli elementi fissi e continuativi</b> (D.Lgs. 96/2026, art. 3, lett. b); le componenti complementari o variabili sono misurate con indicatori distinti. Popolazione: ${r.headcount} lavoratori (${r.counted.F} donne, ${r.counted.M} uomini${r.excluded.notDeclared ? `, ${r.excluded.notDeclared} con genere non dichiarato esclusi dal calcolo` : ""}).</p>
     <p>Frequenza di comunicazione applicabile (${r.headcount} lavoratori): ${cadence}.</p>
-    <h2>2. Indicatori complessivi (art. 9, par. 1)</h2>${tbl(["Indicatore", "Valore"], [["a) Divario retributivo medio", `<b>${pc(r.gapMean)}</b>`], ["b) Divario medio delle componenti variabili (tra chi le percepisce)", pc(r.gapVariableMean)], ["c) Divario retributivo mediano", `<b>${pc(r.gapMedian)}</b>`], ["d) Divario mediano delle componenti variabili", pc(r.gapVariableMedian)], ["e) Quota di donne / uomini che percepiscono componenti variabili", `${Math.round(r.variableRecipients.F)}% / ${Math.round(r.variableRecipients.M)}%`]], [1])}
+    <h2>2. Indicatori complessivi (art. 9, comma 1)</h2>${tbl(["Indicatore", "Valore"], [["a) Divario retributivo medio", `<b>${pc(r.gapMean)}</b>`], ["b) Divario medio delle componenti variabili (tra chi le percepisce)", pc(r.gapVariableMean)], ["c) Divario retributivo mediano", `<b>${pc(r.gapMedian)}</b>`], ["d) Divario mediano delle componenti variabili", pc(r.gapVariableMedian)], ["e) Quota di donne / uomini che percepiscono componenti variabili", `${Math.round(r.variableRecipients.F)}% / ${Math.round(r.variableRecipients.M)}%`]], [1])}
     <h2>3. f) Distribuzione per quartili retributivi</h2>${tbl(["Quartile", "Persone", "% donne", "% uomini"], r.quartiles.map(q => [["Q1 — retribuzioni più basse", "Q2", "Q3", "Q4 — retribuzioni più alte"][q.index - 1]!, q.n, n1(q.shareF) + "%", n1(q.shareM) + "%"]), [1, 2, 3])}
-    <h2>4. g) Divario per categoria di lavoratori (stesso lavoro o lavoro di pari valore)</h2>${tbl(["Categoria", "Donne / Uomini", "€/h donne", "€/h uomini", "Divario medio", "mediano", "solo base", "solo variabile"], cats, [1, 2, 3, 4, 5, 6, 7])}
+    <h2>4. g) Divario per categoria di lavoratori (stesso lavoro o lavoro di pari valore)</h2>${tbl(["Categoria", "Donne / Uomini", "€/h donne", "€/h uomini", "Divario medio", "mediano", "variabile", "complessiva (informativa)"], cats, [1, 2, 3, 4, 5, 6, 7])}
     <p style="font-size:12px">In rosso i divari pari o superiori al 5%. Le categorie con meno di 3 persone per genere non sono valutate (n.d.) per tutela dell'anonimato e affidabilità statistica.</p>
-    <h2>5. Categorie oltre la soglia del 5%</h2>${over.length ? `<p>${over.length} categoria/e con divario medio ≥ 5%. Fattori oggettivi disponibili nei dati:</p>${tbl(["Categoria", "Anzianità media D / U (anni)", "Part-time D / U", "Divario"], expl)}<p>Se il divario non è giustificato da criteri oggettivi e neutri rispetto al genere e non è corretto entro sei mesi dalla comunicazione, la Direttiva (art. 10) prevede una <b>valutazione congiunta delle retribuzioni</b> con le rappresentanze dei lavoratori.</p>` : "<p>Nessuna categoria valutabile supera la soglia del 5%: non è necessaria la valutazione congiunta.</p>"}
-    <h2>6. Limiti e dati da integrare</h2><p style="font-size:12.5px">Le categorie di pari valore sono quelle indicate nel file caricato: devono derivare da un sistema di valutazione delle posizioni con criteri neutri (competenze, impegno, responsabilità, condizioni di lavoro). Verificare il decreto italiano di recepimento vigente prima della trasmissione.</p>
+    <h2>5. Categorie oltre la soglia del 5%</h2>${over.length ? `<p>${over.length} categoria/e con divario medio ≥ 5%. Fattori oggettivi disponibili nei dati:</p>${tbl(["Categoria", "Anzianità media D / U (anni)", "Part-time D / U", "Divario"], expl)}<p>Se il divario non è giustificato da criteri oggettivi e neutri rispetto al genere e non è corretto entro sei mesi dalla comunicazione, il D.Lgs. 96/2026 (art. 10) prevede una <b>valutazione congiunta delle retribuzioni</b> con le rappresentanze dei lavoratori.</p>` : "<p>Nessuna categoria valutabile supera la soglia del 5%: non è necessaria la valutazione congiunta.</p>"}
+    <h2>6. Limiti e dati da integrare</h2><p style="font-size:12.5px">Le categorie di lavoratori sono quelle indicate nel file caricato: per il D.Lgs. 96/2026 (art. 4) lo «stesso lavoro» e il «lavoro di pari valore» si individuano di norma dai livelli di inquadramento del CCNL applicato; l'applicazione di un CCNL comparativamente più rappresentativo costituisce presunzione di conformità, salvo trattamenti individuali discriminatori. L'esattezza dei dati va confermata previa consultazione dei rappresentanti dei lavoratori (art. 9, c. 2). Le modalità di trasmissione all'organismo di monitoraggio sono definite con decreto del Ministro del lavoro.</p>
     ${foot(c)}${sign(c)}</div>`;
 }
 
