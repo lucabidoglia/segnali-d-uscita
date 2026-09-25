@@ -99,3 +99,22 @@ describe('registri a prova di manomissione', () => {
     expect(await count(U.read, 'pay_reports')).toBe(1); // il lettore vede i report aggregati
   });
 });
+
+describe('permessi sulle funzioni (Security Advisor)', () => {
+  it('nessuno può chiamare direttamente la funzione del registro attività', async () => {
+    for (const u of [null, U.admin]) await expect(as(db, u, `select public.audit()`)).rejects.toThrow(/permission denied/);
+  });
+  it('gli anonimi non possono usare le funzioni delle regole di accesso', async () => {
+    await expect(as(db, null, `select public.has_role($1, '{admin}')`, [orgA])).rejects.toThrow(/permission denied/);
+    await expect(as(db, null, `select public.is_member($1)`, [orgA])).rejects.toThrow(/permission denied/);
+  });
+  it('gli utenti collegati sì (servono alle regole) e rispondono solo per sé stessi', async () => {
+    expect((await as<{ ok: boolean }>(db, U.admin, `select public.is_member($1) as ok`, [orgA]))[0]!.ok).toBe(true);
+    expect((await as<{ ok: boolean }>(db, U.otherAdmin, `select public.is_member($1) as ok`, [orgA]))[0]!.ok).toBe(false);
+  });
+  it('il registro attività continua a riempirsi dopo la revoca', async () => {
+    const before = Number((await as<{ n: string }>(db, U.rev, `select count(*) n from public.audit_log`))[0]!.n);
+    await as(db, U.hr, `insert into public.periods (org_id, label, starts_on, ends_on) values ($1,'Prova permessi','2027-01-01','2027-12-31')`, [orgA]);
+    expect(Number((await as<{ n: string }>(db, U.rev, `select count(*) n from public.audit_log`))[0]!.n)).toBe(before + 1);
+  });
+});

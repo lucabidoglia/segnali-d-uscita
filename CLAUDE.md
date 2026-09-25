@@ -61,6 +61,10 @@ CI GitHub Actions: `.github/workflows/{engine,db,web}.yml` (tutto deve restare v
 - Progetto di sviluppo: `ncsxhdfdiotcrkszkevn` (Francoforte, piano Free, **solo dati inventati**). Produzione: da creare (piano Pro, DPA firmato).
 - Sul Mac di Luca non ci sono Docker/psql e il login della CLI dal pulsante Run non funziona: **le migrazioni si applicano incollandole nell'SQL Editor** (copiare con `LANG=en_US.UTF-8 pbcopy < file`, altrimenti gli accenti si rovinano). Lo storico migrazioni della CLI non è allineato (da sistemare con `supabase migration repair`).
 - Ogni nuova migrazione: file nuovo in `supabase/migrations` (mai modificare una già applicata) + test in `packages/db/test`.
+- **Funzioni**: dal 25/9/2026 (`20260925190000_permessi_funzioni.sql`) le funzioni nuove in `public` NON sono eseguibili da nessuno per impostazione
+  predefinita: ogni RPC per l'app richiede `grant execute ... to authenticated` esplicito; mai ad `anon`. Le funzioni di trigger non vanno concesse.
+  Dopo ogni migrazione controllare Supabase → Advisors → Security: restano attesi solo gli avvisi 0029 sulle RPC volute
+  (`create_organization`, `open_risk`, `risk_list`, `risk_groups`, `risk_overview`, `risk_summary`, `import_period`) e «Leaked password protection» (solo piano Pro).
 
 ## Regole non negoziabili (sicurezza e normativa)
 1. **Separazione tra aziende nel database**: ogni tabella ha `org_id` e RLS; l'app usa solo la chiave pubblica e la sessione dell'utente.
