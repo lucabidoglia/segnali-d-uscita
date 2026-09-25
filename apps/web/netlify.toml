@@ -1,0 +1,8 @@
+# App Next.js su Netlify (sito «segnali-uscita-app»). Il prototipo statico ha il suo netlify.toml nella radice del repository.
+# Next.js è gestito in automatico dal runtime Netlify (OpenNext).
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
