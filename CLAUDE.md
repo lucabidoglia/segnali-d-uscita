@@ -8,6 +8,12 @@ Luca (G1G10) **non è un tecnico**. Con lui: italiano, niente gergo (o spiegato 
 istruzioni passo passo quando deve fare qualcosa lui (Supabase, GitHub). Può ricevere solo la chiave **pubblica** Supabase;
 password del database e chiave `secret`/`service_role` non passano mai dalla chat.
 
+**Come lavorare con lui** (regole concordate):
+- Dopo ogni modifica **completata e verificata** (test, typecheck, lint, build verdi): commit e **push su `main` senza chiedere**; Netlify pubblica da solo. Poi verificare il deploy (vedi «Messa online»).
+- Chiedere sempre conferma per azioni irreversibili o verso terzi: cancellare dati, cambiare visibilità del repo (oggi **pubblico**), pagamenti, email.
+- Le migrazioni Supabase le applica lui nell'**SQL Editor**: copiare il file negli appunti (`LANG=en_US.UTF-8 pbcopy < file`) e mostrarlo anche in un blocco di codice; link diretto `supabase.com/dashboard/project/ncsxhdfdiotcrkszkevn/sql/new`. Scrivere migrazioni **autosufficienti** (es. `create or replace function` per le funzioni di supporto) per non dipendere dall'ordine di esecuzione.
+- Le istruzioni nei siti esterni (Netlify, Supabase, GitHub) vanno verificate sulla documentazione ufficiale prima di darle: i menu cambiano.
+
 ## Struttura
 | Percorso | Contenuto |
 |---|---|
@@ -15,28 +21,41 @@ password del database e chiave `secret`/`service_role` non passano mai dalla cha
 | `packages/engine` | Motore di calcolo puro TypeScript (`@g1g10/engine`): divario art. 9, rischio di uscita versionato (`RISK_MODEL_V1`), validazione dati. Import interni con estensione `.ts` |
 | `packages/db` | Test RLS delle migrazioni su PostgreSQL in memoria (PGlite) con finto ambiente Supabase (`test/harness.ts`) |
 | `supabase/migrations` | Schema del database, in ordine di data |
-| `apps/web/scripts/` | `make-demo.mjs` (dati INVENTATI dal prototipo → `src/lib/demo.json`), `make-benchmarks.mjs` (medie di mercato ufficiali → `src/lib/benchmarks.json`) |
-| radice (`index.html`, `js/`, `css/`, `tools/`) | Prototipo statico v1.3.0 pubblicato su Netlify: non toccarlo senza motivo |
+| `apps/web/scripts/` | `make-demo.mjs` (dati INVENTATI dal prototipo → `src/lib/demo.json`), `make-benchmarks.mjs` (medie di mercato ufficiali → `src/lib/benchmarks.json`), `check-normativa.mjs` (controllo della norma) |
+| `docs/` | Guida all'uso per gli utenti: `guida.html` (sorgente) → `Guida_Segnali_d_uscita.pdf` con `docs/make-guida.sh` (Chrome headless); `img/` screenshot reali |
+| `netlify.toml` (radice) | Configurazione Netlify dell'**app** (base `apps/web`) |
+| radice (`index.html`, `js/`, `css/`, `tools/`) | Prototipo statico v1.3.0 (siti Netlify separati, non collegati a Git): non toccarlo senza motivo |
 
 Ramo di lavoro: **`main`** (il ramo `industrializzazione/motore` è stato unito con la PR #1).
 
 ## Messa online
 - App: **https://segnali-uscita-app.netlify.app** — Netlify, team `luca-bidoglia` (piano Pro), sito `segnali-uscita-app`
   (id `140d75a3-5bbe-4c83-b694-e807f6afe3d4`). Funzioni e blob a **Francoforte** (`fra`).
-- Build: `apps/web/netlify.toml` (base `apps/web`, `npm run build`, publish `.next`, `@netlify/plugin-nextjs`). Il motore
-  `packages/engine` è una dipendenza `file:` fuori dalla base: serve il repository intero (collegamento Git) o un pacchetto con
-  `apps/web` + `packages/engine`.
-- Ogni push su `main` va online da solo (sito collegato al repository GitHub). La configurazione è nel `netlify.toml` della **radice** (base `apps/web`): non dipende dalle impostazioni della UI. I due siti del prototipo non sono collegati a Git: si ripubblicano con `--no-build --dir .`.
+- Ogni push su `main` va online da solo (sito collegato al repository GitHub, in ~1 minuto). La configurazione è nel `netlify.toml`
+  della **radice** (base `apps/web`, `npm run build`, publish `.next`, `@netlify/plugin-nextjs`) e non dipende dalla UI. Il motore
+  `packages/engine` è una dipendenza `file:` fuori dalla base: per questo serve il repository intero.
+- **Verificare ogni deploy** con il connettore Netlify (`get-project` → `currentDeploy`, poi `get-deploy-for-site`): `commit_ref` = ultimo commit,
+  `framework: next`, 1 funzione, `functions_region: fra`; e con `curl` che `/login` risponda 200 e `/` rimandi a `/login`. Se `framework` è `unknown`
+  è stato pubblicato il prototipo per errore.
+- Emergenza: pubblicazione manuale con `deploy-site` del connettore Netlify da un pacchetto con `apps/web` + `packages/engine` + `netlify.toml`
+  (`git archive HEAD apps/web packages/engine`); il comando restituito contiene un token che scade dopo poco: richiederne uno nuovo.
+- Regione funzioni impostata dalla UI: Netlify → progetto → **Cloud compute → Functions → Region** = EU (Frankfurt). Milano solo tramite supporto.
+- I due siti del prototipo si ripubblicano con `npx netlify deploy --prod --no-build --dir . --site <id>`.
 - Supabase Auth → URL Configuration: Site URL = indirizzo Netlify; Redirect URLs = `https://segnali-uscita-app.netlify.app/**`, `http://localhost:3000/**`.
+- Email di Supabase: il servizio gratuito ne manda pochissime all'ora. Per la demo si può disattivare «Confirm email» (Authentication → Sign In / Providers → Email):
+  `signUp` gestisce entrambi i casi. Per la produzione serve un SMTP proprio.
+- Su GitHub compare un check «Supabase Preview» fallito (integrazione GitHub ↔ Supabase/branching): non blocca nulla, si può scollegare.
+- Vercel scartato: piano Hobby non commerciale e connettore senza accesso allo spazio progetti.
 
 ## Comandi
 ```bash
-cd packages/engine && npm test && npm run typecheck   # 201 test (incluso confronto con i punteggi del prototipo)
-cd packages/db && npm test                            # test di sicurezza RLS
+cd packages/engine && npm test && npm run typecheck   # 202 test (incluso confronto con i punteggi del prototipo)
+cd packages/db && npm test                            # 26 test di sicurezza RLS
 cd apps/web && npm run dev                            # http://localhost:3000 (serve .env.local, vedi .env.example)
-cd apps/web && npm test && npx tsc --noEmit && npx eslint && npm run build
+cd apps/web && npm test && npx tsc --noEmit && npx eslint && npm run build   # 28 test
+docs/make-guida.sh                                    # rigenera la guida PDF
 ```
-CI GitHub Actions: `.github/workflows/{engine,db,web}.yml`. Tutto deve restare verde.
+CI GitHub Actions: `.github/workflows/{engine,db,web}.yml` (tutto deve restare verde) e `normativa.yml` (ogni lunedì, attivo su `main`).
 
 ## Supabase
 - Progetto di sviluppo: `ncsxhdfdiotcrkszkevn` (Francoforte, piano Free, **solo dati inventati**). Produzione: da creare (piano Pro, DPA firmato).
@@ -76,6 +95,13 @@ quartili, obbligo di comunicazione, rischio aggregato, mercato) e dagli obblighi
 Fonti: Eurostat SES 2022 (API), ISTAT Struttura delle retribuzioni 2022, INPS Osservatorio 2024 (non a tempo pieno), minimi CCNL Metalmeccanici (dal 1/6/2026) e Terziario Confcommercio (paga base dal 1/11/2026, esclusa contingenza). JobPricing escluso: dati di stampa incoerenti.
 Aggiornare con `node scripts/make-benchmarks.mjs` e verificare i valori trascritti a mano sui documenti ufficiali.
 
+## Documentazione per gli utenti
+- **`/guida`** (pubblica, senza login, link dalla pagina di accesso): guida rapida e parametri di accesso per chi prova la demo.
+- **`docs/Guida_Segnali_d_uscita.pdf`**: guida completa (10 pagine A4) generata da `docs/guida.html`.
+- Quando cambiano schermate, pulsanti, colonne Excel, ruoli o parametri di legge: aggiornare **entrambe** (e rigenerare il PDF). I nomi dei pulsanti
+  nelle guide devono essere identici a quelli dell'interfaccia.
+- Demo: ogni tester crea il proprio account e la propria azienda (dati isolati), attiva il ruolo HR rischio da Impostazioni e carica l'esempio inventato.
+
 ## Stile del codice e dell'interfaccia
 - Interfaccia e messaggi **in italiano semplice**; nomi di codice in inglese o italiano come nel file circostante.
 - Server Components + Server Actions con `redirect(?e=…|?m=…)` per i messaggi; componenti client solo dove serve interattività (`EvalForm`, `ThemeToggle`, `PeriodTabs`).
@@ -88,8 +114,10 @@ Aggiornare con `node scripts/make-benchmarks.mjs` e verificare i valori trascrit
 - Fattori di rischio: foglio Excel «Fattori rischio» + modifica manuale in Valutazione.
 - Documenti: .doc da HTML e PDF da stampa come nel prototipo; .docx vero e archivio firmati in seguito.
 - Server in UE (Francoforte). Esiste un DPO/consulente: preparargli DPIA e informativa.
+- Hosting: **Netlify** (team Pro, uso commerciale consentito), aggiornamento automatico da GitHub `main`.
 
 ## Prossimi passi aperti
-Inviti ai colleghi via email con ruolo · messa online (hosting UE) e progetto Supabase di produzione · connettore Zucchetti ·
+Inviti ai colleghi via email con ruolo · recupero password · SMTP proprio per le email · progetto Supabase di **produzione** (Pro) e DPA con Supabase e Netlify
+prima di dati reali · valutare repository privato · connettore Zucchetti ·
 DPIA e informativa ai lavoratori · workflow D.Lgs. 96/2026 (richieste di informazioni art. 7 con scadenza 2 mesi, fasce negli annunci art. 5, valutazione congiunta art. 10, conferma dati con i rappresentanti art. 9 c. 2) · decreti attuativi attesi (art. 9 c. 4, art. 14 c. 5) ·
 rapporto biennale D.Lgs. 198/2006 art. 46 · altri CCNL · .docx vero · valutare il fattore "Comportamento" con il DPO (Statuto dei Lavoratori art. 4 e 8).
