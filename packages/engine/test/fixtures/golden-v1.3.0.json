@@ -1,0 +1,8430 @@
+{
+ "bands": [
+  {
+   "id": "A",
+   "nome": "Operativo",
+   "min": 22000,
+   "media": 27000,
+   "max": 33000
+  },
+  {
+   "id": "B",
+   "nome": "Impiegati & Specialisti",
+   "min": 29000,
+   "media": 35000,
+   "max": 45000
+  },
+  {
+   "id": "C",
+   "nome": "Tecnici & Coordinamento",
+   "min": 36000,
+   "media": 46000,
+   "max": 60000
+  },
+  {
+   "id": "D",
+   "nome": "Management",
+   "min": 55000,
+   "media": 72000,
+   "max": 95000
+  }
+ ],
+ "people": [
+  {
+   "id": 1,
+   "mat": "0001491",
+   "g": "F",
+   "fn": "ACQUISTI",
+   "band": "B",
+   "co": 23.79,
+   "ore": 535,
+   "costo": 12727.65,
+   "f": {
+    "sat": 4,
+    "load": 2,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 4,
+    "perf": 0,
+    "crit": 2
+   },
+   "score": 34,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": -14.792263610315196,
+   "drivers": [
+    [
+     "comp",
+     12
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "market",
+     4
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 2,
+   "mat": "0001558",
+   "g": "F",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 19.74,
+   "ore": 875.5,
+   "costo": 17282.37,
+   "f": {
+    "sat": 2,
+    "load": 4,
+    "promo": 8,
+    "extra": 0,
+    "recog": 0,
+    "behav": 20,
+    "mobil": 0,
+    "market": 4,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 78,
+   "level": "Alto",
+   "priority": "Critica",
+   "dev": -8.356545961002789,
+   "drivers": [
+    [
+     "behav",
+     20
+    ],
+    [
+     "sat",
+     12
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 3,
+   "mat": "0001003",
+   "g": "F",
+   "fn": "ACQUISTI",
+   "band": "B",
+   "co": 28.19,
+   "ore": 853.1,
+   "costo": 24048.89,
+   "f": {
+    "sat": 2,
+    "load": 4,
+    "promo": 8,
+    "extra": 0,
+    "recog": 0,
+    "behav": 20,
+    "mobil": 0,
+    "market": 4,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 67,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": 0.9670487106017176,
+   "drivers": [
+    [
+     "behav",
+     20
+    ],
+    [
+     "sat",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 4,
+   "mat": "0001519",
+   "g": "F",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 17.92,
+   "ore": 877.7,
+   "costo": 15728.38,
+   "f": {
+    "sat": 4,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 6,
+    "market": 0,
+    "perf": 0,
+    "crit": 2
+   },
+   "score": 58,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -16.80594243268337,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "recog",
+     16
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 5,
+   "mat": "0001382",
+   "g": "F",
+   "fn": "CUSTOMER SERVICE",
+   "band": "A",
+   "co": 22.67,
+   "ore": 542.7,
+   "costo": 12303.01,
+   "f": {
+    "sat": 5,
+    "load": 3,
+    "promo": 0,
+    "extra": 6,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 6,
+    "market": 4,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 38,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 5.246053853296205,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "sat",
+     -14
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 6,
+   "mat": "0001152",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 22.75,
+   "ore": 547.6,
+   "costo": 12457.9,
+   "f": {
+    "sat": 4,
+    "load": 4,
+    "promo": 8,
+    "extra": 0,
+    "recog": 0,
+    "behav": 20,
+    "mobil": 12,
+    "market": 0,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 58,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 5.617455896007432,
+   "drivers": [
+    [
+     "behav",
+     20
+    ],
+    [
+     "mobil",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ]
+   ]
+  },
+  {
+   "id": 7,
+   "mat": "0001885",
+   "g": "M",
+   "fn": "QUALITA",
+   "band": "C",
+   "co": 30.54,
+   "ore": 868.3,
+   "costo": 26517.88,
+   "f": {
+    "sat": 5,
+    "load": 4,
+    "promo": 16,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 4,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 55,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": -16.762060506950117,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "promo",
+     16
+    ],
+    [
+     "sat",
+     -14
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 8,
+   "mat": "0002237",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 24.41,
+   "ore": 885.1,
+   "costo": 21605.29,
+   "f": {
+    "sat": 2,
+    "load": 3,
+    "promo": 8,
+    "extra": 12,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 0,
+    "crit": 0
+   },
+   "score": 50,
+   "level": "Medio",
+   "priority": "Bassa",
+   "dev": 13.324048282265558,
+   "drivers": [
+    [
+     "sat",
+     12
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "market",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 9,
+   "mat": "0001981",
+   "g": "M",
+   "fn": "CUSTOMER SERVICE",
+   "band": "A",
+   "co": 23.76,
+   "ore": 506.9,
+   "costo": 12043.94,
+   "f": {
+    "sat": 4,
+    "load": 1,
+    "promo": 8,
+    "extra": 12,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 12,
+    "market": 0,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 41,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 10.306406685236782,
+   "drivers": [
+    [
+     "extra",
+     12
+    ],
+    [
+     "mobil",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "load",
+     -4
+    ]
+   ]
+  },
+  {
+   "id": 10,
+   "mat": "0001085",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 23.91,
+   "ore": 930.6,
+   "costo": 22250.65,
+   "f": {
+    "sat": 2,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 0,
+    "crit": 2
+   },
+   "score": 43,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 11.002785515320339,
+   "drivers": [
+    [
+     "sat",
+     12
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 11,
+   "mat": "0001725",
+   "g": "M",
+   "fn": "IT",
+   "band": "C",
+   "co": 37.47,
+   "ore": 519.8,
+   "costo": 19476.91,
+   "f": {
+    "sat": 4,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 16,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 2.125919869174165,
+   "drivers": [
+    [
+     "sat",
+     -7
+    ]
+   ]
+  },
+  {
+   "id": 12,
+   "mat": "0001665",
+   "g": "M",
+   "fn": "DIREZIONE",
+   "band": "D",
+   "co": 66.77,
+   "ore": 893.9,
+   "costo": 59685.7,
+   "f": {
+    "sat": 4,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 23,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 16.263277032909624,
+   "drivers": [
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ]
+   ]
+  },
+  {
+   "id": 13,
+   "mat": "0001007",
+   "g": "F",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 31.9,
+   "ore": 873.9,
+   "costo": 27877.41,
+   "f": {
+    "sat": 5,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 6,
+    "market": 8,
+    "perf": 0,
+    "crit": 0
+   },
+   "score": 29,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": 14.255014326647553,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "sat",
+     -14
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 14,
+   "mat": "0002036",
+   "g": "F",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 26.01,
+   "ore": 886.8,
+   "costo": 23065.67,
+   "f": {
+    "sat": 4,
+    "load": 2,
+    "promo": 8,
+    "extra": 0,
+    "recog": 8,
+    "behav": 10,
+    "mobil": 6,
+    "market": 8,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 53,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -6.840974212034384,
+   "drivers": [
+    [
+     "behav",
+     10
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "comp",
+     5
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 15,
+   "mat": "0001415",
+   "g": "F",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 24.89,
+   "ore": 904.1,
+   "costo": 22503.05,
+   "f": {
+    "sat": 3,
+    "load": 2,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 12,
+    "market": 0,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 31,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 15.55246053853297,
+   "drivers": [
+    [
+     "mobil",
+     12
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 16,
+   "mat": "0001341",
+   "g": "F",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 23.4,
+   "ore": 916.6,
+   "costo": 21448.44,
+   "f": {
+    "sat": 3,
+    "load": 2,
+    "promo": 8,
+    "extra": 12,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 0,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 36,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": 8.63509749303621,
+   "drivers": [
+    [
+     "extra",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 17,
+   "mat": "0001957",
+   "g": "F",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 22.98,
+   "ore": 864.5,
+   "costo": 19866.21,
+   "f": {
+    "sat": 5,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 10,
+    "mobil": 0,
+    "market": 0,
+    "perf": 0,
+    "crit": 2
+   },
+   "score": 26,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 6.685236768802234,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "recog",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 18,
+   "mat": "0001829",
+   "g": "F",
+   "fn": "CUSTOMER SERVICE",
+   "band": "A",
+   "co": 22.46,
+   "ore": 524.7,
+   "costo": 11784.76,
+   "f": {
+    "sat": 1,
+    "load": 5,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 12,
+    "market": 0,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 62,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": 4.2711234911792095,
+   "drivers": [
+    [
+     "sat",
+     20
+    ],
+    [
+     "load",
+     14
+    ],
+    [
+     "mobil",
+     12
+    ]
+   ]
+  },
+  {
+   "id": 19,
+   "mat": "0001058",
+   "g": "F",
+   "fn": "AMMINISTRAZIONE E FINANZA",
+   "band": "B",
+   "co": 21.6,
+   "ore": 640.6,
+   "costo": 13836.96,
+   "f": {
+    "sat": 5,
+    "load": 5,
+    "promo": 0,
+    "extra": 0,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 2
+   },
+   "score": 52,
+   "level": "Medio",
+   "priority": "Critica",
+   "dev": -22.636103151862464,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "recog",
+     16
+    ],
+    [
+     "sat",
+     -14
+    ],
+    [
+     "load",
+     14
+    ]
+   ]
+  },
+  {
+   "id": 20,
+   "mat": "0001688",
+   "g": "F",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 24.15,
+   "ore": 862.3,
+   "costo": 20824.54,
+   "f": {
+    "sat": 2,
+    "load": 3,
+    "promo": 8,
+    "extra": 12,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 6,
+    "market": 8,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 62,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 12.116991643454037,
+   "drivers": [
+    [
+     "sat",
+     12
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 21,
+   "mat": "0001894",
+   "g": "F",
+   "fn": "AMMINISTRAZIONE E FINANZA",
+   "band": "B",
+   "co": 30.43,
+   "ore": 464.2,
+   "costo": 14125.61,
+   "f": {
+    "sat": 4,
+    "load": 4,
+    "promo": 16,
+    "extra": 6,
+    "recog": 8,
+    "behav": 10,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 51,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": 8.989971346704863,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "extra",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 22,
+   "mat": "0001672",
+   "g": "F",
+   "fn": "DIREZIONE",
+   "band": "D",
+   "co": 67.04,
+   "ore": 422.7,
+   "costo": 28337.81,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 8,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 22,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 16.733414591676834,
+   "drivers": [
+    [
+     "promo",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ]
+   ]
+  },
+  {
+   "id": 23,
+   "mat": "0001312",
+   "g": "F",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 21.9,
+   "ore": 871.5,
+   "costo": 19085.85,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 0
+   },
+   "score": 36,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 1.6713091922005545,
+   "drivers": [
+    [
+     "recog",
+     16
+    ]
+   ]
+  },
+  {
+   "id": 24,
+   "mat": "0001215",
+   "g": "F",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 21.1,
+   "ore": 438.8,
+   "costo": 9258.68,
+   "f": {
+    "sat": 2,
+    "load": 4,
+    "promo": 16,
+    "extra": 0,
+    "recog": 0,
+    "behav": 20,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 75,
+   "level": "Alto",
+   "priority": "Media",
+   "dev": -2.0427112349117813,
+   "drivers": [
+    [
+     "behav",
+     20
+    ],
+    [
+     "promo",
+     16
+    ],
+    [
+     "sat",
+     12
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "comp",
+     5
+    ]
+   ]
+  },
+  {
+   "id": 25,
+   "mat": "0001365",
+   "g": "M",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 30.82,
+   "ore": 846.7,
+   "costo": 26095.29,
+   "f": {
+    "sat": 3,
+    "load": 4,
+    "promo": 0,
+    "extra": 6,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 2,
+    "crit": 2
+   },
+   "score": 34,
+   "level": "Basso",
+   "priority": "Alta",
+   "dev": 10.386819484240682,
+   "drivers": [
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "extra",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 26,
+   "mat": "0002085",
+   "g": "M",
+   "fn": "CUSTOMER SERVICE",
+   "band": "A",
+   "co": 19.06,
+   "ore": 641.7,
+   "costo": 12230.8,
+   "f": {
+    "sat": 4,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 10,
+    "mobil": 6,
+    "market": 8,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 61,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -11.513463324048285,
+   "drivers": [
+    [
+     "comp",
+     12
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 27,
+   "mat": "0002075",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 19.38,
+   "ore": 445,
+   "costo": 8624.1,
+   "f": {
+    "sat": 4,
+    "load": 3,
+    "promo": 8,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 12,
+    "market": 4,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 54,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -10.027855153203344,
+   "drivers": [
+    [
+     "comp",
+     12
+    ],
+    [
+     "mobil",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 28,
+   "mat": "0001208",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 20.62,
+   "ore": 653.8,
+   "costo": 13481.36,
+   "f": {
+    "sat": 4,
+    "load": 2,
+    "promo": 0,
+    "extra": 12,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 43,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": -4.271123491179193,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "comp",
+     5
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 29,
+   "mat": "0001199",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 19.38,
+   "ore": 460.4,
+   "costo": 8922.55,
+   "f": {
+    "sat": 2,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 57,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -10.027855153203344,
+   "drivers": [
+    [
+     "sat",
+     12
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "load",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 30,
+   "mat": "0001361",
+   "g": "M",
+   "fn": "IT",
+   "band": "C",
+   "co": 34.98,
+   "ore": 872.6,
+   "costo": 30523.55,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 0,
+    "crit": 0
+   },
+   "score": 41,
+   "level": "Medio",
+   "priority": "Bassa",
+   "dev": -4.660670482420281,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "comp",
+     5
+    ]
+   ]
+  },
+  {
+   "id": 31,
+   "mat": "0002179",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 18.89,
+   "ore": 904.7,
+   "costo": 17089.78,
+   "f": {
+    "sat": 3,
+    "load": 5,
+    "promo": 0,
+    "extra": 12,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 0,
+    "crit": 0
+   },
+   "score": 76,
+   "level": "Alto",
+   "priority": "Media",
+   "dev": -12.30269266480965,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "load",
+     14
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "market",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 32,
+   "mat": "0001373",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 21.1,
+   "ore": 683.8,
+   "costo": 14428.18,
+   "f": {
+    "sat": 3,
+    "load": 4,
+    "promo": 8,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 47,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": -2.0427112349117813,
+   "drivers": [
+    [
+     "promo",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "comp",
+     5
+    ]
+   ]
+  },
+  {
+   "id": 33,
+   "mat": "0001730",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 20.07,
+   "ore": 527.2,
+   "costo": 10580.9,
+   "f": {
+    "sat": 4,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 6,
+    "market": 4,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 43,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": -6.824512534818937,
+   "drivers": [
+    [
+     "recog",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "comp",
+     5
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 34,
+   "mat": "0001960",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 23.22,
+   "ore": 856.1,
+   "costo": 19878.64,
+   "f": {
+    "sat": 1,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 16,
+    "behav": 20,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 0
+   },
+   "score": 64,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 7.799442896935932,
+   "drivers": [
+    [
+     "sat",
+     20
+    ],
+    [
+     "behav",
+     20
+    ],
+    [
+     "recog",
+     16
+    ],
+    [
+     "comp",
+     -8
+    ]
+   ]
+  },
+  {
+   "id": 35,
+   "mat": "0001410",
+   "g": "M",
+   "fn": "AMMINISTRAZIONE E FINANZA",
+   "band": "B",
+   "co": 31.11,
+   "ore": 881,
+   "costo": 27407.91,
+   "f": {
+    "sat": 2,
+    "load": 4,
+    "promo": 0,
+    "extra": 6,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 6,
+    "market": 4,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 53,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 11.425501432664747,
+   "drivers": [
+    [
+     "sat",
+     12
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 36,
+   "mat": "0001325",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 23.69,
+   "ore": 522.5,
+   "costo": 12378.03,
+   "f": {
+    "sat": 3,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 12,
+    "market": 0,
+    "perf": 2,
+    "crit": 0
+   },
+   "score": 33,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 9.981429897864448,
+   "drivers": [
+    [
+     "mobil",
+     12
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 37,
+   "mat": "0002254",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 25.29,
+   "ore": 434.5,
+   "costo": 10988.51,
+   "f": {
+    "sat": 4,
+    "load": 4,
+    "promo": 0,
+    "extra": 6,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 12,
+    "market": 8,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 46,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 17.40947075208914,
+   "drivers": [
+    [
+     "mobil",
+     12
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "extra",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 38,
+   "mat": "0002190",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 22.71,
+   "ore": 855.9,
+   "costo": 19437.49,
+   "f": {
+    "sat": 1,
+    "load": 4,
+    "promo": 16,
+    "extra": 12,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 84,
+   "level": "Alto",
+   "priority": "Alta",
+   "dev": 5.431754874651819,
+   "drivers": [
+    [
+     "sat",
+     20
+    ],
+    [
+     "promo",
+     16
+    ],
+    [
+     "recog",
+     16
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "load",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 39,
+   "mat": "0001562",
+   "g": "M",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 30.29,
+   "ore": 458.7,
+   "costo": 13894.02,
+   "f": {
+    "sat": 1,
+    "load": 2,
+    "promo": 0,
+    "extra": 0,
+    "recog": 16,
+    "behav": 10,
+    "mobil": 12,
+    "market": 4,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 67,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 8.488538681948414,
+   "drivers": [
+    [
+     "sat",
+     20
+    ],
+    [
+     "recog",
+     16
+    ],
+    [
+     "mobil",
+     12
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "market",
+     4
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 40,
+   "mat": "0001101",
+   "g": "M",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 26.82,
+   "ore": 647.1,
+   "costo": 17355.22,
+   "f": {
+    "sat": 5,
+    "load": 2,
+    "promo": 0,
+    "extra": 12,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 12,
+    "market": 8,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 41,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": -3.939828080229231,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "mobil",
+     12
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "comp",
+     5
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 41,
+   "mat": "0002223",
+   "g": "F",
+   "fn": "AMMINISTRAZIONE E FINANZA",
+   "band": "B",
+   "co": 25.5,
+   "ore": 649.9,
+   "costo": 16572.45,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 16,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 8,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 59,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": -8.667621776504305,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 42,
+   "mat": "0001317",
+   "g": "F",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 26.4,
+   "ore": 524.4,
+   "costo": 13844.16,
+   "f": {
+    "sat": 5,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 0,
+    "crit": 0
+   },
+   "score": 15,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": -5.444126074498578,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "comp",
+     5
+    ]
+   ]
+  },
+  {
+   "id": 43,
+   "mat": "0002065",
+   "g": "F",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 19.29,
+   "ore": 841.1,
+   "costo": 16224.82,
+   "f": {
+    "sat": 5,
+    "load": 5,
+    "promo": 0,
+    "extra": 12,
+    "recog": 8,
+    "behav": 10,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 59,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -10.445682451253482,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "load",
+     14
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "recog",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 44,
+   "mat": "0001450",
+   "g": "F",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 20.94,
+   "ore": 898,
+   "costo": 18804.12,
+   "f": {
+    "sat": 2,
+    "load": 4,
+    "promo": 16,
+    "extra": 0,
+    "recog": 0,
+    "behav": 10,
+    "mobil": 6,
+    "market": 8,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 78,
+   "level": "Alto",
+   "priority": "Media",
+   "dev": -2.785515320334252,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "sat",
+     12
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "comp",
+     5
+    ]
+   ]
+  },
+  {
+   "id": 45,
+   "mat": "0001973",
+   "g": "F",
+   "fn": "RISORSE UMANE",
+   "band": "B",
+   "co": 28.4,
+   "ore": 877.6,
+   "costo": 24923.84,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 0,
+    "extra": 12,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 0,
+    "crit": 2
+   },
+   "score": 33,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 1.7191977077363783,
+   "drivers": [
+    [
+     "extra",
+     12
+    ]
+   ]
+  },
+  {
+   "id": 46,
+   "mat": "0001267",
+   "g": "M",
+   "fn": "DIREZIONE",
+   "band": "D",
+   "co": 75.7,
+   "ore": 516.4,
+   "costo": 39091.48,
+   "f": {
+    "sat": 3,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 20,
+    "mobil": 6,
+    "market": 4,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 55,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 31.81264147658019,
+   "drivers": [
+    [
+     "behav",
+     20
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 47,
+   "mat": "0001017",
+   "g": "M",
+   "fn": "IT",
+   "band": "C",
+   "co": 40.21,
+   "ore": 854.2,
+   "costo": 34347.38,
+   "f": {
+    "sat": 4,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 20,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": 9.593894794221868,
+   "drivers": [
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 48,
+   "mat": "0001794",
+   "g": "M",
+   "fn": "DIREZIONE",
+   "band": "D",
+   "co": 74.78,
+   "ore": 854.4,
+   "costo": 63892.03,
+   "f": {
+    "sat": 3,
+    "load": 1,
+    "promo": 16,
+    "extra": 0,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 0,
+    "crit": 0
+   },
+   "score": 40,
+   "level": "Medio",
+   "priority": "Bassa",
+   "dev": 30.21069127633641,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "recog",
+     16
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     -4
+    ]
+   ]
+  },
+  {
+   "id": 49,
+   "mat": "0001278",
+   "g": "M",
+   "fn": "QUALITA",
+   "band": "C",
+   "co": 31.86,
+   "ore": 852,
+   "costo": 27144.72,
+   "f": {
+    "sat": 2,
+    "load": 5,
+    "promo": 8,
+    "extra": 0,
+    "recog": 0,
+    "behav": 20,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 79,
+   "level": "Alto",
+   "priority": "Critica",
+   "dev": -13.164349959116922,
+   "drivers": [
+    [
+     "behav",
+     20
+    ],
+    [
+     "load",
+     14
+    ],
+    [
+     "sat",
+     12
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "promo",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 50,
+   "mat": "0001656",
+   "g": "M",
+   "fn": "IT",
+   "band": "C",
+   "co": 32.37,
+   "ore": 881.7,
+   "costo": 28540.63,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 8,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 45,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -11.774325429272283,
+   "drivers": [
+    [
+     "comp",
+     12
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 51,
+   "mat": "0001819",
+   "g": "M",
+   "fn": "IT",
+   "band": "C",
+   "co": 37.33,
+   "ore": 860.4,
+   "costo": 32118.73,
+   "f": {
+    "sat": 4,
+    "load": 5,
+    "promo": 8,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 39,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 1.7443445080403397,
+   "drivers": [
+    [
+     "load",
+     14
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 52,
+   "mat": "0002025",
+   "g": "F",
+   "fn": "CUSTOMER SERVICE",
+   "band": "A",
+   "co": 19.32,
+   "ore": 931.2,
+   "costo": 17990.78,
+   "f": {
+    "sat": 4,
+    "load": 2,
+    "promo": 16,
+    "extra": 6,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 61,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -10.306406685236764,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "recog",
+     16
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "market",
+     4
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 53,
+   "mat": "0002062",
+   "g": "F",
+   "fn": "MARKETING",
+   "band": "B",
+   "co": 30.55,
+   "ore": 873,
+   "costo": 26670.15,
+   "f": {
+    "sat": 4,
+    "load": 2,
+    "promo": 0,
+    "extra": 6,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 34,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 9.419770773638964,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 54,
+   "mat": "0001291",
+   "g": "F",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 17.6,
+   "ore": 921.9,
+   "costo": 16225.44,
+   "f": {
+    "sat": 1,
+    "load": 4,
+    "promo": 16,
+    "extra": 0,
+    "recog": 0,
+    "behav": 10,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 84,
+   "level": "Alto",
+   "priority": "Alta",
+   "dev": -18.291550603528307,
+   "drivers": [
+    [
+     "sat",
+     20
+    ],
+    [
+     "comp",
+     18
+    ],
+    [
+     "promo",
+     16
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "load",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 55,
+   "mat": "0001700",
+   "g": "F",
+   "fn": "ACQUISTI",
+   "band": "B",
+   "co": 24,
+   "ore": 525,
+   "costo": 12600,
+   "f": {
+    "sat": 3,
+    "load": 2,
+    "promo": 0,
+    "extra": 12,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 12,
+    "market": 4,
+    "perf": 0,
+    "crit": 2
+   },
+   "score": 62,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -14.04011461318052,
+   "drivers": [
+    [
+     "extra",
+     12
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "mobil",
+     12
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "market",
+     4
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 56,
+   "mat": "0001996",
+   "g": "F",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 29.36,
+   "ore": 871.2,
+   "costo": 25578.43,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 0,
+    "extra": 6,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 2,
+    "crit": 0
+   },
+   "score": 31,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 5.1575931232091605,
+   "drivers": [
+    [
+     "extra",
+     6
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 57,
+   "mat": "0001639",
+   "g": "F",
+   "fn": "MARKETING",
+   "band": "B",
+   "co": 23.23,
+   "ore": 875.7,
+   "costo": 20342.51,
+   "f": {
+    "sat": 3,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 6,
+    "market": 8,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 64,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -16.797994269340975,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 58,
+   "mat": "0001896",
+   "g": "F",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 23.47,
+   "ore": 648.3,
+   "costo": 15215.6,
+   "f": {
+    "sat": 2,
+    "load": 5,
+    "promo": 8,
+    "extra": 6,
+    "recog": 16,
+    "behav": 10,
+    "mobil": 6,
+    "market": 0,
+    "perf": 0,
+    "crit": 0
+   },
+   "score": 78,
+   "level": "Alto",
+   "priority": "Media",
+   "dev": 8.960074280408541,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "load",
+     14
+    ],
+    [
+     "sat",
+     12
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 59,
+   "mat": "0002205",
+   "g": "F",
+   "fn": "RISORSE UMANE",
+   "band": "B",
+   "co": 31.51,
+   "ore": 507.5,
+   "costo": 15991.33,
+   "f": {
+    "sat": 2,
+    "load": 3,
+    "promo": 0,
+    "extra": 6,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 6,
+    "market": 4,
+    "perf": 2,
+    "crit": 2
+   },
+   "score": 53,
+   "level": "Medio",
+   "priority": "Critica",
+   "dev": 12.858166189111747,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "sat",
+     12
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 60,
+   "mat": "0001395",
+   "g": "F",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 19.48,
+   "ore": 902.1,
+   "costo": 17572.91,
+   "f": {
+    "sat": 2,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 16,
+    "behav": 20,
+    "mobil": 12,
+    "market": 0,
+    "perf": 2,
+    "crit": 0
+   },
+   "score": 91,
+   "level": "Alto",
+   "priority": "Alta",
+   "dev": -9.563602599814294,
+   "drivers": [
+    [
+     "behav",
+     20
+    ],
+    [
+     "recog",
+     16
+    ],
+    [
+     "sat",
+     12
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "mobil",
+     12
+    ],
+    [
+     "load",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 61,
+   "mat": "0001072",
+   "g": "F",
+   "fn": "CUSTOMER SERVICE",
+   "band": "A",
+   "co": 20.5,
+   "ore": 876.6,
+   "costo": 17970.3,
+   "f": {
+    "sat": 3,
+    "load": 5,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 46,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": -4.82822655524605,
+   "drivers": [
+    [
+     "load",
+     14
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     5
+    ]
+   ]
+  },
+  {
+   "id": 62,
+   "mat": "0001945",
+   "g": "F",
+   "fn": "AMMINISTRAZIONE E FINANZA",
+   "band": "B",
+   "co": 27.21,
+   "ore": 511.5,
+   "costo": 13917.92,
+   "f": {
+    "sat": 4,
+    "load": 5,
+    "promo": 8,
+    "extra": 12,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 0,
+    "crit": 2
+   },
+   "score": 53,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -2.5429799426934125,
+   "drivers": [
+    [
+     "load",
+     14
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "comp",
+     5
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 63,
+   "mat": "0001145",
+   "g": "F",
+   "fn": "RISORSE UMANE",
+   "band": "B",
+   "co": 30.64,
+   "ore": 862.2,
+   "costo": 26417.81,
+   "f": {
+    "sat": 5,
+    "load": 3,
+    "promo": 8,
+    "extra": 0,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 28,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": 9.742120343839538,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "sat",
+     -14
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 64,
+   "mat": "0001789",
+   "g": "F",
+   "fn": "IT",
+   "band": "C",
+   "co": 38.44,
+   "ore": 854,
+   "costo": 32827.76,
+   "f": {
+    "sat": 4,
+    "load": 1,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 0,
+    "crit": 2
+   },
+   "score": 27,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 4.769692014172799,
+   "drivers": [
+    [
+     "recog",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "load",
+     -4
+    ]
+   ]
+  },
+  {
+   "id": 65,
+   "mat": "0002029",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 18.84,
+   "ore": 658.1,
+   "costo": 12398.6,
+   "f": {
+    "sat": 2,
+    "load": 3,
+    "promo": 0,
+    "extra": 12,
+    "recog": 0,
+    "behav": 10,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 0
+   },
+   "score": 62,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -12.534818941504176,
+   "drivers": [
+    [
+     "sat",
+     12
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "behav",
+     10
+    ]
+   ]
+  },
+  {
+   "id": 66,
+   "mat": "0001299",
+   "g": "M",
+   "fn": "MANUTENZIONE",
+   "band": "B",
+   "co": 29.36,
+   "ore": 867.2,
+   "costo": 25460.99,
+   "f": {
+    "sat": 5,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 12,
+    "market": 0,
+    "perf": 2,
+    "crit": 2
+   },
+   "score": 21,
+   "level": "Basso",
+   "priority": "Alta",
+   "dev": 5.1575931232091605,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "mobil",
+     12
+    ]
+   ]
+  },
+  {
+   "id": 67,
+   "mat": "0001445",
+   "g": "M",
+   "fn": "CUSTOMER SERVICE",
+   "band": "A",
+   "co": 20.27,
+   "ore": 878.1,
+   "costo": 17799.09,
+   "f": {
+    "sat": 5,
+    "load": 2,
+    "promo": 16,
+    "extra": 12,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 44,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -5.8960074280408525,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "sat",
+     -14
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "comp",
+     5
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 68,
+   "mat": "0001904",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 22.91,
+   "ore": 455.4,
+   "costo": 10433.21,
+   "f": {
+    "sat": 2,
+    "load": 3,
+    "promo": 8,
+    "extra": 0,
+    "recog": 0,
+    "behav": 10,
+    "mobil": 12,
+    "market": 4,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 62,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 6.360259981429903,
+   "drivers": [
+    [
+     "sat",
+     12
+    ],
+    [
+     "mobil",
+     12
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 69,
+   "mat": "0001176",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 22.63,
+   "ore": 878.3,
+   "costo": 19875.93,
+   "f": {
+    "sat": 3,
+    "load": 5,
+    "promo": 8,
+    "extra": 6,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 53,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 5.060352831940575,
+   "drivers": [
+    [
+     "load",
+     14
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "extra",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 70,
+   "mat": "0001304",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 25.04,
+   "ore": 843.5,
+   "costo": 21121.24,
+   "f": {
+    "sat": 2,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 16,
+    "behav": 20,
+    "mobil": 0,
+    "market": 4,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 67,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": 16.248839368616526,
+   "drivers": [
+    [
+     "behav",
+     20
+    ],
+    [
+     "recog",
+     16
+    ],
+    [
+     "sat",
+     12
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 71,
+   "mat": "0001921",
+   "g": "F",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 18.19,
+   "ore": 882.7,
+   "costo": 16056.31,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 16,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 59,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -15.552460538532953,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "promo",
+     16
+    ],
+    [
+     "market",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 72,
+   "mat": "0001501",
+   "g": "F",
+   "fn": "MARKETING",
+   "band": "B",
+   "co": 25.78,
+   "ore": 853.9,
+   "costo": 22013.54,
+   "f": {
+    "sat": 4,
+    "load": 2,
+    "promo": 0,
+    "extra": 0,
+    "recog": 16,
+    "behav": 10,
+    "mobil": 0,
+    "market": 8,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 54,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -7.664756446991405,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 73,
+   "mat": "0001435",
+   "g": "F",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 19.36,
+   "ore": 512.9,
+   "costo": 9929.74,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 16,
+    "extra": 12,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 78,
+   "level": "Alto",
+   "priority": "Media",
+   "dev": -10.12070566388115,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "recog",
+     16
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "market",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 74,
+   "mat": "0001334",
+   "g": "F",
+   "fn": "CUSTOMER SERVICE",
+   "band": "A",
+   "co": 23.94,
+   "ore": 446,
+   "costo": 10677.24,
+   "f": {
+    "sat": 1,
+    "load": 2,
+    "promo": 0,
+    "extra": 6,
+    "recog": 0,
+    "behav": 20,
+    "mobil": 12,
+    "market": 0,
+    "perf": 0,
+    "crit": 0
+   },
+   "score": 64,
+   "level": "Medio",
+   "priority": "Bassa",
+   "dev": 11.142061281337059,
+   "drivers": [
+    [
+     "sat",
+     20
+    ],
+    [
+     "behav",
+     20
+    ],
+    [
+     "mobil",
+     12
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 75,
+   "mat": "0001456",
+   "g": "F",
+   "fn": "AMMINISTRAZIONE E FINANZA",
+   "band": "B",
+   "co": 25.2,
+   "ore": 524.7,
+   "costo": 13222.44,
+   "f": {
+    "sat": 3,
+    "load": 4,
+    "promo": 8,
+    "extra": 12,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 78,
+   "level": "Alto",
+   "priority": "Media",
+   "dev": -9.74212034383955,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 76,
+   "mat": "0001227",
+   "g": "F",
+   "fn": "RISORSE UMANE",
+   "band": "B",
+   "co": 21.56,
+   "ore": 878,
+   "costo": 18929.68,
+   "f": {
+    "sat": 4,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 39,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": -22.779369627507172,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ]
+   ]
+  },
+  {
+   "id": 77,
+   "mat": "0002104",
+   "g": "F",
+   "fn": "MANUTENZIONE",
+   "band": "B",
+   "co": 25.73,
+   "ore": 861.3,
+   "costo": 22161.25,
+   "f": {
+    "sat": 3,
+    "load": 2,
+    "promo": 16,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 0,
+    "crit": 0
+   },
+   "score": 45,
+   "level": "Medio",
+   "priority": "Bassa",
+   "dev": -7.843839541547282,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 78,
+   "mat": "0001420",
+   "g": "F",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 24.89,
+   "ore": 857.3,
+   "costo": 21338.2,
+   "f": {
+    "sat": 3,
+    "load": 2,
+    "promo": 8,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 12,
+    "market": 8,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 55,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -10.852435530085963,
+   "drivers": [
+    [
+     "comp",
+     12
+    ],
+    [
+     "mobil",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 79,
+   "mat": "0002187",
+   "g": "F",
+   "fn": "AMMINISTRAZIONE E FINANZA",
+   "band": "B",
+   "co": 31.5,
+   "ore": 881.5,
+   "costo": 27767.25,
+   "f": {
+    "sat": 3,
+    "load": 1,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 22,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 12.822349570200567,
+   "drivers": [
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     -4
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 80,
+   "mat": "0001851",
+   "g": "F",
+   "fn": "QUALITA",
+   "band": "C",
+   "co": 36.75,
+   "ore": 843.8,
+   "costo": 31009.65,
+   "f": {
+    "sat": 3,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 12,
+    "market": 4,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 50,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 0.1635322976287879,
+   "drivers": [
+    [
+     "mobil",
+     12
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 81,
+   "mat": "0001863",
+   "g": "F",
+   "fn": "AMMINISTRAZIONE E FINANZA",
+   "band": "B",
+   "co": 25.71,
+   "ore": 629.4,
+   "costo": 16181.87,
+   "f": {
+    "sat": 4,
+    "load": 5,
+    "promo": 8,
+    "extra": 0,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 66,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -7.91547277936963,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "load",
+     14
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ]
+   ]
+  },
+  {
+   "id": 82,
+   "mat": "0002082",
+   "g": "F",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 17.8,
+   "ore": 857.7,
+   "costo": 15267.06,
+   "f": {
+    "sat": 2,
+    "load": 2,
+    "promo": 16,
+    "extra": 6,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 2,
+    "crit": 0
+   },
+   "score": 79,
+   "level": "Alto",
+   "priority": "Alta",
+   "dev": -17.363045496750225,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "promo",
+     16
+    ],
+    [
+     "sat",
+     12
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 83,
+   "mat": "0002093",
+   "g": "F",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 27.16,
+   "ore": 879.7,
+   "costo": 23892.65,
+   "f": {
+    "sat": 4,
+    "load": 5,
+    "promo": 0,
+    "extra": 12,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 50,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -2.722063037249289,
+   "drivers": [
+    [
+     "load",
+     14
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "comp",
+     5
+    ]
+   ]
+  },
+  {
+   "id": 84,
+   "mat": "0001536",
+   "g": "F",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 30.67,
+   "ore": 939.8,
+   "costo": 28823.67,
+   "f": {
+    "sat": 3,
+    "load": 2,
+    "promo": 8,
+    "extra": 6,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 2,
+    "crit": 0
+   },
+   "score": 33,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 9.849570200573066,
+   "drivers": [
+    [
+     "promo",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 85,
+   "mat": "0002002",
+   "g": "F",
+   "fn": "CUSTOMER SERVICE",
+   "band": "A",
+   "co": 16.89,
+   "ore": 876.4,
+   "costo": 14802.4,
+   "f": {
+    "sat": 5,
+    "load": 3,
+    "promo": 0,
+    "extra": 12,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 0,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 41,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": -21.58774373259052,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "sat",
+     -14
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 86,
+   "mat": "0001570",
+   "g": "M",
+   "fn": "CUSTOMER SERVICE",
+   "band": "A",
+   "co": 22.42,
+   "ore": 636.2,
+   "costo": 14263.6,
+   "f": {
+    "sat": 5,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 17,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": 4.085422469823596,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "recog",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 87,
+   "mat": "0001660",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 19.22,
+   "ore": 657.1,
+   "costo": 12629.46,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 2,
+    "crit": 2
+   },
+   "score": 36,
+   "level": "Basso",
+   "priority": "Alta",
+   "dev": -10.770659238625814,
+   "drivers": [
+    [
+     "comp",
+     12
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 88,
+   "mat": "0002052",
+   "g": "M",
+   "fn": "AMMINISTRAZIONE E FINANZA",
+   "band": "B",
+   "co": 23.65,
+   "ore": 856.6,
+   "costo": 20258.59,
+   "f": {
+    "sat": 4,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 49,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -15.293696275071644,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "recog",
+     16
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 89,
+   "mat": "0001845",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 24.67,
+   "ore": 875,
+   "costo": 21586.25,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 16,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 0,
+    "crit": 0
+   },
+   "score": 36,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": 14.531104921077079,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "market",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 90,
+   "mat": "0002226",
+   "g": "M",
+   "fn": "MANUTENZIONE",
+   "band": "B",
+   "co": 27.2,
+   "ore": 641.2,
+   "costo": 17440.64,
+   "f": {
+    "sat": 4,
+    "load": 2,
+    "promo": 0,
+    "extra": 6,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 34,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": -2.5787965616045927,
+   "drivers": [
+    [
+     "recog",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "comp",
+     5
+    ],
+    [
+     "market",
+     4
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 91,
+   "mat": "0001740",
+   "g": "M",
+   "fn": "QUALITA",
+   "band": "C",
+   "co": 28.11,
+   "ore": 914.9,
+   "costo": 25717.84,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 16,
+    "extra": 12,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 2
+   },
+   "score": 69,
+   "level": "Medio",
+   "priority": "Critica",
+   "dev": -23.385118560915778,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "promo",
+     16
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "recog",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 92,
+   "mat": "0001857",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 24.44,
+   "ore": 703.7,
+   "costo": 17198.43,
+   "f": {
+    "sat": 4,
+    "load": 5,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 8,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 34,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 13.463324048282278,
+   "drivers": [
+    [
+     "load",
+     14
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 93,
+   "mat": "0002212",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 24.05,
+   "ore": 436.2,
+   "costo": 10490.61,
+   "f": {
+    "sat": 2,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 10,
+    "mobil": 12,
+    "market": 0,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 52,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 11.652739090065003,
+   "drivers": [
+    [
+     "sat",
+     12
+    ],
+    [
+     "mobil",
+     12
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 94,
+   "mat": "0001187",
+   "g": "M",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 29.76,
+   "ore": 851,
+   "costo": 25325.76,
+   "f": {
+    "sat": 5,
+    "load": 4,
+    "promo": 16,
+    "extra": 6,
+    "recog": 0,
+    "behav": 10,
+    "mobil": 0,
+    "market": 4,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 48,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 6.59025787965616,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "sat",
+     -14
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 95,
+   "mat": "0002164",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 18.95,
+   "ore": 853.2,
+   "costo": 16168.14,
+   "f": {
+    "sat": 3,
+    "load": 2,
+    "promo": 8,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 0,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 43,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -12.02414113277623,
+   "drivers": [
+    [
+     "comp",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 96,
+   "mat": "0002241",
+   "g": "M",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 26.88,
+   "ore": 877.9,
+   "costo": 23597.95,
+   "f": {
+    "sat": 2,
+    "load": 5,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 56,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": -3.724928366762187,
+   "drivers": [
+    [
+     "load",
+     14
+    ],
+    [
+     "sat",
+     12
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "comp",
+     5
+    ]
+   ]
+  },
+  {
+   "id": 97,
+   "mat": "0001222",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 25.16,
+   "ore": 845,
+   "costo": 21260.2,
+   "f": {
+    "sat": 5,
+    "load": 4,
+    "promo": 16,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 31,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 16.805942432683384,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "sat",
+     -14
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 98,
+   "mat": "0001743",
+   "g": "M",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 35,
+   "ore": 528.1,
+   "costo": 18483.5,
+   "f": {
+    "sat": 3,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 36,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 25.358166189111742,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 99,
+   "mat": "0001385",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 22.21,
+   "ore": 862.4,
+   "costo": 19153.9,
+   "f": {
+    "sat": 2,
+    "load": 4,
+    "promo": 8,
+    "extra": 0,
+    "recog": 16,
+    "behav": 10,
+    "mobil": 12,
+    "market": 0,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 79,
+   "level": "Alto",
+   "priority": "Media",
+   "dev": 3.1104921077066003,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "sat",
+     12
+    ],
+    [
+     "mobil",
+     12
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "load",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 100,
+   "mat": "0001234",
+   "g": "M",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 32.49,
+   "ore": 505,
+   "costo": 16407.45,
+   "f": {
+    "sat": 2,
+    "load": 3,
+    "promo": 0,
+    "extra": 6,
+    "recog": 0,
+    "behav": 10,
+    "mobil": 0,
+    "market": 8,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 47,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 16.368194842406876,
+   "drivers": [
+    [
+     "sat",
+     12
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "extra",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 101,
+   "mat": "0001122",
+   "g": "M",
+   "fn": "MANUTENZIONE",
+   "band": "B",
+   "co": 28.93,
+   "ore": 630.8,
+   "costo": 18249.04,
+   "f": {
+    "sat": 4,
+    "load": 2,
+    "promo": 0,
+    "extra": 0,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 35,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 3.617478510028646,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 102,
+   "mat": "0002017",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 19.85,
+   "ore": 841.5,
+   "costo": 16703.78,
+   "f": {
+    "sat": 4,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 0,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 39,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": -7.845868152274828,
+   "drivers": [
+    [
+     "comp",
+     12
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 103,
+   "mat": "0001052",
+   "g": "M",
+   "fn": "DIREZIONE",
+   "band": "D",
+   "co": 80.52,
+   "ore": 642,
+   "costo": 51693.84,
+   "f": {
+    "sat": 2,
+    "load": 4,
+    "promo": 16,
+    "extra": 0,
+    "recog": 16,
+    "behav": 20,
+    "mobil": 6,
+    "market": 4,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 86,
+   "level": "Alto",
+   "priority": "Media",
+   "dev": 40.20546752568344,
+   "drivers": [
+    [
+     "behav",
+     20
+    ],
+    [
+     "promo",
+     16
+    ],
+    [
+     "recog",
+     16
+    ],
+    [
+     "sat",
+     12
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 104,
+   "mat": "0002171",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 26.65,
+   "ore": 630.2,
+   "costo": 16794.83,
+   "f": {
+    "sat": 4,
+    "load": 3,
+    "promo": 8,
+    "extra": 12,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 34,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": 23.72330547818013,
+   "drivers": [
+    [
+     "extra",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "sat",
+     -7
+    ]
+   ]
+  },
+  {
+   "id": 105,
+   "mat": "0001941",
+   "g": "F",
+   "fn": "AMMINISTRAZIONE E FINANZA",
+   "band": "B",
+   "co": 27.78,
+   "ore": 844.6,
+   "costo": 23462.99,
+   "f": {
+    "sat": 4,
+    "load": 3,
+    "promo": 0,
+    "extra": 6,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 32,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": -0.501432664756449,
+   "drivers": [
+    [
+     "recog",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 106,
+   "mat": "0001064",
+   "g": "F",
+   "fn": "AMMINISTRAZIONE E FINANZA",
+   "band": "B",
+   "co": 30.02,
+   "ore": 638.8,
+   "costo": 19176.78,
+   "f": {
+    "sat": 4,
+    "load": 3,
+    "promo": 16,
+    "extra": 6,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 8,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 41,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 7.521489971346697,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 107,
+   "mat": "0001778",
+   "g": "F",
+   "fn": "QUALITA",
+   "band": "C",
+   "co": 28.87,
+   "ore": 913.7,
+   "costo": 26378.52,
+   "f": {
+    "sat": 3,
+    "load": 5,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 53,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -21.313709457617872,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "load",
+     14
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 108,
+   "mat": "0001043",
+   "g": "F",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 17.79,
+   "ore": 647.6,
+   "costo": 11520.8,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 41,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -17.40947075208914,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 109,
+   "mat": "0001429",
+   "g": "F",
+   "fn": "QUALITA",
+   "band": "C",
+   "co": 29.63,
+   "ore": 523.1,
+   "costo": 15499.45,
+   "f": {
+    "sat": 5,
+    "load": 3,
+    "promo": 8,
+    "extra": 0,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 0,
+    "crit": 2
+   },
+   "score": 47,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -19.242300354319976,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "recog",
+     16
+    ],
+    [
+     "sat",
+     -14
+    ],
+    [
+     "promo",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 110,
+   "mat": "0002153",
+   "g": "M",
+   "fn": "IT",
+   "band": "C",
+   "co": 29.95,
+   "ore": 885,
+   "costo": 26505.75,
+   "f": {
+    "sat": 3,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 48,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -18.370128100299805,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 111,
+   "mat": "0001526",
+   "g": "M",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 30.77,
+   "ore": 859.2,
+   "costo": 26437.58,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 0,
+    "extra": 6,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 34,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": 10.207736389684806,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "extra",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 112,
+   "mat": "0002248",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 21.06,
+   "ore": 861.6,
+   "costo": 18145.3,
+   "f": {
+    "sat": 5,
+    "load": 5,
+    "promo": 0,
+    "extra": 6,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 35,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": -2.2284122562674114,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "load",
+     14
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "comp",
+     5
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 113,
+   "mat": "0001026",
+   "g": "M",
+   "fn": "MARKETING",
+   "band": "B",
+   "co": 26.2,
+   "ore": 869.2,
+   "costo": 22773.04,
+   "f": {
+    "sat": 4,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 12,
+    "market": 4,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 41,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": -6.160458452722072,
+   "drivers": [
+    [
+     "mobil",
+     12
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "comp",
+     5
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 114,
+   "mat": "0001915",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 18.84,
+   "ore": 657.5,
+   "costo": 12387.3,
+   "f": {
+    "sat": 4,
+    "load": 3,
+    "promo": 8,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 6,
+    "market": 8,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 53,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -12.534818941504176,
+   "drivers": [
+    [
+     "comp",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 115,
+   "mat": "0001259",
+   "g": "M",
+   "fn": "MANUTENZIONE",
+   "band": "B",
+   "co": 22.36,
+   "ore": 844,
+   "costo": 18871.84,
+   "f": {
+    "sat": 5,
+    "load": 5,
+    "promo": 8,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 8,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 57,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -19.914040114613186,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "sat",
+     -14
+    ],
+    [
+     "load",
+     14
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 116,
+   "mat": "0001192",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 20.08,
+   "ore": 874,
+   "costo": 17549.92,
+   "f": {
+    "sat": 5,
+    "load": 2,
+    "promo": 8,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 6,
+    "market": 8,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 39,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": -6.778087279480041,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "comp",
+     5
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 117,
+   "mat": "0002158",
+   "g": "M",
+   "fn": "MANUTENZIONE",
+   "band": "B",
+   "co": 27.15,
+   "ore": 861.5,
+   "costo": 23389.73,
+   "f": {
+    "sat": 3,
+    "load": 4,
+    "promo": 8,
+    "extra": 12,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 51,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": -2.7578796561604695,
+   "drivers": [
+    [
+     "extra",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "comp",
+     5
+    ]
+   ]
+  },
+  {
+   "id": 118,
+   "mat": "0001816",
+   "g": "M",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 28.97,
+   "ore": 439.7,
+   "costo": 12738.11,
+   "f": {
+    "sat": 5,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 2,
+    "crit": 0
+   },
+   "score": 17,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 3.760744985673342,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "market",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 119,
+   "mat": "0002197",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 24.39,
+   "ore": 921.5,
+   "costo": 22475.39,
+   "f": {
+    "sat": 4,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 23,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": 13.231197771587752,
+   "drivers": [
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ]
+   ]
+  },
+  {
+   "id": 120,
+   "mat": "0001807",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 24.93,
+   "ore": 677.6,
+   "costo": 16892.57,
+   "f": {
+    "sat": 2,
+    "load": 2,
+    "promo": 16,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 12,
+    "market": 0,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 55,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": 15.738161559888583,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "sat",
+     12
+    ],
+    [
+     "mobil",
+     12
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 121,
+   "mat": "0001255",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 22.74,
+   "ore": 629.4,
+   "costo": 14312.56,
+   "f": {
+    "sat": 4,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 12,
+    "market": 4,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 30,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 5.57103064066852,
+   "drivers": [
+    [
+     "mobil",
+     12
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 122,
+   "mat": "0001511",
+   "g": "M",
+   "fn": "ACQUISTI",
+   "band": "B",
+   "co": 24.96,
+   "ore": 522.1,
+   "costo": 13031.62,
+   "f": {
+    "sat": 2,
+    "load": 2,
+    "promo": 0,
+    "extra": 6,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 47,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -10.60171919770774,
+   "drivers": [
+    [
+     "sat",
+     12
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 123,
+   "mat": "0001576",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 21.56,
+   "ore": 528.6,
+   "costo": 11396.62,
+   "f": {
+    "sat": 4,
+    "load": 5,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 0
+   },
+   "score": 35,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 0.09285051067780675,
+   "drivers": [
+    [
+     "load",
+     14
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ]
+   ]
+  },
+  {
+   "id": 124,
+   "mat": "0001617",
+   "g": "M",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 34.16,
+   "ore": 849.1,
+   "costo": 29005.26,
+   "f": {
+    "sat": 5,
+    "load": 2,
+    "promo": 16,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 8,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 28,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": 22.349570200573048,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "sat",
+     -14
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 125,
+   "mat": "0001114",
+   "g": "F",
+   "fn": "CUSTOMER SERVICE",
+   "band": "A",
+   "co": 19.82,
+   "ore": 848.6,
+   "costo": 16819.25,
+   "f": {
+    "sat": 3,
+    "load": 4,
+    "promo": 8,
+    "extra": 6,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 0
+   },
+   "score": 59,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -7.985143918291546,
+   "drivers": [
+    [
+     "comp",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "extra",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 126,
+   "mat": "0002113",
+   "g": "F",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 28.59,
+   "ore": 550.3,
+   "costo": 15733.08,
+   "f": {
+    "sat": 4,
+    "load": 4,
+    "promo": 8,
+    "extra": 12,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 6,
+    "market": 0,
+    "perf": 2,
+    "crit": 0
+   },
+   "score": 53,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 2.399713467048704,
+   "drivers": [
+    [
+     "extra",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 127,
+   "mat": "0001029",
+   "g": "F",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 34.59,
+   "ore": 878.8,
+   "costo": 30397.69,
+   "f": {
+    "sat": 4,
+    "load": 4,
+    "promo": 8,
+    "extra": 0,
+    "recog": 0,
+    "behav": 20,
+    "mobil": 6,
+    "market": 8,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 53,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": 23.889684813753586,
+   "drivers": [
+    [
+     "behav",
+     20
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 128,
+   "mat": "0001595",
+   "g": "F",
+   "fn": "AMMINISTRAZIONE E FINANZA",
+   "band": "B",
+   "co": 26.73,
+   "ore": 847.9,
+   "costo": 22664.37,
+   "f": {
+    "sat": 5,
+    "load": 4,
+    "promo": 8,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 0
+   },
+   "score": 28,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": -4.262177650429804,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "comp",
+     5
+    ]
+   ]
+  },
+  {
+   "id": 129,
+   "mat": "0001710",
+   "g": "F",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 17.78,
+   "ore": 429.5,
+   "costo": 7636.51,
+   "f": {
+    "sat": 5,
+    "load": 3,
+    "promo": 0,
+    "extra": 6,
+    "recog": 8,
+    "behav": 20,
+    "mobil": 6,
+    "market": 0,
+    "perf": 0,
+    "crit": 0
+   },
+   "score": 60,
+   "level": "Medio",
+   "priority": "Bassa",
+   "dev": -17.45589600742803,
+   "drivers": [
+    [
+     "behav",
+     20
+    ],
+    [
+     "comp",
+     18
+    ],
+    [
+     "sat",
+     -14
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 130,
+   "mat": "0001764",
+   "g": "F",
+   "fn": "MARKETING",
+   "band": "B",
+   "co": 25.71,
+   "ore": 506.8,
+   "costo": 13029.83,
+   "f": {
+    "sat": 1,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 20,
+    "mobil": 0,
+    "market": 8,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 81,
+   "level": "Alto",
+   "priority": "Media",
+   "dev": -7.91547277936963,
+   "drivers": [
+    [
+     "sat",
+     20
+    ],
+    [
+     "behav",
+     20
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 131,
+   "mat": "0001345",
+   "g": "F",
+   "fn": "IT",
+   "band": "C",
+   "co": 28.57,
+   "ore": 516.5,
+   "costo": 14756.41,
+   "f": {
+    "sat": 4,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 6,
+    "market": 0,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 44,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": -22.131370945761784,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 132,
+   "mat": "0001582",
+   "g": "F",
+   "fn": "IT",
+   "band": "C",
+   "co": 30.28,
+   "ore": 658.6,
+   "costo": 19942.41,
+   "f": {
+    "sat": 5,
+    "load": 5,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 10,
+    "mobil": 6,
+    "market": 0,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 52,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -17.4707004633415,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "sat",
+     -14
+    ],
+    [
+     "load",
+     14
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 133,
+   "mat": "0001593",
+   "g": "F",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 24.41,
+   "ore": 648.3,
+   "costo": 15825,
+   "f": {
+    "sat": 4,
+    "load": 3,
+    "promo": 8,
+    "extra": 6,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 32,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": 13.324048282265558,
+   "drivers": [
+    [
+     "promo",
+     8
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 134,
+   "mat": "0001240",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 19.75,
+   "ore": 860.9,
+   "costo": 17002.77,
+   "f": {
+    "sat": 3,
+    "load": 5,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 0,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 50,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -8.310120705663877,
+   "drivers": [
+    [
+     "load",
+     14
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 135,
+   "mat": "0001872",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 25.62,
+   "ore": 850.2,
+   "costo": 21782.12,
+   "f": {
+    "sat": 5,
+    "load": 5,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 0,
+    "crit": 0
+   },
+   "score": 22,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": 18.94150417827299,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "load",
+     14
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ]
+   ]
+  },
+  {
+   "id": 136,
+   "mat": "0002137",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 25.67,
+   "ore": 849,
+   "costo": 21793.83,
+   "f": {
+    "sat": 5,
+    "load": 2,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 0,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 7,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": 19.173630454967515,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 137,
+   "mat": "0001646",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 23.46,
+   "ore": 866.7,
+   "costo": 20332.78,
+   "f": {
+    "sat": 1,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 53,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": 8.913649025069645,
+   "drivers": [
+    [
+     "sat",
+     20
+    ],
+    [
+     "recog",
+     16
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "market",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 138,
+   "mat": "0001483",
+   "g": "M",
+   "fn": "CUSTOMER SERVICE",
+   "band": "A",
+   "co": 17.37,
+   "ore": 905.6,
+   "costo": 15730.27,
+   "f": {
+    "sat": 4,
+    "load": 3,
+    "promo": 0,
+    "extra": 6,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 0,
+    "crit": 0
+   },
+   "score": 58,
+   "level": "Medio",
+   "priority": "Bassa",
+   "dev": -19.359331476323113,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "recog",
+     16
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "extra",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 139,
+   "mat": "0001469",
+   "g": "M",
+   "fn": "AMMINISTRAZIONE E FINANZA",
+   "band": "B",
+   "co": 29.64,
+   "ore": 545,
+   "costo": 16153.8,
+   "f": {
+    "sat": 2,
+    "load": 4,
+    "promo": 8,
+    "extra": 12,
+    "recog": 0,
+    "behav": 10,
+    "mobil": 0,
+    "market": 8,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 72,
+   "level": "Alto",
+   "priority": "Alta",
+   "dev": 6.160458452722058,
+   "drivers": [
+    [
+     "sat",
+     12
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 140,
+   "mat": "0001770",
+   "g": "M",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 34.31,
+   "ore": 852.1,
+   "costo": 29235.55,
+   "f": {
+    "sat": 3,
+    "load": 2,
+    "promo": 0,
+    "extra": 12,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 31,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": 22.88681948424069,
+   "drivers": [
+    [
+     "extra",
+     12
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 141,
+   "mat": "0001680",
+   "g": "M",
+   "fn": "IT",
+   "band": "C",
+   "co": 29.26,
+   "ore": 536.1,
+   "costo": 15686.29,
+   "f": {
+    "sat": 4,
+    "load": 2,
+    "promo": 8,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 6,
+    "market": 0,
+    "perf": 2,
+    "crit": 2
+   },
+   "score": 49,
+   "level": "Medio",
+   "priority": "Critica",
+   "dev": -20.25074952303079,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 142,
+   "mat": "0001714",
+   "g": "M",
+   "fn": "RISORSE UMANE",
+   "band": "B",
+   "co": 26.8,
+   "ore": 857.4,
+   "costo": 22978.32,
+   "f": {
+    "sat": 4,
+    "load": 3,
+    "promo": 8,
+    "extra": 12,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 48,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": -4.011461318051579,
+   "drivers": [
+    [
+     "extra",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "comp",
+     5
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 143,
+   "mat": "0001091",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 22.17,
+   "ore": 918.3,
+   "costo": 20358.71,
+   "f": {
+    "sat": 5,
+    "load": 4,
+    "promo": 8,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 2,
+    "crit": 0
+   },
+   "score": 34,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 2.924791086350987,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 144,
+   "mat": "0001835",
+   "g": "M",
+   "fn": "ACQUISTI",
+   "band": "B",
+   "co": 29.06,
+   "ore": 634.6,
+   "costo": 18441.48,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 8,
+    "extra": 12,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 6,
+    "market": 8,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 59,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": 4.083094555873915,
+   "drivers": [
+    [
+     "extra",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 145,
+   "mat": "0001803",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 24.01,
+   "ore": 878.3,
+   "costo": 21087.98,
+   "f": {
+    "sat": 4,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 10,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 18,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 11.467038068709389,
+   "drivers": [
+    [
+     "behav",
+     10
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "sat",
+     -7
+    ]
+   ]
+  },
+  {
+   "id": 146,
+   "mat": "0001250",
+   "g": "M",
+   "fn": "CUSTOMER SERVICE",
+   "band": "A",
+   "co": 20.97,
+   "ore": 423.1,
+   "costo": 8872.41,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 16,
+    "extra": 6,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 46,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": -2.64623955431755,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "comp",
+     5
+    ]
+   ]
+  },
+  {
+   "id": 147,
+   "mat": "0001464",
+   "g": "F",
+   "fn": "AMMINISTRAZIONE E FINANZA",
+   "band": "B",
+   "co": 30.81,
+   "ore": 518.2,
+   "costo": 15965.74,
+   "f": {
+    "sat": 4,
+    "load": 5,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 20,
+    "mobil": 0,
+    "market": 8,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 46,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": 10.351002865329502,
+   "drivers": [
+    [
+     "behav",
+     20
+    ],
+    [
+     "load",
+     14
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ]
+   ]
+  },
+  {
+   "id": 148,
+   "mat": "0001036",
+   "g": "F",
+   "fn": "RISORSE UMANE",
+   "band": "B",
+   "co": 24.98,
+   "ore": 425.8,
+   "costo": 10636.48,
+   "f": {
+    "sat": 3,
+    "load": 4,
+    "promo": 16,
+    "extra": 12,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 0,
+    "crit": 2
+   },
+   "score": 71,
+   "level": "Alto",
+   "priority": "Alta",
+   "dev": -10.53008595988539,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 149,
+   "mat": "0001163",
+   "g": "F",
+   "fn": "QUALITA",
+   "band": "C",
+   "co": 36.34,
+   "ore": 431.4,
+   "costo": 15677.08,
+   "f": {
+    "sat": 2,
+    "load": 3,
+    "promo": 16,
+    "extra": 0,
+    "recog": 0,
+    "behav": 20,
+    "mobil": 0,
+    "market": 0,
+    "perf": 0,
+    "crit": 0
+   },
+   "score": 64,
+   "level": "Medio",
+   "priority": "Bassa",
+   "dev": -0.9539384028345443,
+   "drivers": [
+    [
+     "behav",
+     20
+    ],
+    [
+     "promo",
+     16
+    ],
+    [
+     "sat",
+     12
+    ]
+   ]
+  },
+  {
+   "id": 150,
+   "mat": "0001924",
+   "g": "F",
+   "fn": "AMMINISTRAZIONE E FINANZA",
+   "band": "B",
+   "co": 24.63,
+   "ore": 942.5,
+   "costo": 23213.78,
+   "f": {
+    "sat": 2,
+    "load": 1,
+    "promo": 16,
+    "extra": 12,
+    "recog": 8,
+    "behav": 10,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 79,
+   "level": "Alto",
+   "priority": "Critica",
+   "dev": -11.783667621776512,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "sat",
+     12
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "load",
+     -4
+    ]
+   ]
+  },
+  {
+   "id": 151,
+   "mat": "0001541",
+   "g": "F",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 21.8,
+   "ore": 440.5,
+   "costo": 9602.9,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 8,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 36,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 1.2070566388115207,
+   "drivers": [
+    [
+     "promo",
+     8
+    ],
+    [
+     "recog",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 152,
+   "mat": "0001168",
+   "g": "F",
+   "fn": "RISORSE UMANE",
+   "band": "B",
+   "co": 28.42,
+   "ore": 854.4,
+   "costo": 24282.05,
+   "f": {
+    "sat": 5,
+    "load": 4,
+    "promo": 8,
+    "extra": 6,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 0,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 34,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 1.7908309455587392,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 153,
+   "mat": "0001969",
+   "g": "F",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 21.3,
+   "ore": 522.9,
+   "costo": 11137.77,
+   "f": {
+    "sat": 1,
+    "load": 4,
+    "promo": 0,
+    "extra": 12,
+    "recog": 8,
+    "behav": 10,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 72,
+   "level": "Alto",
+   "priority": "Media",
+   "dev": -1.1142061281336975,
+   "drivers": [
+    [
+     "sat",
+     20
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "load",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 154,
+   "mat": "0001157",
+   "g": "F",
+   "fn": "IT",
+   "band": "C",
+   "co": 29.49,
+   "ore": 652,
+   "costo": 19227.48,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 8,
+    "extra": 0,
+    "recog": 0,
+    "behav": 10,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 53,
+   "level": "Medio",
+   "priority": "Alta",
+   "dev": -19.6238757154538,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "promo",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 155,
+   "mat": "0001506",
+   "g": "F",
+   "fn": "QUALITA",
+   "band": "C",
+   "co": 32.62,
+   "ore": 507.6,
+   "costo": 16557.91,
+   "f": {
+    "sat": 5,
+    "load": 4,
+    "promo": 16,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 8,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 53,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -11.092940855819025,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "sat",
+     -14
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 156,
+   "mat": "0001633",
+   "g": "F",
+   "fn": "AMMINISTRAZIONE E FINANZA",
+   "band": "B",
+   "co": 27.37,
+   "ore": 876.6,
+   "costo": 23992.54,
+   "f": {
+    "sat": 1,
+    "load": 5,
+    "promo": 8,
+    "extra": 0,
+    "recog": 0,
+    "behav": 20,
+    "mobil": 0,
+    "market": 8,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 83,
+   "level": "Alto",
+   "priority": "Alta",
+   "dev": -1.9699140401146156,
+   "drivers": [
+    [
+     "sat",
+     20
+    ],
+    [
+     "behav",
+     20
+    ],
+    [
+     "load",
+     14
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "market",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 157,
+   "mat": "0001875",
+   "g": "F",
+   "fn": "CUSTOMER SERVICE",
+   "band": "A",
+   "co": 24.48,
+   "ore": 848.7,
+   "costo": 20776.18,
+   "f": {
+    "sat": 4,
+    "load": 3,
+    "promo": 8,
+    "extra": 6,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 35,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 13.64902506963789,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "extra",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 158,
+   "mat": "0001402",
+   "g": "F",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 24.53,
+   "ore": 880.4,
+   "costo": 21596.21,
+   "f": {
+    "sat": 5,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 0,
+    "crit": 0
+   },
+   "score": 28,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": -12.141833810888253,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "market",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 159,
+   "mat": "0002044",
+   "g": "F",
+   "fn": "IT",
+   "band": "C",
+   "co": 33,
+   "ore": 455,
+   "costo": 15015,
+   "f": {
+    "sat": 3,
+    "load": 5,
+    "promo": 0,
+    "extra": 12,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 0,
+    "crit": 0
+   },
+   "score": 59,
+   "level": "Medio",
+   "priority": "Bassa",
+   "dev": -10.057236304170068,
+   "drivers": [
+    [
+     "load",
+     14
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 160,
+   "mat": "0001128",
+   "g": "M",
+   "fn": "AMMINISTRAZIONE E FINANZA",
+   "band": "B",
+   "co": 30.74,
+   "ore": 870.1,
+   "costo": 26746.87,
+   "f": {
+    "sat": 4,
+    "load": 5,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 8,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 28,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 10.100286532951278,
+   "drivers": [
+    [
+     "load",
+     14
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ]
+   ]
+  },
+  {
+   "id": 161,
+   "mat": "0001605",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 20.49,
+   "ore": 856.2,
+   "costo": 17543.54,
+   "f": {
+    "sat": 4,
+    "load": 2,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 6,
+    "market": 0,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 31,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": -4.874651810584962,
+   "drivers": [
+    [
+     "recog",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "comp",
+     5
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 162,
+   "mat": "0001134",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 24.26,
+   "ore": 874.5,
+   "costo": 21215.37,
+   "f": {
+    "sat": 2,
+    "load": 4,
+    "promo": 8,
+    "extra": 0,
+    "recog": 0,
+    "behav": 20,
+    "mobil": 0,
+    "market": 0,
+    "perf": 2,
+    "crit": 0
+   },
+   "score": 57,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 12.627669452182,
+   "drivers": [
+    [
+     "behav",
+     20
+    ],
+    [
+     "sat",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ]
+   ]
+  },
+  {
+   "id": 163,
+   "mat": "0002107",
+   "g": "M",
+   "fn": "MANUTENZIONE",
+   "band": "B",
+   "co": 22.14,
+   "ore": 877.3,
+   "costo": 19423.42,
+   "f": {
+    "sat": 3,
+    "load": 2,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 47,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -20.702005730659028,
+   "drivers": [
+    [
+     "comp",
+     18
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "market",
+     4
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 164,
+   "mat": "0001547",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 20.2,
+   "ore": 657.9,
+   "costo": 13289.58,
+   "f": {
+    "sat": 5,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 0,
+    "crit": 1
+   },
+   "score": 15,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": -6.220984215413184,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "comp",
+     5
+    ]
+   ]
+  },
+  {
+   "id": 165,
+   "mat": "0001612",
+   "g": "M",
+   "fn": "IT",
+   "band": "C",
+   "co": 40.17,
+   "ore": 865.2,
+   "costo": 34755.08,
+   "f": {
+    "sat": 2,
+    "load": 5,
+    "promo": 16,
+    "extra": 6,
+    "recog": 0,
+    "behav": 20,
+    "mobil": 12,
+    "market": 0,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 84,
+   "level": "Alto",
+   "priority": "Alta",
+   "dev": 9.48487326246935,
+   "drivers": [
+    [
+     "behav",
+     20
+    ],
+    [
+     "promo",
+     16
+    ],
+    [
+     "load",
+     14
+    ],
+    [
+     "sat",
+     12
+    ],
+    [
+     "mobil",
+     12
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "extra",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 166,
+   "mat": "0001354",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 25.02,
+   "ore": 924.3,
+   "costo": 23125.99,
+   "f": {
+    "sat": 5,
+    "load": 2,
+    "promo": 8,
+    "extra": 0,
+    "recog": 0,
+    "behav": 10,
+    "mobil": 12,
+    "market": 0,
+    "perf": 2,
+    "crit": 1
+   },
+   "score": 28,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 16.155988857938723,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "mobil",
+     12
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 167,
+   "mat": "0001078",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 19.33,
+   "ore": 536.6,
+   "costo": 10372.48,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 8,
+    "extra": 0,
+    "recog": 8,
+    "behav": 20,
+    "mobil": 0,
+    "market": 4,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 67,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -10.259981429897868,
+   "drivers": [
+    [
+     "behav",
+     20
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 168,
+   "mat": "0002125",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 19,
+   "ore": 856.8,
+   "costo": 16279.2,
+   "f": {
+    "sat": 2,
+    "load": 2,
+    "promo": 8,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 55,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -11.792014856081705,
+   "drivers": [
+    [
+     "sat",
+     12
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 169,
+   "mat": "0002013",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 24.71,
+   "ore": 646.5,
+   "costo": 15975.02,
+   "f": {
+    "sat": 2,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 10,
+    "mobil": 6,
+    "market": 0,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 47,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 14.716805942432693,
+   "drivers": [
+    [
+     "sat",
+     12
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 170,
+   "mat": "0002129",
+   "g": "M",
+   "fn": "CUSTOMER SERVICE",
+   "band": "A",
+   "co": 22.47,
+   "ore": 667.1,
+   "costo": 14989.74,
+   "f": {
+    "sat": 5,
+    "load": 4,
+    "promo": 8,
+    "extra": 12,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 8,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 47,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 4.317548746518105,
+   "drivers": [
+    [
+     "sat",
+     -14
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 171,
+   "mat": "0001760",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 18.38,
+   "ore": 537.4,
+   "costo": 9877.41,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 0,
+    "extra": 6,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 52,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -14.67038068709378,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "extra",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 172,
+   "mat": "0001991",
+   "g": "M",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 34.21,
+   "ore": 637.9,
+   "costo": 21822.56,
+   "f": {
+    "sat": 4,
+    "load": 5,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 12,
+    "market": 0,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 39,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 22.528653295128937,
+   "drivers": [
+    [
+     "load",
+     14
+    ],
+    [
+     "mobil",
+     12
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "sat",
+     -7
+    ]
+   ]
+  },
+  {
+   "id": 173,
+   "mat": "0001627",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 19.12,
+   "ore": 870.7,
+   "costo": 16647.78,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 16,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 1,
+    "crit": 1
+   },
+   "score": 50,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": -11.234911792014849,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 174,
+   "mat": "0001476",
+   "g": "M",
+   "fn": "COMMERCIALE",
+   "band": "B",
+   "co": 27.09,
+   "ore": 864.5,
+   "costo": 23419.31,
+   "f": {
+    "sat": 4,
+    "load": 2,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 19,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": -2.9727793696275135,
+   "drivers": [
+    [
+     "sat",
+     -7
+    ],
+    [
+     "comp",
+     5
+    ],
+    [
+     "load",
+     -2
+    ]
+   ]
+  },
+  {
+   "id": 175,
+   "mat": "0001696",
+   "g": "M",
+   "fn": "CUSTOMER SERVICE",
+   "band": "A",
+   "co": 24.28,
+   "ore": 653.5,
+   "costo": 15866.98,
+   "f": {
+    "sat": 4,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 8,
+    "behav": 0,
+    "mobil": 0,
+    "market": 4,
+    "perf": 1,
+    "crit": 2
+   },
+   "score": 20,
+   "level": "Basso",
+   "priority": "Media",
+   "dev": 12.720519962859806,
+   "drivers": [
+    [
+     "recog",
+     8
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 176,
+   "mat": "0001283",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 22.55,
+   "ore": 636.1,
+   "costo": 14344.06,
+   "f": {
+    "sat": 3,
+    "load": 5,
+    "promo": 0,
+    "extra": 12,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 6,
+    "market": 0,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 50,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 4.688950789229348,
+   "drivers": [
+    [
+     "load",
+     14
+    ],
+    [
+     "extra",
+     12
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 177,
+   "mat": "0001934",
+   "g": "M",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 24,
+   "ore": 855.1,
+   "costo": 20522.4,
+   "f": {
+    "sat": 4,
+    "load": 4,
+    "promo": 0,
+    "extra": 0,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 6,
+    "market": 4,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 39,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": 11.420612813370477,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "comp",
+     -8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "sat",
+     -7
+    ],
+    [
+     "mobil",
+     6
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 178,
+   "mat": "0001107",
+   "g": "M",
+   "fn": "LOGISTICA",
+   "band": "A",
+   "co": 22.17,
+   "ore": 861.6,
+   "costo": 19101.67,
+   "f": {
+    "sat": 3,
+    "load": 3,
+    "promo": 16,
+    "extra": 0,
+    "recog": 8,
+    "behav": 10,
+    "mobil": 0,
+    "market": 4,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 55,
+   "level": "Medio",
+   "priority": "Media",
+   "dev": 2.924791086350987,
+   "drivers": [
+    [
+     "promo",
+     16
+    ],
+    [
+     "behav",
+     10
+    ],
+    [
+     "recog",
+     8
+    ],
+    [
+     "market",
+     4
+    ]
+   ]
+  },
+  {
+   "id": 179,
+   "mat": "0002141",
+   "g": "F",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 19.18,
+   "ore": 520.5,
+   "costo": 9983.19,
+   "f": {
+    "sat": 5,
+    "load": 4,
+    "promo": 8,
+    "extra": 6,
+    "recog": 16,
+    "behav": 0,
+    "mobil": 6,
+    "market": 8,
+    "perf": 0,
+    "crit": 0
+   },
+   "score": 66,
+   "level": "Medio",
+   "priority": "Bassa",
+   "dev": -10.956360259981428,
+   "drivers": [
+    [
+     "recog",
+     16
+    ],
+    [
+     "sat",
+     -14
+    ],
+    [
+     "comp",
+     12
+    ],
+    [
+     "promo",
+     8
+    ],
+    [
+     "load",
+     8
+    ],
+    [
+     "market",
+     8
+    ],
+    [
+     "extra",
+     6
+    ],
+    [
+     "mobil",
+     6
+    ]
+   ]
+  },
+  {
+   "id": 180,
+   "mat": "0001752",
+   "g": "F",
+   "fn": "PRODUZIONE",
+   "band": "A",
+   "co": 23.77,
+   "ore": 640.2,
+   "costo": 15217.55,
+   "f": {
+    "sat": 1,
+    "load": 3,
+    "promo": 0,
+    "extra": 0,
+    "recog": 0,
+    "behav": 0,
+    "mobil": 0,
+    "market": 0,
+    "perf": 1,
+    "crit": 0
+   },
+   "score": 33,
+   "level": "Basso",
+   "priority": "Bassa",
+   "dev": 10.352831940575676,
+   "drivers": [
+    [
+     "sat",
+     20
+    ],
+    [
+     "comp",
+     -8
+    ]
+   ]
+  }
+ ]
+}
