@@ -6,3 +6,7 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Runtime Next.js di Netlify (OpenNext): pagine dinamiche, server actions e proxy
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
