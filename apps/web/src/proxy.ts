@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const PUBLIC = ["/login", "/auth"];
+const PUBLIC = ["/login", "/auth", "/guida"];
 
 /** Rinnova la sessione a ogni richiesta e manda al login chi non è collegato. */
 export async function proxy(request: NextRequest) {

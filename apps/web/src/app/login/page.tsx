@@ -19,6 +19,7 @@ export default async function Login({ searchParams }: PageProps<"/login">) {
             <button className="btn-sec" formAction={signUp}>Crea account</button>
           </div>
           <p className="text-xs text-mut">Primo accesso? Scrivi email e una password di almeno 10 caratteri e premi «Crea account».</p>
+          <p className="text-sm"><a className="text-brand underline" href="/guida">Guida per chi prova la demo →</a></p>
         </form>
       </div>
     </div>

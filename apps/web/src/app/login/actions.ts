@@ -17,7 +17,9 @@ export async function signUp(fd: FormData) {
   if (password.length < 10) back("e", "La password deve avere almeno 10 caratteri.");
   const origin = (await headers()).get("origin") ?? "http://localhost:3000";
   const sb = await supabase();
-  const { error } = await sb.auth.signUp({ email: String(fd.get("email")), password, options: { emailRedirectTo: `${origin}/auth/callback` } });
-  if (error) back("e", error.message);
+  const { data, error } = await sb.auth.signUp({ email: String(fd.get("email")), password, options: { emailRedirectTo: `${origin}/auth/callback` } });
+  if (error) back("e", error.message.includes("rate limit") ? "Troppe registrazioni in poco tempo: riprova tra qualche minuto." : error.message);
+  // conferma email disattivata (ambiente demo): l'utente è già collegato
+  if (data.session) redirect("/");
   back("m", "Fatto! Ti abbiamo mandato un'email: apri il link di conferma, poi accedi.");
 }
