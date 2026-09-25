@@ -16,7 +16,7 @@ export default async function PeriodLayout({ children, params }: LayoutProps<"/p
     ["quadro", "Quadro"],
     ...(risk ? [["segnali", "Segnali"], ["valutazione", "Valutazione"]] as [string, string][] : []),
     ["funzioni", "Funzioni & rischio"],
-    ...(pay ? [["equita", "Equità"]] as [string, string][] : []),
+    ...(pay ? [["equita", "Equità"], ["mercato", "Mercato"]] as [string, string][] : []),
     ["", pay ? "Dati & report Direttiva" : "Report Direttiva"],
     ...(pay ? [["documenti", "Documenti"]] as [string, string][] : []),
     ...(risk ? [["registro", "Registro"]] as [string, string][] : []),

@@ -32,6 +32,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             <div className="flex items-center gap-3 text-sm">
               <span className="hidden text-right text-mut md:inline">{user.email}{membership ? ` · ${membership.roles.map(r => ROLE[r]).join(", ")}` : ""}</span>
               {membership && membership.roles.some(r => r === "admin" || r === "revisore") && <Link className="btn-sec" href="/audit">Registri</Link>}
+              {membership && <Link className="btn-sec" href="/mercato">Medie di mercato</Link>}
               {membership && <Link className="btn-sec" href="/impostazioni">Impostazioni</Link>}
               <form action={signOut}><button className="btn-sec">Esci</button></form>
             </div>
