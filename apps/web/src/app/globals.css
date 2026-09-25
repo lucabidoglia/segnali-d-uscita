@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f5f4f7; --card: #ffffff; --fg: #1c1f26; --mut: #6b6f7a; --line: #e2e0e6;
+  --brand: #714b67; --brand-fg: #ffffff; --hi: #c0392b; --mid: #d68910; --lo: #1e8449;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #16181d; --card: #1f2229; --fg: #e8e8ec; --mut: #9a9ea8; --line: #33363f; --brand: #a77a9c; --hi: #ec7063; --mid: #f5b041; --lo: #58d68d; }
+}
+@theme inline {
+  --color-bg: var(--bg); --color-card: var(--card); --color-fg: var(--fg); --color-mut: var(--mut); --color-line: var(--line);
+  --color-brand: var(--brand); --color-brand-fg: var(--brand-fg); --color-hi: var(--hi); --color-mid: var(--mid); --color-lo: var(--lo);
+}
+body { background: var(--bg); color: var(--fg); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+
+@layer components {
+  .card { @apply rounded-lg border border-line bg-card p-5; }
+  .btn { @apply inline-flex items-center gap-2 rounded-md bg-brand px-4 py-2 text-sm font-medium text-brand-fg hover:opacity-90 disabled:opacity-50; }
+  .btn-sec { @apply inline-flex items-center gap-2 rounded-md border border-line bg-card px-4 py-2 text-sm font-medium hover:bg-bg; }
+  .input { @apply w-full rounded-md border border-line bg-card px-3 py-2 text-sm outline-none focus:border-brand; }
+  .label { @apply mb-1 block text-xs font-medium text-mut; }
+  .tbl { @apply w-full text-sm; }
+  .tbl th { @apply border-b border-line px-3 py-2 text-left text-xs font-medium text-mut; }
+  .tbl td { @apply border-b border-line px-3 py-2; }
+  .num { @apply text-right tabular-nums; }
+  .note { @apply rounded-md border border-line bg-bg px-4 py-3 text-sm text-mut; }
+}

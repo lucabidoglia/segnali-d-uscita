@@ -6,8 +6,8 @@
  * - il divario delle componenti variabili si calcola sul variabile orario tra chi lo percepisce;
  * - le celle con meno di `minCell` persone per genere non vengono pubblicate (anonimato e affidabilità).
  */
-import type { Worker } from './types.js';
-import { gapPct, mean, median } from './stats.js';
+import type { Worker } from './types.ts';
+import { gapPct, mean, median } from './stats.ts';
 
 export const JOINT_ASSESSMENT_THRESHOLD = 5; // art. 10: differenza ≥ 5% in una categoria
 

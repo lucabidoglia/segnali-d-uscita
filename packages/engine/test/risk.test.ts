@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import golden from './fixtures/golden-v1.3.0.json' with { type: 'json' };
-import { computeRisk, fairnessByGender, type RiskFactors } from '../src/index.js';
+import { computeRisk, fairnessByGender, type RiskFactors } from '../src/index.ts';
 
 const mktHour = (band: string) => {
   const b = golden.bands.find(x => x.id === band)!;

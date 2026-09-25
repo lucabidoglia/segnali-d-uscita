@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import golden from './fixtures/golden-v1.3.0.json' with { type: 'json' };
-import { mean, median, payGapReport, reportingObligation, validateWorkers, type Worker } from '../src/index.js';
+import { mean, median, payGapReport, reportingObligation, validateWorkers, type Worker } from '../src/index.ts';
 
 const w = (id: string, gender: Worker['gender'], hourlyBase: number, category = 'A', variablePay = 0, hoursPaid = 1000): Worker => ({
   id, gender, category, funzione: category, fte: 1, hoursPaid, basePay: hourlyBase * hoursPaid, variablePay

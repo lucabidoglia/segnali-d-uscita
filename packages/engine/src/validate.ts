@@ -2,7 +2,7 @@
  * Controlli di qualità sui dati importati (Excel o gestionale) prima di qualsiasi calcolo.
  * Gli errori bloccano il report; gli avvisi vanno mostrati all'utente ma non bloccano.
  */
-import type { Worker } from './types.js';
+import type { Worker } from './types.ts';
 
 export interface Issue {
   severity: 'errore' | 'avviso';
