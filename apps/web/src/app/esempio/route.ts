@@ -1,7 +1,7 @@
 import { templateWorkbook } from "@/lib/excel";
-import demo from "@/lib/demo-rows.json";
+import demo from "@/lib/demo.json";
 
-// File di prova con 180 persone INVENTATE, già compilato nel formato del modello.
+// File di prova con 180 persone INVENTATE (periodo gen–giu 2026), già compilato nel formato del modello.
 export async function GET() {
   return new Response(await templateWorkbook(demo), {
     headers: {

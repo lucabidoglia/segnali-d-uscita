@@ -25,7 +25,7 @@ export default async function Home({ searchParams }: PageProps<"/">) {
   );
 
   const { data: periods } = await sb.from("periods").select("id, label, starts_on, ends_on").eq("org_id", membership.org_id).order("starts_on", { ascending: false });
-  const pay = canSeePay(membership.role);
+  const pay = canSeePay(membership);
   const year = new Date().getFullYear() - 1;
 
   return (
