@@ -98,3 +98,19 @@ export const wrapDoc = (name: string, inner: string, print = false) =>
   `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>${esc(name)}</title><style>${STYLE}</style></head><body>${inner}${print ? "<script>addEventListener('load',()=>print())</script>" : ""}</body></html>`;
 
 export const slug = (t: string) => t.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^A-Za-z0-9]+/g, "_").replace(/^_|_$/g, "");
+
+export interface PlanDocItem { priority: string; area: string; title: string; why: string; steps: string[]; rif?: string; owner: string; dueEff: string; late: boolean; state: { status: string; owner: string | null; note: string | null } | null }
+
+/** Piano d'azione del periodo: riepilogo per priorità, calendario e schede delle azioni. */
+export function pianoHtml(c: DocCtx, items: PlanDocItem[], horizonOf: (due: string) => string, horizons: readonly string[]) {
+  const open = items.filter(a => !["Fatto", "Non applicabile"].includes(a.state?.status ?? "Da fare"));
+  const n = (p: string) => open.filter(a => a.priority === p).length;
+  const d = (s: string) => new Date(s).toLocaleDateString("it-IT");
+  const row = (a: PlanDocItem) => [`<b>${esc(a.priority)}</b>`, esc(a.area), esc(a.title), esc(a.state?.owner || a.owner), (a.late ? '<span class="flag">in ritardo · </span>' : "") + d(a.dueEff), esc(a.state?.status ?? "Da fare")];
+  const cal = horizons.map(h => { const l = items.filter(a => horizonOf(a.dueEff) === h); return l.length ? `<h2>${esc(h)}</h2>${tbl(["Priorità", "Area", "Azione", "Responsabile", "Scadenza", "Stato"], l.map(row))}` : ""; }).join("");
+  const schede = items.map((a, i) => `<h2>${i + 1}. ${esc(a.title)}</h2>${kv([["Priorità · area", `<b>${esc(a.priority)}</b> · ${esc(a.area)}`], ["Perché", esc(a.why)], ["Riferimento", esc(a.rif ?? "—")], ["Responsabile", esc(a.state?.owner || a.owner)], ["Scadenza · stato", `${d(a.dueEff)} · ${esc(a.state?.status ?? "Da fare")}`], ...(a.state?.note ? [["Note", esc(a.state.note)] as [string, string]] : [])])}<ol style="font-size:10.5pt">${a.steps.map(s => `<li>${esc(s)}</li>`).join("")}</ol>`).join("");
+  return `<div class="doc">${head(c, "Piano d'azione: equità retributiva e permanenza delle persone", `Periodo ${periodoIt(c.period)} — generato il ${todayIt()} dai dati del periodo e dal D.Lgs. 96/2026`)}
+    <h2>Riepilogo</h2>${tbl(["Priorità", "Azioni aperte", "Significato"], [["Critica", n("Critica"), "obbligo di legge a rischio o danno imminente"], ["Alta", n("Alta"), "da avviare entro 3 mesi"], ["Media", n("Media"), "entro 6–12 mesi"], ["Bassa", n("Bassa"), "miglioramento"]], [1])}
+    <p>Azioni totali: ${items.length}; completate o non applicabili: ${items.length - open.length}; in ritardo: ${open.filter(a => a.late).length}.</p>
+    ${cal}</div><div class="doc"><h1>Schede delle azioni</h1>${schede}${foot(c)}${sign(c)}</div>`;
+}

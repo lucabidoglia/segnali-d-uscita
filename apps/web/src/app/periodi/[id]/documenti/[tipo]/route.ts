@@ -1,13 +1,15 @@
 import type { NextRequest } from "next/server";
 import { ENGINE_VERSION } from "@g1g10/engine";
-import { divarioHtml, paritaHtml, schedaHtml, slug, wrapDoc, type DocCtx } from "@/lib/docs";
+import { HORIZONS, horizon } from "@/lib/actionPlan";
+import { divarioHtml, paritaHtml, pianoHtml, schedaHtml, slug, wrapDoc, type DocCtx } from "@/lib/docs";
 import { loadSettings } from "@/lib/settings";
 import { canSeePay, session } from "@/lib/supabase/server";
 import { loadDbWorkers, loadPeriod } from "../../data";
+import { loadPlan } from "../../piano/shared";
 
 /**
  * /periodi/:id/documenti/:tipo?formato=anteprima|stampa|word
- *   tipo = scheda (con w=<id> o ids=<id>&ids=… o scope=all|a:<area>) · divario · parita
+ *   tipo = scheda (con w=<id> o ids=<id>&ids=… o scope=all|a:<area>) · divario · parita · piano
  */
 export async function GET(req: NextRequest, { params }: RouteContext<"/periodi/[id]/documenti/[tipo]">) {
   const { id, tipo } = await params;
@@ -29,9 +31,14 @@ export async function GET(req: NextRequest, { params }: RouteContext<"/periodi/[
     html = list.map(w => schedaHtml(ctx, w)).join("");
   } else if (tipo === "divario") { name = `Relazione_divario_retributivo_${day}`; html = divarioHtml(ctx, ws); }
   else if (tipo === "parita") { name = `Dossier_parita_di_genere_${day}`; html = paritaHtml(ctx, ws); }
+  else if (tipo === "piano") {
+    const { planned, today } = await loadPlan(sb, membership, id);
+    name = `Piano_d_azione_${slug(period.label)}_${day}`;
+    html = pianoHtml(ctx, planned, due => horizon(today, due), HORIZONS);
+  }
   else return new Response("Documento sconosciuto", { status: 404 });
 
-  if (!ws.length) return new Response("Nessun dato nel periodo", { status: 400 });
+  if (!ws.length && tipo !== "piano") return new Response("Nessun dato nel periodo", { status: 400 });
   const doc = wrapDoc(name, html, formato === "stampa");
   if (formato === "word") return new Response("﻿" + doc, { headers: { "Content-Type": "application/msword", "Content-Disposition": `attachment; filename="${name}.doc"` } });
   return new Response(doc, { headers: { "Content-Type": "text/html; charset=utf-8", "X-Frame-Options": "SAMEORIGIN" } });

@@ -36,3 +36,19 @@ describe("documenti", () => {
     expect(h).not.toContain("<script>x");
   });
 });
+
+describe("documento piano d'azione", () => {
+  it("riepilogo, calendario e schede, testi resi innocui", async () => {
+    const { pianoHtml } = await import("@/lib/docs");
+    const items = [
+      { priority: "Critica", area: "Dati e privacy", title: "DPIA <b>x</b>", why: "perché", steps: ["uno", "due"], rif: "GDPR art. 35", owner: "DPO", dueEff: "2026-10-25", late: false, state: null },
+      { priority: "Alta", area: "Trasparenza", title: "Annunci", why: "w", steps: ["a"], owner: "HR", dueEff: "2026-09-01", late: true, state: { status: "In corso", owner: "Maria", note: "ok" } },
+    ];
+    const h = pianoHtml(ctx, items, d => (d < "2026-11-01" ? "Subito (entro 30 giorni)" : "Entro 3 mesi"), ["Subito (entro 30 giorni)", "Entro 3 mesi"]);
+    expect(h).toContain("Piano d'azione");
+    expect(h).toContain("in ritardo");
+    expect(h).toContain("Maria");
+    expect(h).not.toContain("<b>x</b>");
+    expect(h.match(/<ol/g)).toHaveLength(2);
+  });
+});

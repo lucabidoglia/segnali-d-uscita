@@ -14,6 +14,7 @@ export default async function PeriodLayout({ children, params }: LayoutProps<"/p
   const pay = canSeePay(membership), risk = canRisk(membership);
   const tabs: [string, string][] = [
     ["quadro", "Quadro"],
+    ["piano", "Piano d'azione"],
     ...(risk ? [["segnali", "Segnali"], ["valutazione", "Valutazione"]] as [string, string][] : []),
     ["funzioni", "Funzioni & rischio"],
     ...(pay ? [["equita", "Equità"], ["mercato", "Mercato"]] as [string, string][] : []),

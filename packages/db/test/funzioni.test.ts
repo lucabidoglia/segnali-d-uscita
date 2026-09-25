@@ -88,3 +88,16 @@ describe('aggregati per tutti i membri', () => {
     await expect(as(db, U.other, `select public.risk_overview($1)`, [period])).rejects.toThrow(/Non autorizzato/);
   });
 });
+
+describe('piano d\'azione', () => {
+  it('HR salva lo stato di un\'azione, il lettore lo vede ma non lo modifica', async () => {
+    await as(db, U.hr, `insert into public.action_items (org_id, period_id, key, status, owner) values ($1,$2,'gap:PROD','In corso','HR')`, [org, period]);
+    expect(await as(db, U.read, `select status from public.action_items`)).toEqual([{ status: 'In corso' }]);
+    await expect(as(db, U.read, `update public.action_items set status = 'Fatto'`)).resolves.toEqual([]); // RLS: nessuna riga modificabile
+    expect(await as(db, U.hr, `select status from public.action_items`)).toEqual([{ status: 'In corso' }]);
+    await expect(as(db, U.hr, `insert into public.action_items (org_id, period_id, key, status) values ($1,$2,'x','Boh')`, [org, period])).rejects.toThrow(/check/);
+  });
+  it("un'altra azienda non vede il piano", async () => {
+    expect(await as(db, U.other, `select * from public.action_items`)).toEqual([]);
+  });
+});

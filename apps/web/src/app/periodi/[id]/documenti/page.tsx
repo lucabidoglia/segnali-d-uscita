@@ -6,9 +6,9 @@ import { loadDbWorkers } from "../data";
 
 const DOCS: [string, [string, string][]][] = [
   ["Individuali", [["scheda", "Scheda formazione finanziata"]]],
-  ["Aziendali", [["divario", "Divario retributivo (Dir. 2023/970)"], ["parita", "Parità di genere (UNI/PdR 125)"]]],
+  ["Aziendali", [["divario", "Divario retributivo (D.Lgs. 96/2026)"], ["parita", "Parità di genere (UNI/PdR 125)"], ["piano", "Piano d'azione"]]],
 ];
-const TITLE: Record<string, string> = { scheda: "Scheda formazione finanziata", divario: "Relazione sul divario retributivo", parita: "Dossier parità di genere" };
+const TITLE: Record<string, string> = { scheda: "Scheda formazione finanziata", divario: "Relazione sul divario retributivo", parita: "Dossier parità di genere", piano: "Piano d'azione" };
 
 export default async function Documenti({ params, searchParams }: PageProps<"/periodi/[id]/documenti">) {
   const { id } = await params;

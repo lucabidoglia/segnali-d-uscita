@@ -57,6 +57,12 @@ con le impronte in `normativa-watch.json`. Se cambiano: la pagina mostra «norma
 aggiornare `VERIFIED_ON` e lanciare `node scripts/check-normativa.mjs --accept`. Mai riscrivere il testo legale in automatico.
 `test/normativa.test.ts` tiene allineati parametri della pagina e motore (soglia 5%, 100/150/250 dipendenti, scadenze).
 
+## Piano d'azione (`/periodi/[id]/piano`)
+Regole in `apps/web/src/lib/actionPlan.ts` (funzione pura, testata in `test/actionPlan.test.ts`): dai dati del periodo (divario per categoria, variabile,
+quartili, obbligo di comunicazione, rischio aggregato, mercato) e dagli obblighi del D.Lgs. 96/2026 genera azioni con **chiave stabile**, priorità
+(Critica/Alta/Media/Bassa), scadenza e orizzonte temporale. Lo stato deciso dalle persone (stato, responsabile, scadenza, note) sta in `action_items`
+(migrazione `20260925180000_piano_azione.sql`). Esportazione Word/PDF: `documenti/piano`. Mai inserire nomi di persone nelle azioni di rischio: solo conteggi.
+
 ## Medie di mercato (`/mercato`)
 Fonti: Eurostat SES 2022 (API), ISTAT Struttura delle retribuzioni 2022, INPS Osservatorio 2024 (non a tempo pieno), minimi CCNL Metalmeccanici (dal 1/6/2026) e Terziario Confcommercio (paga base dal 1/11/2026, esclusa contingenza). JobPricing escluso: dati di stampa incoerenti.
 Aggiornare con `node scripts/make-benchmarks.mjs` e verificare i valori trascritti a mano sui documenti ufficiali.
